@@ -1,0 +1,120 @@
+.page {
+    width: 100%;
+    height: 100%;
+}
+
+.bosch-logo-bar {
+    width: 100%;
+    height: 6px;
+    position: absolute;
+    top: 0px;
+  }
+  
+  .bosch-logo {
+    width: 109px;
+    height: 24px;
+    position: absolute;
+    left: 40px;
+    top: 6px;
+  }
+
+.chatbot-pic {
+    z-index: 69;
+    position: absolute;
+    left: 35%;
+    top: 4%;
+    width: 750px;
+    height: 430px;
+}
+
+.welcome {
+    z-index: 62;
+    width: 223px;
+    display: block;
+    overflow-wrap: break-word;
+    color: rgba(0, 0, 0, 1);
+    font-size: 48px;
+    font-family: BoschSansLF-Black;
+    line-height: 60px;
+    text-align: left;
+}
+
+.word {
+    z-index: 63;
+    width: 276px;
+    display: block;
+    overflow-wrap: break-word;
+    font-size: 22px;
+    font-family: BoschSans-Regular;
+    line-height: 28px;
+    text-align: left;
+    align-self: center;
+    margin-top: 16px;
+}
+
+.message {
+    margin-top: 6.25%;
+    margin-left: 9%;
+}
+
+.login-form {
+    margin-left: 9%;
+}
+
+.login-button {
+    display: block;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-family: BoschSans-Bold;
+    line-height: 23px;
+    text-align: center;
+    border-radius: 6vw; 
+    width: 10vw;
+}
+
+.login-username {
+    margin-top: 30px;
+}
+
+.login-input {
+    width: 300px;
+}
+
+.el-input__inner {
+  border-radius: 2vw;
+}
+
+.login-linking {
+    text-decoration: none;
+    color: darkblue;
+}
+
+
+.el-row {
+    margin-bottom: 20px;
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+  }
+  .el-header {
+      padding: 0;
+  }
+  .main-content {
+    width: 1284px;
+    margin: 0 auto;
+    margin-top: 2%;
+  }
+  .el-tabs{
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      text-align: center;
+  }
