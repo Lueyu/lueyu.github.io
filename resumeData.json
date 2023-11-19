@@ -1,0 +1,117 @@
+{
+  "main": {
+    "name": "Brian Wang",
+    "intro1": "Hi! I am Brian Wang.",
+    "intro2": "Welcome to my software world.",
+    "description": "After graduation from the University of Michigan, I am working as a software engineer at Subaru Research and Development right now. I have a wide range of software development experiences",
+    "image": "profilepic.png",
+    "bio": "Passionate about everything software.",
+    "contactmessage": "Contact functionality is under development. You can always shoot me an email :0",
+    "email": "lueyuwang@gmail.com",
+    "phone": "734-355-9865",
+    "github": "https://github.com/Lueyu",
+    "project": "http://localhost:3000/#portfolio",
+    "address": {
+      "street": "4861 Packard St.",
+      "city": "Ann Arbor,",
+      "state": "Michigan",
+      "zip": "48108"
+    },
+    "website": "https://www.linkedin.com/in/brian-wang-a8132b154",
+    "resumedownload": "https://www.linkedin.com/in/brian-wang-a8132b154",
+    "social": [
+      {
+        "name": "facebook",
+        "url": "https://www.facebook.com/lueyu.wang",
+        "className": "fa fa-facebook"
+      },
+      {
+        "name": "twitter",
+        "url": "http://twitter.com",
+        "className": "fa fa-twitter"
+      },
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/brian-wang-a8132b154",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "instagram",
+        "url": "https://www.instagram.com/lueyuw/",
+        "className": "fa fa-instagram"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/Lueyu",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "Everything about programming",
+    "education": [
+      {
+        "school": "University of Michigan",
+        "degree": "Master of Engineering in Electrical and Computer Engineering",
+        "graduated": "December 2023",
+        "description": "Control Theory, Embedded System, Mobile Robotics"
+      },
+      {
+        "school": "University of Michigan",
+        "degree": "Bachelor of Science in Computer Science",
+        "graduated": "April 2022",
+        "description": "Web Systems, Operating Systems, Computer Security, User Interface, Natural Language Processing, Computer Vision"
+      }
+    ],
+    "work": [
+      {
+        "company": "Subaru Research and Development",
+        "title": "Software Engineer",
+        "years": "May 2023 - Present",
+        "description": "Working for the Connected Car team..."
+      },
+      {
+        "company": "Irdeto USA",
+        "title": "Test Automation Engineer",
+        "years": "Jan 2023 - April 2023",
+        "description": "Test automation development for the Fleet Management Solution..."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Python",
+        "level": "60%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "60%"
+      },
+      {
+        "name": "VueJs",
+        "level": "30%"
+      },
+      {
+        "name": "CSS",
+        "level": "40%"
+      },
+      {
+        "name": "C++",
+        "level": "50%"
+      },
+      {
+        "name": "JAVA",
+        "level": "30%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "Self-opening Intelligent Automotive Doors",
+        "category": "student project",
+        "image": "01.jpg",
+        "url": "https://mdp.engin.umich.edu/sponsor_teams/subaru-23/"
+      }
+    ]
+  }
+}
