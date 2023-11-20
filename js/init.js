@@ -94,22 +94,22 @@ jQuery(document).ready(function ($) {
 
       $.ajax({
         type: "POST",
-        url: "inc/sendEmail.php",
+        url: "https://8mn3axpska.execute-api.us-east-2.amazonaws.com/submit-comment",
         data: data,
-        success: function (msg) {
+        success: function () {
           // Message was sent
-          if (msg == "OK") {
-            $("#image-loader").fadeOut();
-            $("#message-warning").hide();
-            $("#contactForm").fadeOut();
-            $("#message-success").fadeIn();
-          }
-          // There was an error
-          else {
-            $("#image-loader").fadeOut();
-            $("#message-warning").html(msg);
-            $("#message-warning").fadeIn();
-          }
+
+          $("#image-loader").fadeOut();
+          $("#message-warning").hide();
+          $("#contactForm").fadeOut();
+          $("#message-success").html("Please check all input fields are filled in properly :0");
+          $("#message-success").fadeIn();
+        },
+        error: function (msg) {
+          // AJAX请求失败时的处理逻辑
+          $("#image-loader").fadeOut();
+          $("#message-warning").html(msg);
+          $("#message-warning").fadeIn();
         }
       });
       return false;
