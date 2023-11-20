@@ -96,19 +96,18 @@ jQuery(document).ready(function ($) {
         type: "POST",
         url: "https://8mn3axpska.execute-api.us-east-2.amazonaws.com/submit-comment",
         data: data,
-        success: function () {
+        success: function (msg) {
           // Message was sent
-
           $("#image-loader").fadeOut();
           $("#message-warning").hide();
           $("#contactForm").fadeOut();
-          $("#message-success").html("Please check all input fields are filled in properly :0");
+          $("#message-success").html(msg);
           $("#message-success").fadeIn();
         },
-        error: function (msg) {
+        error: function () {
           // AJAX请求失败时的处理逻辑
           $("#image-loader").fadeOut();
-          $("#message-warning").html(msg);
+          $("#message-warning").html("Please check that all input fields are filled in properly:0");
           $("#message-warning").fadeIn();
         }
       });
