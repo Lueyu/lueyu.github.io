@@ -1233,6 +1233,7 @@ footer .social-links li:first-child {
 
 
 .social .btn:first-child {
+   margin-left: 30px;
    margin-right: 30px;
 }
 
