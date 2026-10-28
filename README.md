@@ -37,8 +37,9 @@ form.
 - A service worker (`public/sw.js`) caches assets and pages for fast repeat
   visits.
 
-`.env` holds `VITE_AGENT_ENDPOINT` (the FC trigger URL) so the github.io build
-can call the API cross-origin. It is gitignored.
+On `lueyu.github.io`, the frontend defaults to the FC trigger URL even if a
+local `.env` file is absent. `VITE_AGENT_ENDPOINT` can override it for another
+deployment; `.env` is gitignored.
 
 ## Deployment
 

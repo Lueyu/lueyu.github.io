@@ -22,7 +22,11 @@ export class AgentError extends Error {
 const STORAGE_KEY = "lueyu-agent:history";
 const HISTORY_LIMIT = 60;
 
-export const ENDPOINT: string = import.meta.env.VITE_AGENT_ENDPOINT ?? "";
+const GITHUB_PAGES_ENDPOINT = "https://lueyu-agent-zjbznowktm.cn-beijing.fcapp.run";
+
+export const ENDPOINT: string =
+  import.meta.env.VITE_AGENT_ENDPOINT?.trim() ||
+  (window.location.hostname === "lueyu.github.io" ? GITHUB_PAGES_ENDPOINT : "");
 
 export function welcomeMessage(): ChatMessage {
   return {
