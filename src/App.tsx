@@ -119,6 +119,7 @@ function App() {
         <section className="hero" id="home">
           <PixelCloud className="cloud-one" />
           <PixelCloud className="cloud-two" />
+          <div className="sun" aria-hidden="true" />
           <div className="tiny-stars" aria-hidden="true">
             <i />
             <i />
@@ -149,7 +150,6 @@ function App() {
           </div>
 
           <div className="hero-scene" aria-hidden="true">
-            <div className="sun" />
             <div className="pixel-tree tree-back">
               <i />
               <b />

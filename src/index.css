@@ -432,8 +432,8 @@ h1 span {
 
 .sun {
   position: absolute;
-  top: 8%;
-  right: 2%;
+  top: clamp(130px, 17svh, 180px);
+  right: clamp(24px, 7vw, 120px);
   width: 70px;
   height: 70px;
   background: var(--yellow);
@@ -1476,10 +1476,14 @@ footer p {
     min-height: 340px;
   }
 
+  .sun {
+    right: 0;
+  }
+
   .cloud-one {
     top: 110px;
     left: auto;
-    right: 9%;
+    right: 32%;
   }
 
   .cloud-two {
@@ -1563,6 +1567,20 @@ footer p {
 
   .hero-copy {
     padding-bottom: 0;
+  }
+
+  .sun {
+    top: 72px;
+    right: 6%;
+    transform: scale(0.6);
+    transform-origin: top right;
+  }
+
+  .cloud-one {
+    top: 72px;
+    right: 26%;
+    transform: scale(0.48);
+    transform-origin: top right;
   }
 
   h1 {
