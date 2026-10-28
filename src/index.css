@@ -1609,7 +1609,7 @@ footer p {
   .cloud-one {
     top: auto;
     bottom: 18px;
-    right: 26%;
+    right: 31%;
     transform: scale(0.48);
     transform-origin: top right;
   }
@@ -1838,7 +1838,7 @@ footer p {
 
 @media (max-width: 360px) {
   .cloud-one {
-    right: 22%;
+    right: 27%;
     bottom: -12px;
   }
 }
