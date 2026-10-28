@@ -33,6 +33,7 @@
   --blue: #4d6f8f;
   --night: #1e2834;
   --white: #fffdf5;
+  --person-black: #24241f;
   --pixel: 'Pixelify Sans', monospace;
   --sans: 'Noto Sans SC', sans-serif;
   --chat-font: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
@@ -66,7 +67,7 @@ button {
 }
 
 .site-shell {
-  min-width: 320px;
+  min-width: 0;
   overflow: hidden;
   background: var(--paper);
   color: var(--ink);
@@ -178,6 +179,12 @@ footer {
   grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
   align-items: center;
   padding: 130px clamp(24px, 7vw, 120px) 108px;
+}
+
+.hero-sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .hero-copy {
@@ -322,7 +329,7 @@ h1 span {
   height: 58px;
   border: var(--line);
   background: #c79366;
-  box-shadow: inset 0 14px 0 var(--ink);
+  box-shadow: inset 0 14px 0 var(--person-black);
 }
 
 .person-head::before {
@@ -342,7 +349,7 @@ h1 span {
   right: 10px;
   width: 5px;
   height: 7px;
-  background: var(--ink);
+  background: var(--person-black);
 }
 
 .person-body {
@@ -380,7 +387,7 @@ h1 span {
   width: 28px;
   height: 38px;
   border: var(--line);
-  background: var(--ink);
+  background: var(--person-black);
 }
 
 .person-leg.left {
@@ -633,11 +640,19 @@ h1 span {
 }
 
 .about {
+  position: relative;
   min-height: 100vh;
   min-height: 100svh;
   align-items: center;
   padding: clamp(48px, 8svh, 110px) clamp(24px, 7vw, 120px);
+  padding-bottom: clamp(90px, 11svh, 130px);
   border-top: var(--line);
+}
+
+.section-next {
+  z-index: 6;
+  width: max-content;
+  white-space: nowrap;
 }
 
 .section-label {
@@ -946,12 +961,17 @@ dd {
 .contact {
   position: relative;
   display: flex;
-  min-height: 700px;
+  min-height: 100vh;
+  min-height: 100svh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 110px 24px 140px;
   text-align: center;
+}
+
+.contact .section-next {
+  bottom: 28px;
 }
 
 .contact .eyebrow {
@@ -1565,19 +1585,30 @@ footer p {
     padding: 88px 20px 12px;
   }
 
+  .hero-sky {
+    position: absolute;
+    inset: auto;
+    top: clamp(100px, calc(25svh - 50px), 320px);
+    right: 20px;
+    left: 20px;
+    height: 60px;
+  }
+
   .hero-copy {
     padding-bottom: 0;
   }
 
   .sun {
-    top: 72px;
+    top: auto;
+    bottom: 0;
     right: 6%;
     transform: scale(0.6);
     transform-origin: top right;
   }
 
   .cloud-one {
-    top: 72px;
+    top: auto;
+    bottom: 18px;
     right: 26%;
     transform: scale(0.48);
     transform-origin: top right;
@@ -1607,7 +1638,7 @@ footer p {
   }
 
   .hero-scene {
-    min-height: clamp(145px, 25svh, 240px);
+    min-height: clamp(140px, 22svh, 230px);
   }
 
   .ground {
@@ -1655,7 +1686,12 @@ footer p {
   }
 
   .scroll-cue {
-    display: none;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    justify-self: center;
+    margin-top: 12px;
+    transform: none;
   }
 
   .section-grid,
@@ -1666,6 +1702,10 @@ footer p {
   .about,
   .work {
     padding: clamp(30px, 6svh, 72px) 20px;
+  }
+
+  .about {
+    padding-bottom: 80px;
   }
 
   .section-label {
@@ -1728,7 +1768,13 @@ footer p {
   }
 
   .contact {
-    min-height: 620px;
+    min-height: 100svh;
+    padding-bottom: 100px;
+  }
+
+  .contact .section-next {
+    position: absolute;
+    bottom: 26px;
   }
 
   .contact h2 {
@@ -1787,6 +1833,23 @@ footer p {
 
   .agent-panel {
     bottom: 88px;
+  }
+}
+
+@media (max-width: 360px) {
+  .cloud-one {
+    right: 22%;
+    bottom: -12px;
+  }
+}
+
+@media (max-width: 700px) and (min-height: 900px) {
+  .hero .scroll-cue {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    margin-top: 0;
+    transform: translateX(-50%);
   }
 }
 

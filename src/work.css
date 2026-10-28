@@ -4,6 +4,13 @@
   color: var(--paper);
 }
 
+.work .section-next {
+  position: static;
+  align-self: center;
+  margin-top: clamp(40px, 6svh, 70px);
+  transform: none;
+}
+
 .work-heading {
   grid-template-columns: minmax(130px, 0.27fr) 1fr;
   margin-bottom: 62px;

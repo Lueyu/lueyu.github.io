@@ -117,9 +117,11 @@ function App() {
 
       <main>
         <section className="hero" id="home">
-          <PixelCloud className="cloud-one" />
-          <PixelCloud className="cloud-two" />
-          <div className="sun" aria-hidden="true" />
+          <div className="hero-sky" aria-hidden="true">
+            <PixelCloud className="cloud-one" />
+            <PixelCloud className="cloud-two" />
+            <div className="sun" />
+          </div>
           <div className="tiny-stars" aria-hidden="true">
             <i />
             <i />
@@ -229,6 +231,11 @@ function App() {
             </div>
             <span>KEEP GROWING</span>
           </div>
+
+          <a className="scroll-cue section-next" href="#work">
+            <span>NEXT PAGE</span>
+            <i aria-hidden="true">↓</i>
+          </a>
         </section>
 
         <section className="work" id="work">
@@ -335,6 +342,10 @@ function App() {
               ))}
             </div>
           </div>
+          <a className="scroll-cue section-next" href="#contact">
+            <span>NEXT PAGE</span>
+            <i aria-hidden="true">↓</i>
+          </a>
         </section>
 
         <section className="contact" id="contact">
@@ -357,6 +368,10 @@ function App() {
           >
             <span>SAY HELLO</span>
             <b aria-hidden="true">→</b>
+          </a>
+          <a className="scroll-cue section-next" href="#home">
+            <span>BACK TO START</span>
+            <i aria-hidden="true">↑</i>
           </a>
         </section>
       </main>
