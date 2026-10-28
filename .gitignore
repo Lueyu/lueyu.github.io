@@ -1,7 +1,9 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# See https://help.github.com/ignore-files/ for more information.
 
 # dependencies
 /node_modules
+/worker/node_modules
+/worker/.wrangler
 
 # testing
 /coverage
@@ -16,7 +18,20 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# worker secrets
+worker/.dev.vars
+worker/wrangler.toml.bak
+
+# Tencent Cloud EdgeOne
+/.edgeone
+/.tef_dist
+
+# Aliyun FC build artifacts
+/fc-dist
+/fc-code.zip

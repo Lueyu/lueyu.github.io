@@ -10,11 +10,15 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "eo:dev": "npx edgeone makers dev",
+    "eo:deploy": "npx edgeone makers deploy",
+    "typecheck:functions": "tsc -p tsconfig.edgeone.json --noEmit"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router": "^7.18.5"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

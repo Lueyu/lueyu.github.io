@@ -1,26 +1,75 @@
 import { useState } from "react"
+import AgentPanel from "./components/AgentPanel"
+import { Link } from "react-router"
 
-const projects = [
+const featuredProjects = [
   {
     number: "01",
-    title: "Agent Lab",
-    description: "探索 AI Agent 的规划、工具调用与多智能体协作。",
-    tags: ["AGENT", "LLM"],
+    slug: "aidr",
+    eyebrow: "AI DATA RESILIENCE",
+    title: "AIDR",
+    role: "DEEP CONTRIBUTOR",
+    description:
+      "面向 AI 智能体时代的数据保护平台：按工具调用图计算爆炸半径，把 Agent 与实际读写的数据组成保护组并原子恢复。",
+    highlights: ["打通 Agent 观测、归属与备份闭环", "修复 4 个生产级静默失败问题"],
+    details:
+      "完成 15 容器生产栈部署、OpenCode × Langfuse 观测链路、restic 备份设备适配器与 K8s 迁移方案；通过独立分支、防回归单测、分层 E2E 和合规报告交付 PR #47–#50。",
+    tags: ["OTEL", "LANGFUSE", "RESTIC", "K8S"],
     color: "red",
   },
   {
     number: "02",
-    title: "Engineering",
-    description: "来自真实业务场景的软件工程实践与系统思考。",
-    tags: ["SYSTEM", "CODE"],
+    slug: "daily-portfolio",
+    eyebrow: "FULL-STACK AGENT APP",
+    title: "Daily Portfolio",
+    role: "INDEPENDENT PROJECT",
+    description:
+      "集投资组合管理、AI 投研与 Coding Agent 于一体的全栈工作台，覆盖持仓、交易、研究记录与组合分析。",
+    highlights: ["隔离执行、代码检查点与失败恢复", "测试证据与源码版本强绑定"],
+    details:
+      "多角色模型生成投研分析，再由确定性规则与人工审核进入业务流程。Coding Agent 在容器内修改代码，候选变更经过冲突检查、审阅与独立复验后应用。",
+    tags: ["REACT", "NESTJS", "PYTHON", "POSTGRES"],
     color: "green",
   },
   {
     number: "03",
-    title: "Experiments",
-    description: "围绕模型能力、人机协作与开发体验的技术实验。",
-    tags: ["AI", "MAKING"],
+    slug: "next-quest",
+    eyebrow: "NEXT QUEST",
+    title: "To Be Built",
+    role: "RESERVED SLOT",
+    description:
+      "第三个主要项目正在整理中。这里会留给一个值得完整讲述的问题、过程和结果。",
+    highlights: ["问题要真实", "过程可复现"],
+    details: "",
+    tags: ["SOON", "EXPERIMENT"],
     color: "blue",
+  },
+]
+
+const otherProjects = [
+  {
+    period: "2024 — NOW",
+    company: "Huawei",
+    title: "Infrastructure & Automation",
+    description:
+      "参与智能数据存储基础设施与关键特性研发，负责测试自动化基础设施、CI/CD 构建链路与团队交付协作。",
+    tags: ["KUBERNETES", "C++", "AUTOMATION"],
+  },
+  {
+    period: "2023 — 2024",
+    company: "Subaru R&D",
+    title: "Driver Research Platform",
+    description:
+      "构建数据与访问密集型云应用，结合视觉、文本与驾驶模拟进行用户意图分析，支持研究决策。",
+    tags: ["PYTHON", "OPENCV", "REACT", "DJANGO"],
+  },
+  {
+    period: "2022 — 2023",
+    company: "Earlier Work",
+    title: "Internships & Research",
+    description:
+      "在 Irdelta、CryoHub 与研究实验室完成自动化测试、全栈数据工具及机器学习相关项目。",
+    tags: ["APPIUM", "FULL-STACK", "ML"],
   },
 ]
 
@@ -37,7 +86,7 @@ function PixelCloud({ className = "" }: { className?: string }) {
 
 function App() {
   const [isNight, setIsNight] = useState(false)
-  const [isAgentOpen, setIsAgentOpen] = useState(false)
+  const [showMoreWork, setShowMoreWork] = useState(false)
 
   return (
     <div className={`site-shell ${isNight ? "night" : ""}`}>
@@ -189,43 +238,102 @@ function App() {
               <p>SELECTED WORK</p>
             </div>
             <div>
-              <p className="kicker">WHAT I’M WORKING ON</p>
-              <h2>AI QUESTS</h2>
+              <p className="kicker">THREE FEATURED PROJECTS</p>
+              <h2>MAIN QUESTS</h2>
             </div>
           </div>
 
-          <div
-            className="project-grid"
-            role="region"
-            aria-label="项目列表，窄屏时可横向滚动"
-            tabIndex={0}
-          >
-            {projects.map((project) => (
+          <div className="project-grid">
+            {featuredProjects.map((project) => (
               <article
                 className={`project-card ${project.color}`}
                 key={project.number}
               >
                 <div className="project-top">
                   <span>{project.number}</span>
-                  <span className="coin" aria-hidden="true" />
+                  <span>{project.role}</span>
                 </div>
                 <div className="project-art" aria-hidden="true">
                   <i />
                   <i />
-                  <i />
+                  <b>{project.number}</b>
                 </div>
+                <p className="project-eyebrow">{project.eyebrow}</p>
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                <p className="project-description">{project.description}</p>
+                <ul className="project-highlights">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+                {project.details && (
+                  <details className="project-details">
+                    <summary>
+                      CASE NOTES <span>＋</span>
+                    </summary>
+                    <p>{project.details}</p>
+                  </details>
+                )}
                 <div className="project-footer">
                   <div>
                     {project.tags.map((tag) => (
                       <span key={tag}>{tag}</span>
                     ))}
                   </div>
-                  <b aria-hidden="true">↗</b>
+                  <Link
+                    className="project-link"
+                    to={`/projects/${project.slug}`}
+                    aria-label={`打开 ${project.title} 项目详情`}
+                  >
+                    OPEN <b aria-hidden="true">↗</b>
+                  </Link>
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="more-work">
+            <div className="more-work-heading">
+              <div>
+                <p className="kicker">MORE FROM THE JOURNEY</p>
+                <h3>OTHER PROJECTS &amp; EXPERIENCE</h3>
+              </div>
+              <button
+                type="button"
+                className="more-work-button"
+                onClick={() => setShowMoreWork((value) => !value)}
+                aria-expanded={showMoreWork}
+                aria-controls="other-projects"
+              >
+                <span>{showMoreWork ? "HIDE ARCHIVE" : "OPEN ARCHIVE"}</span>
+                <b aria-hidden="true">{showMoreWork ? "−" : "+"}</b>
+              </button>
+            </div>
+
+            <div
+              className={`other-projects ${showMoreWork ? "is-visible" : ""}`}
+              id="other-projects"
+            >
+              {otherProjects.map((project, index) => (
+                <article className="other-project" key={project.company}>
+                  <div className="other-project-index">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <i aria-hidden="true" />
+                  </div>
+                  <p className="other-project-period">{project.period}</p>
+                  <div className="other-project-copy">
+                    <p>{project.company}</p>
+                    <h4>{project.title}</h4>
+                    <p>{project.description}</p>
+                  </div>
+                  <div className="other-project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -259,84 +367,7 @@ function App() {
         <a href="#home">BACK TO TOP ↑</a>
       </footer>
 
-      <aside className={`floating-agent ${isAgentOpen ? "is-open" : ""}`}>
-        <div
-          className="agent-panel"
-          id="agent-panel"
-          aria-hidden={!isAgentOpen}
-          inert={!isAgentOpen}
-        >
-          <div className="agent-panel-head">
-            <div className="agent-identity">
-              <div className="agent-mini-avatar" aria-hidden="true">
-                <i />
-                <b />
-              </div>
-              <div>
-                <strong>LUEYU AGENT</strong>
-                <span>
-                  <i />
-                  STANDBY
-                </span>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="agent-close"
-              onClick={() => setIsAgentOpen(false)}
-              aria-label="关闭 Agent 窗口"
-            >
-              ×
-            </button>
-          </div>
-
-          <div className="agent-conversation">
-            <p className="agent-message">
-              你好，我是 Lueyu 的个人 Agent。
-              <br />
-              现在还在训练中，很快就能和你聊聊他的工作与想法。
-            </p>
-            <p className="agent-prompt-label">FUTURE QUESTS</p>
-            <div className="agent-quests">
-              <span>了解他的工作</span>
-              <span>聊聊 AI Agent</span>
-              <span>留下联系方式</span>
-            </div>
-          </div>
-
-          <div className="agent-compose">
-            <span>COMING SOON...</span>
-            <button type="button" disabled aria-label="发送功能即将开放">
-              →
-            </button>
-          </div>
-        </div>
-
-        <div className="agent-hint" aria-hidden={isAgentOpen}>
-          <span>MEET MY AGENT</span>
-          <i />
-        </div>
-
-        <button
-          className="agent-trigger"
-          type="button"
-          onClick={() => setIsAgentOpen((value) => !value)}
-          aria-expanded={isAgentOpen}
-          aria-controls="agent-panel"
-          aria-label={isAgentOpen ? "收起个人 Agent" : "打开个人 Agent"}
-        >
-          <span className="agent-antenna" aria-hidden="true" />
-          <span className="agent-face" aria-hidden="true">
-            <i />
-            <i />
-            <b />
-          </span>
-          <span className="agent-body" aria-hidden="true">
-            AI
-          </span>
-          <span className="agent-status" aria-hidden="true" />
-        </button>
-      </aside>
+      <AgentPanel />
     </div>
   )
 }

@@ -9,9 +9,17 @@
 @font-face {
   font-family: 'Noto Sans SC';
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
   font-display: swap;
-  src: url('/fonts/noto-sans-sc-site.woff2') format('woff2');
+  src: url('/fonts/noto-sans-sc-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/noto-sans-sc-700.woff2') format('woff2');
 }
 
 :root {
@@ -27,6 +35,7 @@
   --white: #fffdf5;
   --pixel: 'Pixelify Sans', monospace;
   --sans: 'Noto Sans SC', sans-serif;
+  --chat-font: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --line: 3px solid var(--ink);
 }
 
@@ -1774,5 +1783,322 @@ footer p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Agent 聊天面板（对话视图） ─────────────────────────────── */
+
+.agent-tools {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.agent-tool-btn {
+  padding: 6px 9px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--pixel);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.agent-tool-btn:hover {
+  background: var(--paper-deep);
+}
+
+.agent-panel-head .agent-close {
+  margin-left: 0;
+}
+
+.agent-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  height: 340px;
+  padding: 16px 18px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+.agent-thread::-webkit-scrollbar {
+  width: 8px;
+}
+
+.agent-thread::-webkit-scrollbar-thumb {
+  background: var(--muted);
+}
+
+.agent-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.agent-row.user {
+  justify-content: flex-end;
+}
+
+.agent-bubble {
+  margin: 0;
+  max-width: 82%;
+  padding: 10px 12px;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--chat-font);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.agent-bubble.agent {
+  background: color-mix(in srgb, var(--blue) 15%, var(--paper));
+}
+
+.agent-bubble.user {
+  background: color-mix(in srgb, var(--yellow) 32%, var(--paper));
+}
+
+.agent-bubble-avatar {
+  position: relative;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 22px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.agent-bubble-avatar i,
+.agent-bubble-avatar b {
+  position: absolute;
+  top: 6px;
+  width: 5px;
+  height: 6px;
+  background: var(--blue);
+}
+
+.agent-bubble-avatar i {
+  left: 5px;
+}
+
+.agent-bubble-avatar b {
+  right: 5px;
+}
+
+.agent-bubble.typing {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 12px 14px;
+}
+
+.agent-bubble.typing i {
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+  animation: agent-typing 0.9s steps(2) infinite;
+}
+
+.agent-bubble.typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.agent-bubble.typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.agent-quest-block {
+  margin-top: 4px;
+}
+
+.agent-quests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.agent-chip {
+  padding: 7px 9px;
+  border: 2px solid color-mix(in srgb, var(--ink) 65%, transparent);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 11px;
+  transition:
+    transform 100ms steps(2),
+    background 100ms ease;
+}
+
+.agent-chip:hover {
+  background: var(--paper-deep);
+  transform: translate(-1px, -2px);
+}
+
+.agent-chip:disabled {
+  cursor: default;
+  opacity: 0.5;
+  transform: none;
+}
+
+.agent-compose {
+  display: flex;
+  height: 54px;
+  align-items: stretch;
+  justify-content: space-between;
+  padding-left: 0;
+  border-top: 3px solid var(--ink);
+  font-size: 10px;
+}
+
+.agent-compose input {
+  flex: 1;
+  min-width: 0;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--chat-font);
+  font-size: 13px;
+}
+
+.agent-compose input:focus {
+  outline: none;
+}
+
+.agent-compose input::placeholder {
+  color: var(--muted);
+}
+
+.agent-compose input:disabled {
+  opacity: 0.5;
+}
+
+.agent-send {
+  align-self: stretch;
+  width: 54px;
+  padding: 0;
+  border: 0;
+  border-left: 3px solid var(--ink);
+  background: var(--paper-deep);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 22px;
+  transition: background 100ms ease;
+}
+
+.agent-send:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--green) 35%, var(--paper));
+}
+
+.agent-send:disabled {
+  color: var(--muted);
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* ── Agent 留言表单 ────────────────────────────────────────── */
+
+.agent-form {
+  display: grid;
+  gap: 11px;
+  padding: 18px 20px 20px;
+}
+
+.agent-form-field {
+  display: grid;
+  gap: 5px;
+}
+
+.agent-form-field span {
+  color: var(--muted);
+  font-family: var(--pixel);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.agent-form-field input,
+.agent-form-field textarea {
+  padding: 9px 11px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--chat-font);
+  font-size: 13px;
+}
+
+.agent-form-field textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.agent-form-field input:focus,
+.agent-form-field textarea:focus {
+  outline: none;
+  background: var(--white);
+}
+
+.agent-error {
+  margin: 0;
+  color: var(--red);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.agent-form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.agent-form-cancel,
+.agent-form-submit {
+  flex: 1;
+  padding: 10px 12px;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  font-family: var(--pixel);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.agent-form-cancel {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+.agent-form-submit {
+  background: var(--green);
+  color: var(--white);
+}
+
+.agent-form-submit:disabled,
+.agent-form-cancel:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+@keyframes agent-typing {
+  0%,
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 1000px) {
+  .agent-thread {
+    height: 300px;
   }
 }
