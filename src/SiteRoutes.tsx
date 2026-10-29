@@ -1,6 +1,9 @@
 import { useLayoutEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router'
 import App from './App'
+import AgentPanel from './components/AgentPanel'
+import PageLens from './components/PageLens'
+import { registerRouter } from './lib/agentTools'
 
 function RouteFrame() {
   const { pathname, hash } = useLocation()
@@ -15,7 +18,13 @@ function RouteFrame() {
     }
   }, [pathname, hash])
 
-  return <Outlet />
+  return (
+    <>
+      <Outlet />
+      <AgentPanel />
+      <PageLens />
+    </>
+  )
 }
 
 const router = createBrowserRouter([
@@ -45,6 +54,8 @@ const router = createBrowserRouter([
     ],
   },
 ])
+
+registerRouter(router)
 
 export default function SiteRoutes() {
   return <RouterProvider router={router} />

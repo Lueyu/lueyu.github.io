@@ -35,3 +35,6 @@ worker/wrangler.toml.bak
 # Aliyun FC build artifacts
 /fc-dist
 /fc-code.zip
+
+# AIDR project snapshot (third-party code, packed into fc-code.zip locally only)
+/fc/snapshot

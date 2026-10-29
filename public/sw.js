@@ -1,4 +1,4 @@
-const CACHE_VERSION = "lueyu-site-v4";
+const CACHE_VERSION = "lueyu-site-v5";
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 

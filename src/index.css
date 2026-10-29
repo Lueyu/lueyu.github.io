@@ -1412,6 +1412,22 @@ footer p {
   color: #24241f;
 }
 
+.night .large-copy span {
+  color: #ff7863;
+}
+
+.night .contact .eyebrow {
+  color: #ff7863;
+}
+
+.night .nav a::after {
+  background: #ff7863;
+}
+
+.night .kicker {
+  color: #757268;
+}
+
 @keyframes agent-blink {
   0%,
   45% {
@@ -2181,5 +2197,656 @@ footer p {
 @media (max-width: 1000px) {
   .agent-thread {
     height: 300px;
+  }
+}
+
+/* ── 全局细节：选区 / 滚动条 / 焦点 ───────────────────────── */
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+html {
+  scrollbar-color: var(--green) var(--paper-deep);
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-deep);
+  border-left: 3px solid var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border: 3px solid var(--ink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px dashed var(--red);
+  outline-offset: 3px;
+}
+
+.night a:focus-visible,
+.night button:focus-visible,
+.night [tabindex]:focus-visible {
+  outline-color: #ff7863;
+}
+
+/* ── Hero：CRT 扫描线 ─────────────────────────────────────── */
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(36, 36, 31, 0.05) 0 1px,
+    transparent 1px 3px
+  );
+  content: '';
+}
+
+.night .hero::after {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(241, 231, 210, 0.04) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+/* ── Hero：云朵 / 小人 / 太阳 生命感 ───────────────────────── */
+
+.cloud-one {
+  animation: cloud-drift-a 36s steps(18) infinite alternate;
+}
+
+.cloud-two {
+  animation: cloud-drift-b 48s steps(24) infinite alternate;
+}
+
+.cloud-three {
+  position: absolute;
+  top: 100px;
+  right: 38%;
+  transform: scale(0.5);
+  opacity: 0.7;
+  animation: cloud-drift-c 40s steps(20) infinite alternate;
+}
+
+.cloud-four {
+  position: absolute;
+  top: 285px;
+  left: 55%;
+  transform: scale(0.32);
+  opacity: 0.55;
+  animation: cloud-drift-d 58s steps(29) infinite alternate;
+}
+
+@keyframes cloud-drift-a {
+  from {
+    transform: scale(0.7) translateX(0);
+  }
+
+  to {
+    transform: scale(0.7) translateX(56px);
+  }
+}
+
+@keyframes cloud-drift-b {
+  from {
+    transform: scale(0.45) translateX(0);
+  }
+
+  to {
+    transform: scale(0.45) translateX(-64px);
+  }
+}
+
+@keyframes cloud-drift-c {
+  from {
+    transform: scale(0.5) translateX(0);
+  }
+
+  to {
+    transform: scale(0.5) translateX(-72px);
+  }
+}
+
+@keyframes cloud-drift-d {
+  from {
+    transform: scale(0.32) translateX(0);
+  }
+
+  to {
+    transform: scale(0.32) translateX(84px);
+  }
+}
+
+.pixel-person {
+  animation: person-bob 2.6s steps(2) infinite;
+}
+
+.sun {
+  animation: sun-pulse 4.2s steps(2) infinite;
+}
+
+@keyframes person-bob {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes sun-pulse {
+  50% {
+    transform: scale(0.94);
+  }
+}
+
+.night .tiny-stars i {
+  animation: star-twinkle 2.4s steps(2) infinite;
+}
+
+.night .tiny-stars i:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.night .tiny-stars i:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+@keyframes star-twinkle {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 700px) {
+  .cloud-one,
+  .cloud-two,
+  .cloud-three,
+  .cloud-four,
+  .pixel-person,
+  .sun {
+    animation: none;
+  }
+}
+
+/* ── About：像素花园 ──────────────────────────────────────── */
+
+.about-object {
+  position: relative;
+}
+
+.flower-two {
+  position: absolute;
+  top: 112px;
+  left: -30px;
+  transform: scale(0.62);
+  transform-origin: bottom;
+}
+
+.flower-two .petal {
+  background: var(--blue);
+}
+
+.pixel-bush {
+  position: absolute;
+  top: 156px;
+  right: -16px;
+  width: 66px;
+  height: 44px;
+}
+
+.pixel-bush i {
+  position: absolute;
+  border: var(--line);
+  background: var(--green);
+}
+
+.pixel-bush i:first-child {
+  bottom: 0;
+  left: 0;
+  width: 66px;
+  height: 26px;
+}
+
+.pixel-bush i:last-child {
+  bottom: 24px;
+  left: 14px;
+  width: 38px;
+  height: 18px;
+}
+
+.pixel-bee {
+  position: absolute;
+  top: 24px;
+  right: 4px;
+  width: 18px;
+  height: 13px;
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  box-shadow: inset -6px 0 0 var(--ink);
+  animation: bee-fly 8s steps(32) infinite alternate;
+}
+
+.pixel-bee::before {
+  position: absolute;
+  top: -8px;
+  left: 2px;
+  width: 10px;
+  height: 7px;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  transform-origin: bottom;
+  animation: bee-flap 0.24s steps(2) infinite alternate;
+  content: '';
+}
+
+@keyframes bee-flap {
+  to {
+    transform: scaleY(0.35);
+  }
+}
+
+@keyframes bee-fly {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    transform: translate(-46px, 16px);
+  }
+
+  60% {
+    transform: translate(-84px, -8px);
+  }
+
+  100% {
+    transform: translate(-34px, 12px);
+  }
+}
+
+/* ── 滚动入场动画 ─────────────────────────────────────────── */
+
+.js-anim [data-reveal] {
+  transition:
+    opacity 420ms steps(6),
+    transform 420ms steps(6);
+}
+
+.js-anim [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.js-anim .hero-copy > *:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+.js-anim .hero-copy > *:nth-child(3) {
+  transition-delay: 140ms;
+}
+
+.js-anim .hero-copy > *:nth-child(4) {
+  transition-delay: 210ms;
+}
+
+.js-anim .project-grid > *:nth-child(2) {
+  transition-delay: 110ms;
+}
+
+.js-anim .project-grid > *:nth-child(3) {
+  transition-delay: 220ms;
+}
+
+/* ── Agent 工具 trace / 思考气泡 / 聚光灯（v2） ────────────────── */
+
+.agent-bubble.thought {
+  border-style: dashed;
+  color: var(--muted);
+  font-size: 12px;
+  background: color-mix(in srgb, var(--paper-deep) 55%, var(--paper));
+}
+
+.agent-trace {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -4px 0 0 34px;
+  padding: 5px 9px;
+  border: 2px solid color-mix(in srgb, var(--ink) 40%, transparent);
+  background: color-mix(in srgb, var(--ink) 4%, var(--paper));
+  font-family: var(--pixel);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  overflow: hidden;
+}
+
+.agent-trace .trace-mark {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+}
+
+.agent-trace.act .trace-mark {
+  background: var(--yellow);
+}
+
+.agent-trace.run .trace-mark {
+  animation: agent-blink 0.7s steps(2) infinite;
+}
+
+.agent-trace code {
+  flex: 0 1 auto;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--pixel);
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agent-trace .trace-summary {
+  flex: 0 1 auto;
+  margin-left: auto;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agent-trace.ok .trace-summary {
+  color: var(--green);
+}
+
+.agent-trace.fail .trace-summary {
+  color: var(--red);
+}
+
+.agent-form-card {
+  margin: 4px 0 2px 34px;
+  max-width: calc(100% - 34px);
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.agent-spotlight {
+  outline: 4px solid var(--red);
+  outline-offset: 6px;
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--red) 18%, transparent);
+  animation: agent-spotlight 0.45s steps(2) 5;
+}
+
+@keyframes agent-spotlight {
+  0%,
+  100% {
+    outline-color: var(--red);
+  }
+
+  50% {
+    outline-color: var(--yellow);
+  }
+}
+
+/* ── 页面放大镜（LENS） ───────────────────────────────────────── */
+
+.lens-button {
+  position: fixed;
+  z-index: 50;
+  right: 28px;
+  bottom: 128px;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  padding: 0;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    transform 120ms steps(2),
+    box-shadow 120ms steps(2);
+}
+
+.lens-button:hover {
+  transform: translate(-1px, -3px);
+  box-shadow: 6px 7px 0 var(--ink);
+}
+
+.lens-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.lens-button.is-active {
+  background: var(--red);
+  color: var(--white);
+}
+
+.lens-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+body.lens-active {
+  cursor: crosshair;
+}
+
+body.lens-active section:hover,
+body.lens-active article:hover,
+body.lens-active header:hover,
+body.lens-active footer:hover {
+  outline: 3px dashed var(--red);
+  outline-offset: 5px;
+}
+
+.lens-mode-hint {
+  position: fixed;
+  z-index: 56;
+  top: 18px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--ink);
+  font-family: var(--pixel);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.lens-mode-hint i {
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  animation: agent-blink 1s steps(2) infinite;
+}
+
+.lens-popover {
+  position: fixed;
+  z-index: 55;
+  width: min(340px, calc(100vw - 32px));
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: translateX(-50%);
+}
+
+.lens-popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 3px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--pixel);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.lens-popover-head.is-dragging {
+  cursor: grabbing;
+}
+
+.lens-popover-head span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.lens-popover-head button {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--pixel);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.lens-popover-body {
+  padding: 12px 14px;
+  color: var(--ink);
+  font-family: var(--chat-font);
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.lens-loading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.lens-loading i {
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+  animation: agent-typing 0.9s steps(2) infinite;
+}
+
+.lens-loading i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.lens-loading i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ── 放大镜浮层：拖动 / 缩放 / 放大态 ─────────────────────────── */
+
+.lens-popover-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 5px;
+}
+
+.lens-popover.is-floating {
+  transform: none;
+}
+
+.lens-popover.is-sized,
+.lens-popover.is-expanded {
+  display: flex;
+  flex-direction: column;
+}
+
+.lens-popover.is-sized .lens-popover-head,
+.lens-popover.is-expanded .lens-popover-head {
+  flex: 0 0 auto;
+}
+
+.lens-popover.is-sized .lens-popover-body,
+.lens-popover.is-expanded .lens-popover-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+.lens-popover.is-expanded {
+  width: min(640px, calc(100vw - 24px));
+  max-height: min(74vh, 680px);
+}
+
+.lens-popover-resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nwse-resize;
+  touch-action: none;
+}
+
+.lens-popover-resize::before,
+.lens-popover-resize::after {
+  position: absolute;
+  right: 5px;
+  height: 2px;
+  background: var(--ink);
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.lens-popover-resize::before {
+  bottom: 10px;
+  width: 10px;
+}
+
+.lens-popover-resize::after {
+  bottom: 5px;
+  width: 5px;
+}
+
+.lens-popover-resize:hover::before,
+.lens-popover-resize:hover::after {
+  background: var(--red);
+}
+
+@media (max-width: 700px) {
+  .lens-button {
+    right: 16px;
+    bottom: 104px;
+    width: 40px;
+    height: 40px;
   }
 }
