@@ -362,7 +362,6 @@ function App() {
       <footer>
         <p>© {new Date().getFullYear()} LUEYU. BUILT WITH CARE.</p>
         <p>THANKS FOR PLAYING</p>
-        <a href="#home">BACK TO TOP ↑</a>
       </footer>
     </div>
   )
