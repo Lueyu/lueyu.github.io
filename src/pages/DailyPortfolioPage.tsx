@@ -1,25 +1,8 @@
 import { Link } from 'react-router'
+import DailyPortfolioShowcase from './DailyPortfolioShowcase'
+import DailyPortfolioSystemMap from './DailyPortfolioSystemMap'
 import '../daily-portfolio.css'
-
-const domainModules = [
-  ['DASHBOARD', 'KPI / 信号 / 盈亏'],
-  ['HOLDINGS', '持仓 / 分组 / 敞口'],
-  ['WATCHLIST', '关注 / 买入信号'],
-  ['ANALYSIS', '每日分析 / 快照'],
-  ['JOURNAL', '五段式投资日志'],
-  ['CASH · FX', '多币种 / 汇率折算'],
-  ['TRANSACTIONS', '交易记录 / 复盘'],
-  ['QUOTE', '实时行情聚合'],
-  ['ALPHA-PICKS', '外部研报同步'],
-]
-
-const reasoningStages = [
-  { number: '01', name: 'FETCH', role: '数据取数', description: '行情 / 估值 / 财报 / 新闻；附来源时间戳。' },
-  { number: '02', name: 'BULL vs BEAR', role: '多空辩论', description: '各自引用证据，独立论证多空观点。' },
-  { number: '03', name: 'CRITIC', role: '审查员', description: '核查数据时效与估值假设。' },
-  { number: '04', name: 'RISK GATE', role: '风控闸门', description: '逐条对照已启用的 hard / soft 规则。', highlighted: true },
-  { number: '05', name: 'PM', role: '基金经理', description: '输出评级、置信度与可执行操作。' },
-]
+import '../daily-portfolio-updates.css'
 
 const engineeringPractices = [
   ['ISOLATE', '使用容器隔离 Agent 的代码执行环境。'],
@@ -48,10 +31,6 @@ function StoryIndex({ number, label, note }: { number: string; label: string; no
       {note && <p>{note}</p>}
     </div>
   )
-}
-
-function LayerConnector({ children }: { children: React.ReactNode }) {
-  return <div className="dp-layer-connector" aria-hidden="true">↓ {children}</div>
 }
 
 export default function DailyPortfolioPage() {
@@ -100,92 +79,7 @@ export default function DailyPortfolioPage() {
           </div>
         </section>
 
-        <section className="dp-system" id="dp-system">
-          <div className="dp-container">
-            <header className="dp-system-heading">
-              <div>
-                <p className="dp-system-kicker">SYSTEM MAP / HOW IT FLOWS</p>
-                <h2>Inside the terminal.</h2>
-                <p>一个会自主分析、评级与风控的多智能体投资终端。</p>
-              </div>
-              <div className="dp-system-key">
-                <strong>PORTFOLIO TERMINAL / SYSTEM ARCHITECTURE</strong>
-                <span>REQUEST / REASONING · READ / WRITE</span>
-                <span><i aria-hidden="true" /> CORE = INVESTMENT AGENT PIPELINE</span>
-              </div>
-            </header>
-
-            <div className="dp-layer dp-layer-clients">
-              <div className="dp-layer-identity"><span>L1 / CLIENTS</span><strong>多端客户端</strong><p>React 19 · Vite</p></div>
-              <div><strong>DESKTOP WEB</strong><p>仪表盘 / 持仓 / 分析 / 规则<br />全功能工作台</p></div>
-              <div><strong>MOBILE WEB</strong><p>响应式查看评级与告警<br />桌面 / 手机同账号</p></div>
-              <div><strong>UI &amp; VIZ STACK</strong><p>React Router · TanStack Query<br />Tailwind · Radix UI · ECharts<br />Framer Motion</p></div>
-            </div>
-            <LayerConnector>FEISHU LOGIN / CLIENT SDK</LayerConnector>
-
-            <div className="dp-layer dp-layer-auth">
-              <div className="dp-layer-identity"><span>L2 / AUTH &amp; BRIDGE</span><strong>认证与桥接</strong><p>飞书 aPaaS 全栈框架</p></div>
-              <div><strong>FEISHU OAUTH</strong><p>飞书账号登录授权<br />无需独立密码</p></div>
-              <div><strong>window.__pt BRIDGE</strong><p>客户端 SDK 桥<br />统一异步读写云端</p></div>
-              <div><strong>OWNER ISOLATION</strong><p>登录态与数据隔离<br />所有数据按账号 owner 隔离，互不可见。</p></div>
-            </div>
-            <LayerConnector>RESTful API</LayerConnector>
-
-            <div className="dp-services">
-              <div className="dp-backend">
-                <div className="dp-backend-heading"><span>L3 / NESTJS BACKEND</span><span>NestJS 10 · 领域模块 + Agent 网关</span></div>
-                <div className="dp-domain-grid">
-                  {domainModules.map(([name, description]) => <div key={name}><strong>{name}</strong><p>{description}</p></div>)}
-                </div>
-                <div className="dp-gateway"><strong>MULTI-AGENT GATEWAY</strong><span>编排多角色推理 / 深度报告 / 评级回写 ↓</span></div>
-              </div>
-              <div className="dp-data-connector" aria-hidden="true"><img src="/images/daily-portfolio/data-access.svg" width="32.4578" height="19.1625" alt="" /></div>
-              <div className="dp-data">
-                <span>L5 / DATA</span>
-                <strong>PostgreSQL</strong>
-                <p>Drizzle ORM · 按 owner 隔离</p>
-                <div className="dp-data-divider" />
-                <p>holdings / watchlist / analysis / snapshots / journal / transactions / strategy_rules / cash_accounts / fx / deep_reports</p>
-                <small>业务读写 / 报告保存</small>
-              </div>
-            </div>
-            <LayerConnector>GATEWAY ORCHESTRATION · 评级与报告回写业务层</LayerConnector>
-
-            <div className="dp-engine-core">
-              <div className="dp-core-heading">
-                <div><span>L4 / MULTI-AGENT ENGINE</span><h3>从证据，到可审查的判断。</h3></div>
-                <span className="dp-core-badge">REASONING CORE</span>
-              </div>
-              <div className="dp-external-inputs">
-                <div className="dp-source-card">
-                  <span>EXTERNAL INPUTS → FETCH / QUOTE / ALPHA-PICKS</span>
-                  <div><p>Tencent Quotes · qt.gtimg.cn<br />Yahoo Finance · query1.finance.yahoo.com</p><p>Sina Finance · hq.sinajs.cn<br />Alpha Picks · pickalphas.com</p></div>
-                </div>
-                <div className="dp-source-card">
-                  <span>LLM PROVIDER → MODEL REASONING</span>
-                  <strong>VOLCENGINE ARK / 火山方舟</strong>
-                  <p>doubao fast / slow 双档模型<br />ark.cn-beijing.volces.com</p>
-                </div>
-              </div>
-              <div className="dp-stages">
-                {reasoningStages.map((stage) => (
-                  <div className={`dp-stage ${stage.highlighted ? 'dp-stage-highlight' : ''}`} key={stage.number}>
-                    <span>{stage.number} /</span><strong>{stage.name}</strong><b>{stage.role}</b><p>{stage.description}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="dp-core-rules">
-                <div><strong>DETERMINISTIC RULES / 确定性校验</strong><p>Hard 硬规则：单公司 25% · 小盘 5% · 杠杆 ETF 3% · 跌超 20% 重检<br />Soft 软规则：单股 10%（可启停）</p></div>
-                <div><strong>14-SECTION DEEP REPORT / 5-TIER RATING</strong><p>单只 14 板块深度报告，独立保存与展示。<br />Strong Buy / Buy / Hold / Sell / Strong Sell</p></div>
-              </div>
-            </div>
-
-            <div className="dp-decision">
-              <div><strong>MODELS ADVISE. HUMANS DECIDE.</strong><p>模型输出进入业务流程，不替代最终投资决策。</p></div>
-              <div className="dp-decision-flow"><span>RATING + REPORT</span><b>→</b><span className="dp-human-review">HUMAN REVIEW<small>人工审核</small></span><b>→</b><span>DECISION</span></div>
-            </div>
-          </div>
-        </section>
+        <DailyPortfolioShowcase />
 
         <section className="dp-story-section dp-product">
           <div className="dp-container dp-story-grid">
@@ -230,6 +124,8 @@ export default function DailyPortfolioPage() {
             </div>
           </div>
         </section>
+
+        <DailyPortfolioSystemMap />
 
         <section className="dp-toolbox">
           <div className="dp-container dp-toolbox-grid">
