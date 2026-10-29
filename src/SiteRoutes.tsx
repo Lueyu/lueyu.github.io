@@ -3,12 +3,14 @@ import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-
 import App from './App'
 import AgentPanel from './components/AgentPanel'
 import PageLens from './components/PageLens'
+import RouteErrorBoundary, { clearChunkReloadFlag } from './components/RouteErrorBoundary'
 import { registerRouter } from './lib/agentTools'
 
 function RouteFrame() {
   const { pathname, hash } = useLocation()
 
   useLayoutEffect(() => {
+    clearChunkReloadFlag()
     if (hash) {
       document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({
         behavior: 'instant' as ScrollBehavior,
@@ -31,6 +33,7 @@ const router = createBrowserRouter([
   {
     Component: RouteFrame,
     HydrateFallback: () => null,
+    errorElement: <RouteErrorBoundary />,
     children: [
       { path: '/', Component: App },
       {
