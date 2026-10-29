@@ -124,6 +124,33 @@ final round sent with `allowTools:false` so the model must answer in text.
 - Repo material is presented as "我翻了他的代码/README" without exposing
   the delivery channel (local snapshot vs GitHub).
 
+## Robustness: DeepSeek raw tool-markup leak (added 2026-10-29)
+
+deepseek-chat occasionally emits its internal tool-call markup as plain
+`content` instead of structured `tool_calls` (observed when the model
+narrates first and then decides to call a tool — the turn then "freezes"
+on raw tokens). Defense in depth in `callDeepSeekAgentTurn`:
+
+1. Detect (`<｜`, `DSML`, XML-ish `invoke`/`parameter` tags) and parse both
+   observed shapes (XML-ish invoke/parameter; canonical
+   `function<｜tool▁sep｜>…`) back into structured tool calls, keeping the
+   text before the markup as narration. Whitelist still applies.
+2. Unparseable leak → one retry with identical parameters.
+3. Still leaking → strip the markup server-side; the browser client
+   additionally strips any residual marks from reply/narration before
+   display, so visitors never see raw tokens.
+
+Agent rounds now use `AGENT_MAX_TOKENS` (default 800, was 500) so
+narration + tool markup cannot be truncated mid-call (truncation is a
+known trigger of the leak).
+
+GitHub repo mapping fix: `daily-portfolio` now points to
+`Lueyu/daily-portfolio-analysis` (the actual public repo — the previous
+default `lueyu/daily-portfolio` 404'd, which is why repo reads for that
+project failed). MCP is deliberately not used here: one REST GET covers
+the need; an MCP server on FC would add deploy surface and failure modes
+with no benefit.
+
 ## Trade-offs (deliberate)
 
 - **No SSE streaming.** The deployed FC response API is single-shot. Chose

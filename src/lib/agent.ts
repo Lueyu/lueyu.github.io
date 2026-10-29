@@ -124,6 +124,13 @@ export interface AgentTurnResponse {
 
 let agentEndpointMissing = false;
 
+function stripRawToolMarks(text: string): string {
+  return text
+    .replace(/<｜[^>]*>/g, "")
+    .replace(/<\/?[^>]*(?:tool[\s_]*call[\s_]*s?|invoke|parameter|DSML)[^>]*>/gi, "")
+    .trim();
+}
+
 export async function agentCall(input: {
   messages: WireMessage[];
   allowTools?: boolean;
@@ -157,8 +164,10 @@ export async function agentCall(input: {
   } catch {
     throw new AgentError(502, errorText(502));
   }
-  const reply = typeof data.reply === "string" && data.reply ? data.reply : null;
-  const narration = typeof data.narration === "string" && data.narration ? data.narration : null;
+  const rawReply = typeof data.reply === "string" && data.reply ? data.reply : null;
+  const rawNarration = typeof data.narration === "string" && data.narration ? data.narration : null;
+  const reply = rawReply ? stripRawToolMarks(rawReply) : null;
+  const narration = rawNarration ? stripRawToolMarks(rawNarration) : null;
   const tool_calls = Array.isArray(data.tool_calls)
     ? (data.tool_calls as unknown[]).filter(
         (call): call is WireToolCall =>

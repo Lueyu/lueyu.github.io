@@ -118,6 +118,7 @@ const CHAT_DAILY_LIMIT = Number(process.env.CHAT_DAILY_LIMIT ?? 150);
 const MESSAGE_DAILY_LIMIT = Number(process.env.MESSAGE_DAILY_LIMIT ?? 10);
 const TOOL_DAILY_LIMIT = Number(process.env.TOOL_DAILY_LIMIT ?? 60);
 const MAX_TOKENS = Number(process.env.MAX_TOKENS ?? 500);
+const AGENT_MAX_TOKENS = Number(process.env.AGENT_MAX_TOKENS ?? 800);
 const ALLOWED_ORIGIN_RE = /^https?:\/\/(lueyu\.github\.io|localhost:\d+|127\.0\.0\.1:\d+)$/;
 const MAX_HISTORY = 20;
 const MAX_CONTENT_CHARS = 2000;
@@ -151,7 +152,7 @@ function parseGithubReposEnv(raw) {
 // 仓库注册表：aidr 走本地快照（fc/snapshot/aidr/），其余走 GitHub API（GITHUB_REPOS 环境变量）
 const REPO_SOURCES = {
   aidr: { type: "snapshot", slug: "aidr", dir: path.join(SNAPSHOT_ROOT, "aidr") },
-  ...parseGithubReposEnv(process.env.GITHUB_REPOS ?? "daily-portfolio=lueyu/daily-portfolio"),
+  ...parseGithubReposEnv(process.env.GITHUB_REPOS ?? "daily-portfolio=Lueyu/daily-portfolio-analysis"),
 };
 const REPO_SLUGS = Object.keys(REPO_SOURCES);
 
@@ -814,6 +815,116 @@ function normalizeAgentHistory(input) {
   return out;
 }
 
+// ── DeepSeek 原始工具标记兜底 ──────────────────────────────────────────────────
+// deepseek-chat 在"先输出旁白、再决定调工具"的轮次里，偶发把内部工具调用标记
+// 原样写进 content 而不是结构化 tool_calls。三重兜底：
+// 1) 解析两种常见形态，还原成结构化工具调用；
+// 2) 解析失败 → 原样重试一次；
+// 3) 仍失败 → 剥离标记，绝不让访客看到原始标记。
+
+const RAW_TOOL_MARK_RE = /<｜|DSML｜|<\s*\/?\s*(?:tool[\s_]*call[\s_]*s?|invoke|parameter)\b/i;
+
+function looksLikeRawToolCall(text) {
+  return typeof text === "string" && RAW_TOOL_MARK_RE.test(text);
+}
+
+function coerceToolValue(value) {
+  if (value === "true") return true;
+  if (value === "false") return false;
+  if (/^-?\d+(\.\d+)?$/.test(value)) return Number(value);
+  return value;
+}
+
+function parseRawToolCalls(text) {
+  if (typeof text !== "string") return null;
+  const calls = [];
+
+  // 形态 A：XML 风格 invoke / parameter
+  const invokeRe = /<[^>]*\binvoke\b[^>]*\bname\s*=\s*"([^"]+)"[^>]*>([\s\S]*?)<\/[^>]*\binvoke\b[^>]*>/gi;
+  let match;
+  while ((match = invokeRe.exec(text)) !== null) {
+    const name = match[1];
+    const args = {};
+    const paramRe = /<[^>]*\bparameter\b[^>]*\bname\s*=\s*"([^"]+)"[^>]*>([\s\S]*?)<\/[^>]*\bparameter\b[^>]*>/gi;
+    let param;
+    while ((param = paramRe.exec(match[2])) !== null) {
+      args[param[1]] = coerceToolValue(param[2].trim());
+    }
+    if (name) calls.push({ name, args });
+  }
+
+  // 形态 B：DeepSeek 规范 DSML（function<｜tool▁sep｜>name<｜tool▁sep｜>args）
+  if (calls.length === 0) {
+    const sepRe = /function\s*<｜tool▁sep｜>\s*([\w.-]+?)\s*(?:<｜tool▁sep｜>|:)\s*([\s\S]*?)(?:<｜tool▁call▁end｜>|$)/g;
+    while ((match = sepRe.exec(text)) !== null) {
+      const name = match[1];
+      let argsRaw = match[2].trim();
+      const fence = argsRaw.match(/```(?:json)?\s*([\s\S]*?)```/);
+      if (fence) argsRaw = fence[1].trim();
+      let args = {};
+      try {
+        const parsed = JSON.parse(argsRaw);
+        if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) args = parsed;
+      } catch {
+        args = {};
+      }
+      if (name) calls.push({ name, args });
+    }
+  }
+
+  if (calls.length === 0) return null;
+  const firstMark = text.search(/<[^>]*(?:invoke|parameter|tool[\s_]*call|DSML)/i);
+  const narration = firstMark > 0 ? text.slice(0, firstMark).trim() : "";
+  const stamp = Date.now().toString(36);
+  return {
+    narration,
+    calls: calls.map((call, index) => ({
+      id: `raw_${stamp}_${index}`,
+      name: call.name,
+      arguments: JSON.stringify(call.args),
+    })),
+  };
+}
+
+function stripRawToolMarkup(text) {
+  if (typeof text !== "string") return "";
+  return text
+    .replace(/<｜[^>]*>/g, "")
+    .replace(/<\/?[^>]*(?:tool[\s_]*call[\s_]*s?|invoke|parameter|DSML)[^>]*>/gi, "")
+    .trim();
+}
+
+function toFlatToolCall(call) {
+  return {
+    id: typeof call?.id === "string" ? call.id : "",
+    name: typeof call?.function?.name === "string" ? call.function.name : "",
+    arguments: typeof call?.function?.arguments === "string" ? call.function.arguments : "{}",
+  };
+}
+
+async function callDeepSeekAgentTurn(messages, allowTools) {
+  const options = {
+    temperature: 0.85,
+    maxTokens: AGENT_MAX_TOKENS,
+    tools: allowTools ? AGENT_TOOLS : undefined,
+  };
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const message = await callDeepSeek(messages, options);
+    const content = typeof message?.content === "string" ? message.content.trim() : "";
+    const rawCalls = Array.isArray(message?.tool_calls) ? message.tool_calls : [];
+    if (rawCalls.length > 0 || !looksLikeRawToolCall(content)) {
+      return { content, tool_calls: rawCalls.map(toFlatToolCall) };
+    }
+    const parsed = parseRawToolCalls(content);
+    if (parsed && parsed.calls.length > 0) {
+      return { content: parsed.narration, tool_calls: parsed.calls };
+    }
+    if (attempt === 0) continue; // 解析失败，重试一次
+    return { content: stripRawToolMarkup(content), tool_calls: [] };
+  }
+  return { content: "", tool_calls: [] };
+}
+
 // ── /api/agent：Agent 循环的单步（面板 surface 或放大镜 surface） ─────────────
 
 async function handleAgentChat(req, response, cors) {
@@ -876,14 +987,13 @@ async function handleAgentChat(req, response, cors) {
       { role: "system", content: `${SIMULATION_PROMPT}\n\n${PERSONA_PROMPT}\n\n下面是访客与你的对话（含工具调用记录），请继续：要行动就调用工具，要说话就直接回复。` },
       ...history,
     ];
-    const message = await callDeepSeek(messages, { temperature: 0.85, tools: allowTools ? AGENT_TOOLS : undefined });
-    const content = typeof message?.content === "string" ? message.content.trim() : "";
-    const rawCalls = Array.isArray(message?.tool_calls) ? message.tool_calls : [];
+    const turn = await callDeepSeekAgentTurn(messages, allowTools);
+    const content = turn.content;
     const tool_calls = [];
-    for (const call of rawCalls) {
-      const name = call?.function?.name;
+    for (const call of turn.tool_calls) {
+      const name = call?.name;
       const id = typeof call?.id === "string" ? call.id : "";
-      const args = typeof call?.function?.arguments === "string" ? call.function.arguments : "{}";
+      const args = typeof call?.arguments === "string" ? call.arguments : "{}";
       if (id && AGENT_TOOL_NAMES.has(name) && args.length <= 1000) {
         tool_calls.push({ id, name, arguments: args });
       }
