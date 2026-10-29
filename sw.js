@@ -1,4 +1,4 @@
-const CACHE_VERSION = "lueyu-site-v9";
+const CACHE_VERSION = "lueyu-site-v10";
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 
@@ -23,7 +23,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (request.mode === "navigate" || request.destination === "document") {
-    event.respondWith(staleWhileRevalidate(request, PAGE_CACHE));
+    event.respondWith(networkFirstDocument(request, PAGE_CACHE));
     return;
   }
   if (url.pathname.startsWith("/assets/") || url.pathname.startsWith("/fonts/")) {
@@ -31,21 +31,22 @@ self.addEventListener("fetch", (event) => {
   }
 });
 
-async function staleWhileRevalidate(request, cacheName) {
+// 文档（index.html）走 network-first：部署后访客总是先拿到最新 HTML，
+// 避免"旧 index 引用已被删除的哈希 chunk"导致动态导入 404。
+// 缓存只作为离线兜底。
+async function networkFirstDocument(request, cacheName) {
   const cache = await caches.open(cacheName);
-  const cached = await cache.match(request);
-  const network = fetch(request)
-    .then((response) => {
-      if (response.ok) cache.put(request, response.clone());
-      return response;
-    })
-    .catch(() => null);
-  if (cached) return cached;
-  const response = await network;
-  if (response) return response;
-  const fallback = await cache.match("/");
-  if (fallback) return fallback;
-  return new Response("offline", { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8" } });
+  try {
+    const response = await fetch(request);
+    if (response.ok) cache.put(request, response.clone());
+    return response;
+  } catch {
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    const fallback = await cache.match("/");
+    if (fallback) return fallback;
+    return new Response("offline", { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8" } });
+  }
 }
 
 async function cacheFirst(request, cacheName) {
