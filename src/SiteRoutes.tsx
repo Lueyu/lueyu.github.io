@@ -25,6 +25,12 @@ const router = createBrowserRouter([
     children: [
       { path: '/', Component: App },
       {
+        path: '/projects/daily-portfolio',
+        lazy: async () => ({
+          Component: (await import('./pages/DailyPortfolioPage')).default,
+        }),
+      },
+      {
         path: '/projects/:projectId',
         lazy: async () => ({
           Component: (await import('./pages/ProjectDetailPage')).default,
