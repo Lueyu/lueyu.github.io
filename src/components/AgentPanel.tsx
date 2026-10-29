@@ -14,13 +14,13 @@ import { formatToolCall, registerFormLauncher, toolKind } from "../lib/agentTool
 
 const QUICK_QUESTS = [
   { label: "他是做什么的", question: "Lueyu 是做什么的？给我个快速介绍。" },
+  { label: "面试官导览", question: "" },
   { label: "带我逛逛项目", question: "带我看看他最拿得出手的项目。" },
-  { label: "面试官视角", question: "如果我是来招聘他的面试官，说说他项目里最亮眼的部分，最好翻翻他的代码和文档来证明。" },
   { label: "帮我留言", question: "我想给 Lueyu 留言，帮我打开表单。" },
 ];
 
 const WELCOME_TEXT =
-  "你好，我是 Lueyu 的个人 Agent，常驻这个页面右下角。\n我能看懂这个页面，也能操作它——想了解他、想逛项目、想让我翻翻他的代码都行。页面上还有个放大镜，点哪儿我讲哪儿。\n哼，试试就试试。";
+  "你好，我是 Lueyu 的个人 Agent，有点小傲娇，常驻这个页面右下角。\n想了解他、想逛项目、想让我翻翻他的代码都行。页面上还有个放大镜，点哪儿我讲哪儿。\n哼，试试就试试。";
 
 interface FormState {
   name: string;
@@ -173,6 +173,11 @@ export default function AgentPanel() {
   }
 
   function handleQuestClick(quest: (typeof QUICK_QUESTS)[number]): void {
+    if (!quest.question) {
+      window.dispatchEvent(new CustomEvent("lueyu-agent:start-tour"))
+      setIsOpen(false)
+      return
+    }
     void ask(quest.question);
   }
 

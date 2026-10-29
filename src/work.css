@@ -1,19 +1,22 @@
 .work {
-  padding: 100px clamp(24px, 7vw, 120px) 120px;
+  position: relative;
+  padding: 52px clamp(24px, 7vw, 120px) 24px;
   background: var(--ink);
   color: var(--paper);
 }
 
 .work .section-next {
-  position: static;
-  align-self: center;
-  margin-top: clamp(40px, 6svh, 70px);
-  transform: none;
+  position: absolute;
+  bottom: 29px;
+  left: 50%;
+  align-self: auto;
+  margin-top: 0;
+  transform: translateX(-50%);
 }
 
 .work-heading {
   grid-template-columns: minmax(130px, 0.27fr) 1fr;
-  margin-bottom: 62px;
+  margin-bottom: 26px;
 }
 
 .section-label.light span {
@@ -28,7 +31,7 @@
 
 .work h2 {
   margin-bottom: 0;
-  font-size: clamp(56px, 8vw, 118px);
+  font-size: clamp(46px, 6.2vw, 92px);
   letter-spacing: -0.04em;
   line-height: 0.85;
 }
@@ -42,9 +45,8 @@
 .project-card {
   position: relative;
   display: flex;
-  min-height: 700px;
   flex-direction: column;
-  padding: 24px;
+  padding: 16px;
   border: 3px solid var(--paper);
   color: #24241f;
   box-shadow: 7px 7px 0 var(--paper);
@@ -86,8 +88,8 @@
 
 .project-art {
   position: relative;
-  height: 118px;
-  margin: 28px 0 24px;
+  height: 72px;
+  margin: 16px 0 12px;
   border-bottom: 3px solid #24241f;
 }
 
@@ -113,15 +115,15 @@
 .project-art b {
   position: absolute;
   right: 7%;
-  bottom: 13px;
+  bottom: 10px;
   display: grid;
-  width: 62px;
-  height: 62px;
+  width: 48px;
+  height: 48px;
   place-items: center;
   border: 3px solid #24241f;
   background: var(--yellow);
   font-family: var(--pixel);
-  font-size: 27px;
+  font-size: 21px;
 }
 
 .project-card.green .project-art i {
@@ -139,7 +141,7 @@
 
 .project-card > .project-eyebrow {
   min-height: 0;
-  margin: 0 0 7px;
+  margin: 0 0 5px;
   font-family: var(--pixel);
   font-size: 12px;
   font-weight: 700;
@@ -147,33 +149,31 @@
 }
 
 .project-card h3 {
-  margin-bottom: 14px;
-  font-size: clamp(28px, 2.5vw, 38px);
+  margin-bottom: 8px;
+  font-size: clamp(24px, 2vw, 30px);
   line-height: 0.95;
 }
 
 .project-card > .project-description {
-  min-height: 102px;
-  margin: 0 0 20px;
-  font-size: 14px;
-  line-height: 1.8;
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.75;
 }
 
 .project-highlights {
-  min-height: 94px;
-  margin: 0 0 20px;
-  padding: 16px 0 16px 18px;
+  margin: 0 0 12px;
+  padding: 10px 0 10px 16px;
   border-block: 2px solid color-mix(in srgb, #24241f 25%, transparent);
 }
 
 .project-highlights li {
   padding-left: 3px;
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 12.5px;
+  line-height: 1.65;
 }
 
 .project-details {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   border: 2px solid #24241f;
   background: color-mix(in srgb, #f4f0e6 35%, transparent);
 }
@@ -182,10 +182,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 11px;
+  padding: 7px 9px;
   cursor: pointer;
   font-family: var(--pixel);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   list-style: none;
@@ -235,27 +235,33 @@
 .project-link {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 8px;
-  border: 2px solid #24241f;
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  gap: 8px;
+  padding: 11px 14px;
+  border: 3px solid #24241f;
+  background: #e6b94c;
+  color: #24241f;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 4px 4px 0 #24241f;
   transition:
-    background 100ms steps(2),
-    color 100ms steps(2);
+    transform 100ms steps(2),
+    box-shadow 100ms steps(2);
 }
 
 .project-link:hover {
-  background: #24241f;
-  color: #f4f0e6;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #24241f;
 }
 
 .project-link b {
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .more-work {
-  margin-top: 92px;
+  margin-top: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   border-top: 3px solid #f4f0e6;
 }
 
@@ -264,7 +270,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  padding: 34px 0;
+  padding: 14px 0;
 }
 
 .more-work-heading .kicker {
@@ -273,7 +279,7 @@
 
 .more-work-heading h3 {
   margin: 0;
-  font-size: clamp(24px, 3vw, 42px);
+  font-size: clamp(20px, 2.4vw, 32px);
 }
 
 .more-work-button {
@@ -1296,5 +1302,70 @@
 
   .other-project-copy h4 {
     font-size: 19px;
+  }
+}
+
+.night .project-page {
+  background: #17212c;
+  color: #f1e7d2;
+}
+
+.night .project-page * {
+  border-color: #f1e7d2;
+}
+
+.night .project-nav,
+.night .next-project,
+.night .not-found-page {
+  background: #17212c;
+  color: #f1e7d2;
+}
+
+.night .project-hero-title h1 {
+  color: #f1e7d2;
+}
+
+.night .project-blueprint > p {
+  background: #17212c;
+}
+
+.night .blueprint-orbit::after {
+  background: #17212c;
+}
+
+.night .project-stack .project-section-label::before {
+  background: #f1e7d2;
+}
+
+.night .project-note {
+  background: #17212c;
+  color: #f1e7d2;
+}
+
+@media (min-width: 1001px) and (max-height: 830px) {
+  .work {
+    padding-top: 36px;
+  }
+
+  .work-heading {
+    margin-bottom: 18px;
+  }
+
+  .work h2 {
+    font-size: clamp(40px, 5.4vw, 76px);
+  }
+
+  .project-art {
+    height: 56px;
+    margin: 12px 0 10px;
+  }
+
+  .project-card > .project-description {
+    font-size: 12.5px;
+  }
+
+  .more-work {
+    margin-top: 14px;
+    padding-block: 10px;
   }
 }

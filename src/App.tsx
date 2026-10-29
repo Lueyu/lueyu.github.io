@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router"
+import AgentPanel from "./components/AgentPanel"
+import ThemeToggle, { useNight } from "./components/ThemeToggle"
+import ResumeModal from "./components/ResumeModal"
+import { setTheme } from "./lib/theme"
 import { FEATURED_PROJECTS, OTHER_EXPERIENCE } from "./lib/siteProfile"
 
 const featuredProjects = FEATURED_PROJECTS
@@ -18,8 +22,7 @@ function PixelCloud({ className = "" }: { className?: string }) {
 }
 
 function App() {
-  const [isNight, setIsNight] = useState(false)
-
+  const isNight = useNight()
   useEffect(() => {
     document.documentElement.classList.add("js-anim")
     const elements = document.querySelectorAll("[data-reveal]")
@@ -45,13 +48,14 @@ function App() {
   useEffect(() => {
     const onSetTheme = (event: Event) => {
       const mode = (event as CustomEvent<string>).detail
-      setIsNight(mode === "night")
+      setTheme(mode === "night" ? "night" : "day")
     }
     window.addEventListener("lueyu-agent:set-theme", onSetTheme)
     return () => window.removeEventListener("lueyu-agent:set-theme", onSetTheme)
   }, [])
 
   const [showMoreWork, setShowMoreWork] = useState(false)
+  const [showResume, setShowResume] = useState(false)
 
   return (
     <div className={`site-shell ${isNight ? "night" : ""}`}>
@@ -69,16 +73,22 @@ function App() {
           <a href="#contact">CONTACT</a>
         </nav>
 
-        <button
-          className="mode-button"
-          type="button"
-          onClick={() => setIsNight((value) => !value)}
-          aria-label={isNight ? "切换到白天模式" : "切换到夜晚模式"}
-        >
-          <span className="mode-icon" aria-hidden="true" />
-          <span>{isNight ? "DAY" : "NIGHT"}</span>
-        </button>
+        <div className="topbar-actions">
+          <button
+            type="button"
+            className="topbar-resume-button"
+            onClick={() => setShowResume(true)}
+            aria-label="打开简历预览"
+          >
+            <span>RESUME</span>
+            <b aria-hidden="true">↗</b>
+          </button>
+
+          <ThemeToggle />
+        </div>
       </header>
+
+      {showResume && <ResumeModal onClose={() => setShowResume(false)} />}
 
       <main>
         <section className="hero" id="home">
@@ -225,8 +235,8 @@ function App() {
               <p>SELECTED WORK</p>
             </div>
             <div data-reveal>
-              <p className="kicker">THREE FEATURED PROJECTS</p>
-              <h2>MAIN QUESTS</h2>
+              <p className="kicker">FEATURED WORK</p>
+              <h2>SELECTED QUESTS</h2>
             </div>
           </div>
 

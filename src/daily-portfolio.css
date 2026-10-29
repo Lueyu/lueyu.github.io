@@ -353,3 +353,25 @@
   .dp-foundations strong { font-size: 20px; }
   .dp-footer-meta { flex-direction: column; }
 }
+
+
+.night .dp-page {
+  --dp-paper: #17212c;
+  --dp-ink: #f1e7d2;
+  --dp-green: #5f8471;
+  --dp-pale: #263544;
+  --dp-muted: #cec8bb;
+}
+
+.night .dp-showcase-caption li {
+  border-color: #f1e7d233;
+}
+
+.night .dp-protocol small {
+  color: #a3782a;
+}
+
+.night .dp-protocol > span,
+.night .dp-protocol li:not(:last-child)::after {
+  color: #4d6b58;
+}

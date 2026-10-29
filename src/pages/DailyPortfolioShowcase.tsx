@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import Lightbox from '../components/Lightbox'
+
 const screenshots = [
   {
     number: '01',
@@ -34,6 +37,8 @@ const screenshots = [
 ] as const
 
 export default function DailyPortfolioShowcase() {
+  const [zoom, setZoom] = useState<{ src: string; caption: string } | null>(null)
+
   return (
     <section className="dp-showcase" aria-labelledby="dp-showcase-heading">
       <div className="dp-container">
@@ -43,7 +48,15 @@ export default function DailyPortfolioShowcase() {
             <h2 id="dp-showcase-heading">Inside the Terminal.</h2>
             <p>真实工作台截图，展示投研与开发全流程。</p>
           </div>
-          <span>PORTFOLIO TERMINAL / FOUR SCREENS</span>
+          <a
+            className="dp-live-link"
+            href="https://4m3ksb6knp0wc.doubaoapps.com/app/app_17en1wnqecc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>TRY IT LIVE</span>
+            <b aria-hidden="true">↗</b>
+          </a>
         </header>
         <div className="dp-showcase-grid">
           {screenshots.map((screen) => (
@@ -52,9 +65,9 @@ export default function DailyPortfolioShowcase() {
                 <span>{screen.route}</span>
                 <img src="/images/daily-portfolio/chrome-dots.svg" width="31" height="7" alt="" />
               </div>
-              <div className="dp-showcase-image">
+              <button type="button" className="dp-showcase-image" onClick={() => setZoom({ src: screen.image, caption: screen.title })} aria-label={`放大查看 ${screen.title} 截图`} title="点击放大">
                 <img src={screen.image} width="1505" height="1216" alt={`${screen.title}工作台截图`} loading="lazy" />
-              </div>
+              </button>
               <div className="dp-showcase-caption">
                 <div className="dp-showcase-caption-heading">
                   <div><span>{screen.number}</span><h3>{screen.title}</h3></div>
@@ -66,7 +79,7 @@ export default function DailyPortfolioShowcase() {
             </article>
           ))}
         </div>
-        <p className="dp-showcase-note"><i aria-hidden="true" />截图来自本地开发环境，route 标注仅为浏览器地址栏说明，不代表已上线的公开服务。</p>
+        {zoom && <Lightbox src={zoom.src} alt={zoom.caption} caption={zoom.caption} onClose={() => setZoom(null)} />}
       </div>
     </section>
   )

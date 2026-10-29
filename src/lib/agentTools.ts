@@ -1,11 +1,12 @@
 import { callServerTool, type ToolResult } from "./agent";
 import { getProfile, HOME_SECTIONS, PROJECT_SLUGS, type HomeSectionId } from "./siteProfile";
+import { RESUME_EXPERIENCE, RESUME_META, RESUME_PROJECTS, RESUME_SKILLS, RESUME_SUMMARY } from "./resume";
 
 const HOME_SECTION_IDS: readonly string[] = HOME_SECTIONS.map((section) => section.id);
 
 export type ToolKind = "read" | "act";
 
-const READ_TOOLS = new Set(["read_page", "get_profile", "list_repo_files", "read_repo_file"]);
+const READ_TOOLS = new Set(["read_page", "get_profile", "read_resume", "list_repo_files", "read_repo_file"]);
 
 export function toolKind(name: string): ToolKind {
   return READ_TOOLS.has(name) ? "read" : "act";
@@ -138,6 +139,23 @@ async function setTheme(mode: unknown): Promise<ToolResult> {
     : { ok: false, summary: "主题切换没有生效" };
 }
 
+function readResume(section: unknown): ToolResult {
+  const all = {
+    meta: RESUME_META,
+    summary: RESUME_SUMMARY,
+    experience: RESUME_EXPERIENCE,
+    projects: RESUME_PROJECTS,
+    skills: RESUME_SKILLS,
+  };
+  const field = typeof section === "string" ? section : "all";
+  const key = field as keyof typeof all;
+  if (field !== "all" && !(key in all)) {
+    return { ok: false, summary: `unknown resume section: ${field}`, data: { sections: ["summary", "experience", "projects", "skills", "all"] } };
+  }
+  const data = field === "all" ? all : { [key]: all[key] };
+  return { ok: true, summary: `resume: ${field}`, data };
+}
+
 function parseArgs(argsJson: string): Record<string, unknown> {
   try {
     const parsed = JSON.parse(argsJson || "{}") as unknown;
@@ -157,6 +175,8 @@ export async function executeTool(name: string, argsJson: string): Promise<ToolR
       const field = typeof args.field === "string" ? args.field : "all";
       return getProfile(field);
     }
+    case "read_resume":
+      return readResume(args.section);
     case "open_section":
       return openSection(typeof args.section === "string" ? args.section : "");
     case "open_project":

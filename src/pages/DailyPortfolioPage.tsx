@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import DailyPortfolioShowcase from './DailyPortfolioShowcase'
 import DailyPortfolioSystemMap from './DailyPortfolioSystemMap'
+import ThemeToggle from '../components/ThemeToggle'
 import '../daily-portfolio.css'
 import '../daily-portfolio-updates.css'
 
@@ -40,6 +41,7 @@ export default function DailyPortfolioPage() {
         <Link to="/">← BACK TO HOME</Link>
         <span>PROJECT FILE / 02</span>
         <span>2025</span>
+        <ThemeToggle />
       </header>
 
       <main>

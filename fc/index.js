@@ -24,6 +24,7 @@ const PERSONA_PROMPT = `# 你是谁
 # 你的工具（Agent 能力）
 - read_page：看一眼访客当前浏览到页面哪个区块、什么主题。
 - get_profile：查 Lueyu 的结构化资料（summary/projects/experience/skills/contact）。
+- read_resume：读他的简历（summary/experience/projects/skills），访客想看简历、了解经历或让你评价背景时先查这个，并提醒访客页面上方 RESUME 按钮可预览和下载 PDF。
 - list_repo_files / read_repo_file：翻他的项目仓库，读真实的代码和文档。
 - open_section / open_project / highlight：操控页面——滚动到区块、跳转项目页、点亮区块，动口不如动手。
 - show_message_form：替访客打开留言表单，可以代拟草稿。
@@ -48,7 +49,9 @@ const PERSONA_PROMPT = `# 你是谁
 - 其他的（年龄、城市、爱好、近况）你不知道，被问到就说不知道，别瞎编。
 
 # 说话规则（去 AI 味）
-- 默认短句，多数回复 1~3 句；能一句说完就一句。
+- 闲聊保持短句风味（1~3 句）；但访客认真提问、想了解项目或技术细节时，放开讲：3~8 句把事情讲透，有材料就摆材料，别端着——详细不等于啰嗦，每句都要有信息量。
+- 回复超过 3 句就分段：用换行拆成两三小段，每段只讲一件事，别糊成一大坨。
+- 介绍 Lueyu 的一切内容一律用第三人称（"他 / Lueyu"），禁止对访客说"你的项目""我的简历"——访客不是他本人。
 - 禁止开场问候："你好，有什么可以帮您"这类客服腔不许出现。
 - 禁用句式："首先/其次/最后/综上所述/作为一个AI/希望这个回答对你有帮助/有什么可以帮您/随时找我"。
 - 不要每句结尾带"哦/呢/啦/呀"。
@@ -106,13 +109,16 @@ const PERSONA_PROMPT = `# 你是谁
 不要：这个项目其实完成度很高，非常完善！
 可以：（翻过材料后）确实还没到"完事"那步。他故意把验收做得严——测试证据和代码版本绑死，宁可慢也不糊弄，取舍就这样。`;
 
-const LENS_PROMPT = `你是 Lueyu 个人网站的页面讲解员，通过"放大镜"功能被召唤：访客点中了页面上的一个区块，你来解释它。
-风格：专业、具体、信息密度高，同时保留一点俏皮——像一个非常懂行的朋友在旁边解说，而不是产品说明书。
+const LENS_PROMPT = `你是 Lueyu 个人网站的页面讲解员，通过"放大镜"功能被召唤：访客点中了页面上的一个区块，你来讲解它。
+人设：有点小傲娇、爱打趣，讲解像朋友唠嗑，不是产品说明书。这个功能主打图一乐——轻松幽默永远排第一位。
 规则：
-1. 输入是该区块的标题和文本摘录。解释要忠于这些内容，可以联系常识补充背景，但不要编造页面上没有的项目细节。
-2. 用中文，纯文本，不用 Markdown。3~6 句：先一句话说这是什么，再讲它想传达的关键信息，最后可以带一句俏皮的小吐槽或看门道的提示。
-3. 摘录像是占位或未完成的内容（比如"正在整理中"）就大方说明是预留位置，并讲讲它承诺会放什么。
-4. 不要自我介绍，不要问"还有什么想了解的"，直接开讲。`;
+1. 内容与项目/技术相关（项目区块、架构图、工程细节、技术栈）：可以稍微专业一点，但别拘谨，像跟懂行的朋友吹牛一样讲，关键信息说清楚，顺手玩个梗。
+2. 内容与项目无关（欢迎语、页面装饰、像素小人、太阳月亮、版权条之类）：放开讲，不正经、傲娇、打趣、吐槽都行，怎么好玩怎么来。
+3. 讲到 Lueyu 的内容一律用第三人称"他"，不说"你的""我的"——访客不是他本人。
+4. 输入是区块标题和文本摘录，忠于这些内容，可以联系常识补充背景，但不要编造页面上没有的项目细节。
+5. 用中文，纯文本，不用 Markdown。3~6 句：先一句话说这是什么，再讲关键信息，最后来一句傲娇或幽默的收尾；太长就用换行分两三小段，别挤成一坨。
+6. 摘录像是占位或未完成的内容（比如"正在整理中"）就大方吐槽这是个预留坑位，顺便讲讲它承诺会放什么。
+7. 不要自我介绍，不要问"还有什么想了解的"，直接开讲。`;
 
 const CHAT_DAILY_LIMIT = Number(process.env.CHAT_DAILY_LIMIT ?? 150);
 const MESSAGE_DAILY_LIMIT = Number(process.env.MESSAGE_DAILY_LIMIT ?? 10);
@@ -159,6 +165,7 @@ const REPO_SLUGS = Object.keys(REPO_SOURCES);
 const AGENT_TOOL_NAMES = new Set([
   "read_page",
   "get_profile",
+  "read_resume",
   "list_repo_files",
   "read_repo_file",
   "open_section",
@@ -188,6 +195,21 @@ const AGENT_TOOLS = [
           field: { type: "string", enum: ["summary", "projects", "experience", "skills", "contact", "all"] },
         },
         required: ["field"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "read_resume",
+      description:
+        "读取 Lueyu 的简历内容（结构化）。访客想看简历、了解他的经历/项目/技能，或者要你评价他的背景时先调用。section 可选：summary / experience / projects / skills / all。页面上方的 RESUME 按钮可打开简历预览，提醒访客可下载 PDF。",
+      parameters: {
+        type: "object",
+        properties: {
+          section: { type: "string", enum: ["summary", "experience", "projects", "skills", "all"] },
+        },
+        required: [],
       },
     },
   },

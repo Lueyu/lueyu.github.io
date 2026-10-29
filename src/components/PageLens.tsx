@@ -80,10 +80,22 @@ export default function PageLens() {
       if (!text) return;
       const rect = el.getBoundingClientRect();
       const viewport = window.innerWidth;
+      const viewportH = window.innerHeight;
       const width = Math.min(340, viewport - 32);
       const x = Math.min(Math.max(rect.left + rect.width / 2, width / 2 + 16), viewport - width / 2 - 16);
-      const below = rect.bottom + 300 <= window.innerHeight || rect.top < 320;
-      const edge = below ? rect.bottom + 12 : window.innerHeight - rect.top + 12;
+      const spaceBelow = viewportH - rect.bottom;
+      const spaceAbove = rect.top;
+      let below = true;
+      let edge;
+      if (spaceBelow >= 330) {
+        edge = rect.bottom + 12;
+      } else if (spaceAbove >= 330) {
+        below = false;
+        edge = viewportH - Math.max(rect.top - 12, 12);
+      } else {
+        below = true;
+        edge = Math.min(Math.max(rect.top + 100, 110), Math.max(viewportH - 340, 12));
+      }
       const id = requestIdRef.current + 1;
       requestIdRef.current = id;
       setPopover({ x, below, edge, title });

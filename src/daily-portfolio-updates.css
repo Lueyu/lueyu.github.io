@@ -45,7 +45,33 @@
 .dp-showcase-chrome { display: flex; height: 30px; align-items: center; justify-content: space-between; gap: 12px; padding: 0 12px; background: var(--dp-ink); color: #61665a; font-family: var(--pixel); font-size: 12px; }
 .dp-showcase-chrome span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dp-showcase-chrome img { display: block; width: 31px; height: 7px; flex: 0 0 auto; }
-.dp-showcase-image { height: 300px; overflow: hidden; background: #001f1e; }
+.dp-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 3px solid var(--dp-ink);
+  background: var(--dp-green);
+  box-shadow: 5px 5px 0 var(--dp-ink);
+  color: var(--dp-paper);
+  font-family: var(--pixel);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transition: transform 100ms steps(2), box-shadow 100ms steps(2);
+}
+
+.dp-live-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--dp-ink);
+}
+
+.dp-live-link b {
+  font-size: 18px;
+}
+
+.dp-showcase-image { display: block; width: 100%; height: 300px; padding: 0; overflow: hidden; background: #001f1e; cursor: zoom-in; }
 .dp-showcase-card:nth-child(n + 3) .dp-showcase-image { height: 240px; }
 .dp-showcase-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .dp-showcase-caption { display: flex; min-height: 86px; flex-direction: column; gap: 8px; padding: 16px 20px 20px; background: #edeade; }

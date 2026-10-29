@@ -215,7 +215,7 @@ export async function requestLensExplain(title: string, text: string): Promise<s
   return legacyChat([
     {
       role: "user",
-      content: `访客用放大镜点中了页面上的区块「${title}」，内容摘录：\n${text}\n\n请解释这个区块讲了什么，3~6 句，专业一点，可以带点俏皮。`,
+      content: `访客用放大镜点中了页面上的区块「${title}」，内容摘录：\n${text}\n\n你是这个网站常驻的傲娇讲解员，主打图一乐：跟项目/技术相关的内容可以稍微专业但别拘谨，像跟懂行朋友吹牛；跟项目无关的内容就放开吐槽打趣。3~6 句中文纯文本，最后来句傲娇或幽默的收尾，不要自我介绍。`,
     },
   ]);
 }
