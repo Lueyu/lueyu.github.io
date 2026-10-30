@@ -62,7 +62,7 @@ const projects: Record<string, ProjectDetail> = {
         bullets: [
           "单机拉起 15 容器生产栈，排查三类环境级阻断并沉淀部署手册。",
           "打通 OpenCode × Langfuse 观测链路，设计 Tier-0 轨迹归属方案。",
-          "自研 restic 备份设备适配器，完成 OceanProtect 风格四端点契约。",
+          "自研 restic 备份设备适配器，完成企业级备份设备四端点契约。",
           "定位并修复序列化、DDL、归属 fallback 与 PostgreSQL 死表等四个静默失败问题。",
           "设计 kind 迁移流程、Kubernetes 清单差距分析与数据迁移路径。",
         ],

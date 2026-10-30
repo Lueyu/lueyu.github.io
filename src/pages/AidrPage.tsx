@@ -222,7 +222,7 @@ export default function AidrPage() {
         </section>
 
         <footer className="ad-footer ad-container">
-          <p className="ad-disclaimer"><i aria-hidden="true" />页面截图来自本机运行的实例；数字（13 agents / 122 traces / 2113 spans / 3 保护组）均为 2026-10 实时数据，可溯源。</p>
+          <p className="ad-disclaimer"><i aria-hidden="true" />页面截图来自本机运行的实例，已整图脱敏（马赛克）处理；数字（13 agents / 122 traces / 2113 spans / 3 保护组）均为 2026-10 实时数据。</p>
           <Link className="ad-next-project" to="/projects/daily-portfolio"><span>NEXT PROJECT</span><strong>Daily Portfolio</strong><b aria-hidden="true">→</b></Link>
           <div className="ad-footer-meta"><span>AIDR / PROJECT FILE 01</span><span>DATA + CONTEXT, OR NOTHING.</span></div>
         </footer>
