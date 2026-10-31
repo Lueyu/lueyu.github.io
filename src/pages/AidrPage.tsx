@@ -33,18 +33,10 @@ const mechanism = [
   'INGEST 摄取', 'UPSERT 幂等入库', 'BIPARTITE 二部图', 'BFS 连通分量', 'STABLE HASH 稳定组 ID', 'ATOMIC RESTORE 原子恢复',
 ]
 
-const silentFailures = [
-  ['PR #47', 'Langfuse × ClickHouse 序列化不兼容', 'OTLP 事件全部静默丢弃', '类型映射修复 + 回归测试'],
-  ['PR #48', '风险评分表 DDL 双违规', '评分链路整体失效', '迁移修正 + 数据回填'],
-  ['PR #49', '轨迹归属表达式缺 fallback', '多平台 trace 落入影子桶', '三级归属 fallback'],
-  ['PR #50', 'PG 重算引用死表', '保护组自部署起从未生效', '修表引用 + 端到端重算验证'],
-]
-
-const infraWork = [
-  ['K8S', 'kind 全流程迁移：8 Pod 全 Running，6 个部署坑（多架构镜像、缺失 Secret、空 env、拉取策略、KRaft 9093、langfuse-service 缺席）逐一实测修复'],
-  ['RESTIC', '自写零依赖适配器把 restic 仓库翻译成备份设备契约（4 个 REST 端点）：快照 → 资源、去重存储 → 用量，备份-注册-映射-保护组自动形成全链路跑通'],
-  ['OTEL', 'OpenCode × Langfuse 观测链路：官方插件导出 OTLP，Tier-0 按 service.name 自动归属，Agent 真实工作轨迹（138+ span）直接进入分析面'],
-  ['E2E', '分层 E2E（EN+ZH 双语）+ 防回归单测 + 合规测试报告，四个修复各自独立分支交付'],
+const edgeAnswers = [
+  ['01', '保护单位升级', '从静止的存储对象，变为「Agent 的数据世界」', '恢复一个 Agent，等于恢复它照常工作所需的一切——数据、上下文与记忆同时回来'],
+  ['02', '依赖自动推导', '工具调用图是依赖关系的唯一真相源', 'Agent 今天开始使用新工具，保护边界 60 秒内自动扩容，不依赖会过时的人工登记'],
+  ['03', '观测 × 保护一体', '分析页看到的行为异常，就是保护页要兜底的半径', '行为可审计、风险可分级、恢复有边界——三件事共享同一张图，备份引擎可插拔'],
 ]
 
 const technologies = [
@@ -100,7 +92,7 @@ export default function AidrPage() {
                 <nav className="ad-hero-links" aria-label="页面章节">
                   <a href="#ad-shots">LIVE SCREENS ↓</a>
                   <a href="#ad-system">/ ARCHITECTURE MAP</a>
-                  <a href="#ad-hardening">/ ENGINEERING NOTES</a>
+                  <a href="#ad-edge">/ WHY IT WINS</a>
                 </nav>
               </div>
               <div className="ad-cover" aria-label="AIDR 项目封面">
@@ -114,7 +106,7 @@ export default function AidrPage() {
 
             <div className="ad-overview">
               <span>OVERVIEW</span>
-              <p>AI Agent 在生产中同时读写业务数据和自己的上下文（memory、checkpoint）。传统备份只管文件和数据库——恢复之后 Agent 会“失忆”甚至带着错误的记忆继续运行。AIDR 用 OpenTelemetry 把 Agent、工具、备份资源连成一张图，按工具调用边计算爆炸半径，形成“保护组”作为原子的恢复单元。我负责把它从开发态推到生产：15 容器栈部署、观测链路、restic 备份接入、K8s 迁移，以及修复四个静默失败 bug（PR #47–#50）。</p>
+              <p>AI Agent 在生产中同时读写业务数据和自己的上下文（memory、checkpoint）。传统备份只管文件和数据库——恢复之后 Agent 会“失忆”，甚至带着错误的记忆继续运行。AIDR 用 OpenTelemetry 把 Agent、工具、备份资源连成一张图，按工具调用边计算爆炸半径，形成「保护组」作为原子恢复单元。观测、保护、恢复共享同一张图，备份引擎可插拔。</p>
             </div>
             <div className="ad-foundations">
               {foundations.map(([name, description]) => (
@@ -165,7 +157,7 @@ export default function AidrPage() {
             <StoryIndex number="02" label="THE MECHANISM" note="在每次摄取事务末尾同步重算，60 秒内全图收敛" />
             <div className="ad-story-content">
               <h2>从调用图到保护组</h2>
-              <p>dify-connector 每 60 秒发布集群快照；discovery-service 幂等入库后立即重算保护组：agent 与资源构成二部图，工具映射是边，BFS 求连通分量；每个分量用排序后 ID 的 SHA-256 前 16 位做稳定组 ID——成员不变则 ID 不变、元数据保留；成员变化则原子换组。</p>
+              <p>连接器持续发布平台快照；发现服务幂等入库后立即重算保护组：Agent 与资源构成二部图，工具映射是边，BFS 求连通分量——每个分量就是一个保护组。成员不变则组 ID 稳定不变，元数据与策略随组保留；成员变化则原子换组。半径会自己生长，不靠任何人工维护。</p>
               <div className="ad-pipeline">{mechanism.map((step, index) => <span key={step}>{index > 0 && <b aria-hidden="true">→</b>}{step}</span>)}</div>
               <strong className="ad-motto"><i aria-hidden="true" /> SAME GROUP, SAME RECOVERY UNIT</strong>
             </div>
@@ -179,7 +171,7 @@ export default function AidrPage() {
             <StoryIndex number="03" label="OBSERVABILITY" />
             <div className="ad-story-content">
               <h2>Agent 的每一步都留下痕迹</h2>
-              <p>OpenTelemetry 贯穿全链路：opencode 官方 Langfuse 插件导出 OTLP，经 langfuse-web 入 Minio、worker 解析进 ClickHouse。分析服务每 5 秒跑一遍漂移检测——可插拔规则链把工具调用实时映射成 LOW / MEDIUM / HIGH 风险等级写回轨迹；轨迹归属用三级 fallback（元数据 → dify_app_id → 工具重合度评分），任何平台都不会落进影子桶。</p>
+              <p>OpenTelemetry 贯穿全链路：Agent 的运行时把每笔工具调用导出为 OTLP 轨迹，经观测栈解析进 ClickHouse。分析服务持续跑漂移检测——可插拔规则链把工具调用实时映射成 LOW / MEDIUM / HIGH 风险等级写回轨迹；轨迹归属用三级 fallback，任何平台的 Agent 都不会落进「无名氏」桶。</p>
               <div className="ad-risk-flow">
                 <div><span>TOOL CALL</span><p>观察 span（工具名 / 参数 / 输出）</p></div>
                 <div><span>RULE CHAIN</span><p>破坏性效果 · 高频 · 错误率 · 数据量异常</p></div>
@@ -190,26 +182,21 @@ export default function AidrPage() {
           </div>
         </section>
 
-        <section className="ad-story-section ad-hardening" id="ad-hardening">
+        <section className="ad-story-section ad-hardening" id="ad-edge">
           <div className="ad-container ad-story-grid">
-            <StoryIndex number="04" label="HARDENING" note="独立分支 · 防回归单测 · 分层 E2E · 合规报告" />
+            <StoryIndex number="04" label="THE EDGE" note="WHY THIS BEATS TRADITIONAL BACKUP" />
             <div className="ad-story-content">
-              <h2>四个静默失败，<br />和一场 K8s 迁移</h2>
-              <p>接手时系统“看起来一切正常”：界面能开、接口能通，但观测数据在静默丢弃、保护组从未真正形成。我逐一定位并修复了四个生产级静默失败，每个都带测试报告交付。</p>
+              <h2>三个传统备份<br />给不出的答案</h2>
+              <p>它的竞争力不在更快的备份速度，而在保护单位与保护方式的根本改变。</p>
               <ul className="ad-failures">
-                {silentFailures.map(([pr, cause, symptom, fix]) => (
-                  <li key={pr}>
-                    <strong>{pr}</strong>
-                    <div><b>{cause}</b><span>{symptom}</span></div>
-                    <em>{fix}</em>
+                {edgeAnswers.map(([num, title, claim, note]) => (
+                  <li key={num}>
+                    <strong>{num}</strong>
+                    <div><b>{title}</b><span>{claim}</span></div>
+                    <em>{note}</em>
                   </li>
                 ))}
               </ul>
-              <div className="ad-infra-grid">
-                {infraWork.map(([tag, text]) => (
-                  <div key={tag}><strong>{tag}</strong><p>{text}</p></div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
