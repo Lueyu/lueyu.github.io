@@ -27,10 +27,10 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     title: "AIDR",
     role: "DEEP CONTRIBUTOR",
     description:
-      "面向 AI 智能体时代的数据保护平台：按工具调用图计算爆炸半径，把 Agent 与实际读写的数据组成保护组并原子恢复。",
-    highlights: ["打通 Agent 观测、归属与备份闭环", "修复 4 个生产级静默失败问题"],
+      "面向 AI 智能体时代的数据保护平台：从真实的工具调用行为推导每个 Agent 的爆炸半径，把 Agent 与它的数据世界绑成一个保护组，原子恢复。",
+    highlights: ["保护单位从存储对象升级为 Agent 的数据世界", "依赖自动推导，观测与保护共享同一张图"],
     details:
-      "完成 15 容器生产栈部署、OpenCode × Langfuse 观测链路、restic 备份设备适配器与 K8s 迁移方案；通过独立分支、防回归单测、分层 E2E 和合规报告交付 PR #47–#50。",
+      "传统备份看得见数据库与卷，看不见 Agent 的数据世界。AIDR 把工具调用图当作依赖关系的唯一真相源，观测（OpenTelemetry / Langfuse）与保护共享同一张图，备份引擎可插拔——企业存储与开源 restic 走同一套四端点契约。",
     tags: ["OTEL", "LANGFUSE", "RESTIC", "K8S"],
     color: "red",
   },
