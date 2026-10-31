@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
-import AidrSystemMap from './AidrSystemMap'
+import AidrPixelMap from '../components/AidrPixelMap'
 import ThemeToggle from '../components/ThemeToggle'
 import Lightbox from '../components/Lightbox'
 import '../aidr.css'
@@ -164,7 +164,7 @@ export default function AidrPage() {
           </div>
         </section>
 
-        <AidrSystemMap />
+        <AidrPixelMap />
 
         <section className="ad-story-section ad-observability">
           <div className="ad-container ad-story-grid">

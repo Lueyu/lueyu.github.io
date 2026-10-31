@@ -1245,3 +1245,159 @@
 .night .ad-failures li {
   background: #263544;
 }
+
+/* ── AIDR pixel architecture map (AidrPixelMap) ───────────────── */
+
+.ad-pixelmap .px-frame {
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.ad-pixelmap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.px-bg { fill: var(--paper); }
+
+.px-banner,
+.px-banner-right {
+  font-family: var(--pixel);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  fill: var(--ink);
+}
+
+.px-banner-right { fill: var(--red); text-anchor: end; }
+
+.px-rule { stroke: var(--ink); stroke-width: 3; }
+.px-rule-faint { stroke: var(--ink); stroke-opacity: 0.2; stroke-width: 2; stroke-dasharray: 4 4; }
+.px-divider { stroke: var(--ink); stroke-opacity: 0.25; stroke-width: 2; stroke-dasharray: 2 6; }
+
+.px-num { font-family: var(--pixel); font-size: 15px; font-weight: 700; fill: var(--red); }
+.px-title { font-family: var(--pixel); font-size: 15px; font-weight: 700; letter-spacing: 0.04em; fill: var(--ink); }
+.px-sub { font-size: 11px; fill: var(--ink); opacity: 0.6; }
+
+.px-tag { font-size: 12px; fill: var(--ink); opacity: 0.75; }
+.px-tag-ink { font-family: var(--pixel); font-size: 11px; letter-spacing: 0.03em; fill: var(--ink); opacity: 1; }
+.px-note { font-size: 11px; fill: var(--ink); opacity: 0.6; }
+.px-note-strong { fill: var(--red); opacity: 1; font-weight: 700; }
+
+.px-flow-label { font-family: var(--pixel); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
+.px-flow-green { fill: var(--green); }
+.px-flow-blue { fill: var(--blue); }
+.px-flow-red { fill: var(--red); }
+
+.px-wire { stroke-width: 3; stroke-dasharray: 6 4; }
+.px-wire-green { stroke: var(--green); }
+.px-wire-blue { stroke: var(--blue); }
+.px-wire-red { stroke: var(--red); }
+
+.px-packet { animation: px-packet-loop 2.2s steps(8) infinite; }
+.px-packet-green { fill: var(--green); }
+.px-packet-blue { fill: var(--blue); }
+
+@keyframes px-packet-loop {
+  to { transform: translate(170px, -72px); }
+}
+
+.px-chip { font-family: var(--pixel); font-size: 11px; font-weight: 700; fill: var(--ink); }
+.px-chip-blue { fill: var(--blue); }
+
+.px-edge { stroke: var(--ink); stroke-width: 2.5; }
+.px-node { fill: var(--ink); }
+.px-node-hot { fill: var(--red); }
+.px-node-label { font-size: 10px; fill: var(--ink); opacity: 0.55; }
+.px-node-label-hot { fill: var(--red); font-weight: 700; }
+
+.px-ripple {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: px-ripple 2.8s steps(4) infinite;
+}
+
+@keyframes px-ripple {
+  0% { transform: scale(0.3); opacity: 1; }
+  70% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.px-tile { fill: var(--paper); stroke: var(--ink); stroke-width: 2.5; }
+.px-tile-red { fill: var(--red); }
+.px-tile-text { font-family: var(--pixel); font-size: 10px; font-weight: 700; fill: var(--ink); }
+.px-tile-text-red { fill: var(--white); }
+.px-arrow { font-size: 12px; fill: var(--ink); opacity: 0.7; }
+
+.px-group {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 3;
+  animation: px-blink-slow 1.4s steps(2) infinite;
+}
+
+@keyframes px-blink-slow {
+  50% { stroke-opacity: 0.25; }
+}
+
+.px-restore-path {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 3;
+  stroke-dasharray: 10 6;
+  animation: px-dash 1.6s steps(12) infinite;
+}
+
+@keyframes px-dash {
+  to { stroke-dashoffset: -64; }
+}
+
+.px-restore-label { font-size: 11px; fill: var(--red); opacity: 0.85; }
+.px-restore-text { letter-spacing: 0.06em; }
+
+.px-ground { fill: var(--ink); }
+.px-ground-dim { opacity: 0.35; }
+
+.px-led { animation: px-led 1.8s steps(2) infinite; }
+.px-led-green { fill: var(--green); background-color: var(--green); }
+.px-led-red { fill: var(--red); background-color: var(--red); animation-delay: 0.6s; }
+.px-led-blue { fill: var(--blue); background-color: var(--blue); animation-delay: 1.2s; }
+
+.ad-map-legend .px-led {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+}
+
+@keyframes px-led {
+  50% { opacity: 0.25; }
+}
+
+.px-led-label { font-family: var(--pixel); font-size: 10px; fill: var(--ink); opacity: 0.7; }
+
+.px-blink { animation: px-led 1.2s steps(2) infinite; }
+
+.px-scanline {
+  fill: var(--ink);
+  opacity: 0.06;
+  animation: px-scan 7s steps(56) infinite;
+}
+
+@keyframes px-scan {
+  from { transform: translateX(0); }
+  to { transform: translateX(960px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-pixelmap *,
+  .ad-pixelmap svg * {
+    animation: none !important;
+  }
+}
