@@ -1,5 +1,9 @@
 import '../aidr-architecture.css'
 import { useNight } from './ThemeToggle'
+import desktopDark from '../assets/aidr-architecture/desktop-dark.svg?raw'
+import desktopLight from '../assets/aidr-architecture/desktop-light.svg?raw'
+import mobileDark from '../assets/aidr-architecture/mobile-dark.svg?raw'
+import mobileLight from '../assets/aidr-architecture/mobile-light.svg?raw'
 
 const description = 'AIDR 架构：Agent 的真实工具调用进入 AIDR Core，自动推导保护组；保护组交给可插拔备份引擎，原子恢复 Agent 与数据。行为轨迹同时进入观测与风险分级链路。'
 
@@ -31,10 +35,9 @@ export default function AidrPixelMap() {
   return (
     <section className="ad-architecture" id="ad-system" aria-label="AIDR 原理架构图">
       <div className="ad-architecture-figure" role="img" aria-label={description}>
-        <picture>
-          <source media="(max-width: 1099px)" srcSet="/images/aidr/architecture/mobile-dark.png" width="440" height="1800" />
-          <img src={isNight ? '/images/aidr/architecture/desktop-dark.png' : '/images/aidr/architecture/desktop-light.png'} alt="" loading="lazy" decoding="async" width="1600" height="900" />
-        </picture>
+        {/* Inline the trusted Figma SVGs so their text uses this site's Pixelify and Noto fonts. */}
+        <div className="ad-architecture-desktop" aria-hidden="true" dangerouslySetInnerHTML={{ __html: isNight ? desktopDark : desktopLight }} />
+        <div className="ad-architecture-mobile" aria-hidden="true" dangerouslySetInnerHTML={{ __html: isNight ? mobileDark : mobileLight }} />
         <Flow mobile={false} />
         <Flow mobile />
       </div>

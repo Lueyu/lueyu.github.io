@@ -20,11 +20,14 @@
   margin-inline: auto;
 }
 
-.ad-architecture img {
+.ad-architecture-desktop svg,
+.ad-architecture-mobile svg {
   display: block;
   width: 100%;
   height: auto;
 }
+
+.ad-architecture-mobile { display: none; }
 
 .ad-architecture-motion {
   position: absolute;
@@ -37,8 +40,9 @@
 .ad-architecture-motion:last-child { display: none; }
 
 @media (max-width: 1099px) {
-  .ad-architecture { --arch-green: #b5f264; --arch-red: #ff806e; --arch-blue: #79bff2; background: #101814; }
   .ad-architecture-figure { width: min(100%, 520px); }
+  .ad-architecture-desktop { display: none; }
+  .ad-architecture-mobile { display: block; }
   .ad-architecture-motion:nth-last-child(2) { display: none; }
   .ad-architecture-motion:last-child { display: block; }
 }

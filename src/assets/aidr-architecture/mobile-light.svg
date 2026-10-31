@@ -1,0 +1,255 @@
+<svg width="440" height="1800" viewBox="0 0 440 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="AIDR &#229;&#142;&#159;&#231;&#144;&#134;&#230;&#158;&#182;&#230;&#158;&#132; &#194;&#183; &#231;&#167;&#187;&#229;&#138;&#168;&#231;&#174;&#128;&#231;&#137;&#136;">
+<rect width="440" height="1800" fill="#F3F1E5"/>
+<g id="Shared graph principle and legend">
+<text id="Label" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="10" letter-spacing="0em"><tspan x="44" y="1756.75">OpenTelemetry / Langfuse / restic / K8s</tspan></text>
+<text id="Label_2" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="12" letter-spacing="0em"><tspan x="263" y="1719.8">&#x25a0; &#x4fdd;&#x62a4; / &#x98ce;&#x9669; / &#x6062;&#x590d;</tspan></text>
+<text id="Label_3" fill="#175F96" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="12" letter-spacing="0em"><tspan x="153" y="1719.8">&#x25a0; &#x8f68;&#x8ff9;&#x89c2;&#x6d4b;</tspan></text>
+<text id="Label_4" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="12" letter-spacing="0em"><tspan x="44" y="1719.8">&#x25a0; &#x8c03;&#x7528;&#x8bed;&#x4e49;</tspan></text>
+<text id="Label_5" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="19" font-weight="bold" letter-spacing="0em"><tspan x="44" y="1685.6">&#x89c2;&#x6d4b;&#x4e0e;&#x4fdd;&#x62a4;&#x5171;&#x4eab;&#x540c;&#x4e00;&#x5f20;&#x56fe;&#x3002;</tspan></text>
+<rect id="Footer rule" x="44" y="1646" width="368" height="2" fill="#A5B0A0"/>
+</g>
+<g id="05 Atomic restore" clip-path="url(#clip0_3_3582)">
+<g id="Agent and data checkpoint">
+<rect x="45" y="1445" width="366" height="172" fill="#F3DED4"/>
+<rect x="45" y="1445" width="366" height="172" stroke="#B63D30" stroke-width="2"/>
+<text id="Label_6" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="15" font-weight="bold" letter-spacing="0em"><tspan x="60" y="1597">Agent &#x4e0e;&#x6570;&#x636e;&#x4e00;&#x8d77;&#x56de;&#x6765;&#xff0c;&#x4e0d;&#x5931;&#x5fc6;&#x3002;</tspan></text>
+<text id="Label_7" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="13" letter-spacing="0em"><tspan x="60" y="1557.2">&#x540c;&#x4e00;&#x6062;&#x590d;&#x70b9; / ALL OR NOTHING</tspan></text>
+<text id="Label_8" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="27" font-weight="bold" letter-spacing="0em"><tspan x="60" y="1521.64">AGENT + DATA</tspan></text>
+<text id="Label_9" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="19" font-weight="bold" letter-spacing="0em"><tspan x="60" y="1478.6">&#x539f;&#x5b50;&#x6062;&#x590d;</tspan></text>
+</g>
+<text id="Label_10" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="21" font-weight="bold" letter-spacing="0em"><tspan x="44" y="1422.72">05  ATOMIC RESTORE</tspan></text>
+</g>
+<g id="Main sequence connector" clip-path="url(#clip1_3_3582)">
+<text id="Label_11" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="13" letter-spacing="0em"><tspan x="258" y="1382.2">&#x6574;&#x7ec4;&#x6062;&#x590d;</tspan></text>
+<rect id="Flow Pixel" x="228" y="1370" width="8" height="8" fill="#B63D30"/>
+<path id="Main vertical pipeline" d="M232 1356V1402M240 1393.95L232 1402L224 1393.95" stroke="#B63D30" stroke-width="4"/>
+</g>
+<g id="04 Backup engine" clip-path="url(#clip2_3_3582)">
+<g id="Pluggable backup contract">
+<rect x="45" y="1191" width="366" height="164" fill="#FCFBF3"/>
+<rect x="45" y="1191" width="366" height="164" stroke="#B63D30" stroke-width="2"/>
+<text id="Label_12" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="14" letter-spacing="0em"><tspan x="60" y="1326.1">&#x4f01;&#x4e1a;&#x5b58;&#x50a8; / &#x5f00;&#x6e90;&#x65b9;&#x6848;&#xff0c;&#x540c;&#x4e00;&#x5957;&#x5951;&#x7ea6;</tspan></text>
+<g id="Open source adapter">
+<rect x="242.5" y="1246.5" width="153" height="41" fill="#F3DED4"/>
+<rect x="242.5" y="1246.5" width="153" height="41" stroke="#B63D30"/>
+<text id="Label_13" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="15" letter-spacing="0em"><tspan x="289" y="1271">&#x5f00;&#x6e90;&#x65b9;&#x6848;</tspan></text>
+</g>
+<g id="Storage adapter">
+<rect x="60.5" y="1246.5" width="153" height="41" fill="#F3DED4"/>
+<rect x="60.5" y="1246.5" width="153" height="41" stroke="#B63D30"/>
+<text id="Label_14" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="15" letter-spacing="0em"><tspan x="107" y="1271">&#x4f01;&#x4e1a;&#x5b58;&#x50a8;</tspan></text>
+</g>
+<text id="Label_15" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="60" y="1222.2">&#x53ef;&#x63d2;&#x62d4;&#x5907;&#x4efd;&#x5f15;&#x64ce;</tspan></text>
+</g>
+<text id="Label_16" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="21" font-weight="bold" letter-spacing="0em"><tspan x="44" y="1168.72">04  BACKUP ENGINE</tspan></text>
+</g>
+<g id="Main sequence connector_2" clip-path="url(#clip3_3_3582)">
+<text id="Label_17" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="13" letter-spacing="0em"><tspan x="258" y="1128.2">&#x4ea4;&#x7ed9;</tspan></text>
+<rect id="Flow Pixel_2" x="228" y="1116" width="8" height="8" fill="#B63D30"/>
+<path id="Main vertical pipeline_2" d="M232 1102V1148M240 1139.95L232 1148L224 1139.95" stroke="#B63D30" stroke-width="4"/>
+</g>
+<g id="03 Protection group" clip-path="url(#clip4_3_3582)">
+<g id="Atomic protection unit" clip-path="url(#clip5_3_3582)">
+<rect width="368" height="210" transform="translate(44 892)" fill="#F3DED4"/>
+<text id="Label_18" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="10" letter-spacing="0em"><tspan x="60" y="1091.75">5 MEMBERS / 1 UNIT</tspan></text>
+<text id="Label_19" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="15" letter-spacing="0em"><tspan x="239" y="1002">Agent + &#x5b83;&#x7684;&#x6570;&#x636e;&#x4e16;</tspan><tspan x="239" y="1022">&#x754c;&#xff0c;&#x539f;&#x5b50;&#x6062;&#x590d;&#x5355;&#x5143;</tspan></text>
+<text id="Label_20" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="239" y="970.2">&#x4fdd;&#x62a4;&#x7ec4;</tspan></text>
+<g id="Mapped members" clip-path="url(#clip6_3_3582)">
+<g id="Same connected members">
+<g id="Data node">
+<rect x="142" y="1045" width="74" height="26" fill="#F3DED4"/>
+<rect x="142" y="1045" width="74" height="26" stroke="#B63D30" stroke-width="2"/>
+<text id="Member identifier" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="157.414" y="1061.5">MEMORY</tspan></text>
+</g>
+<g id="Data node_2">
+<rect x="60" y="1045" width="74" height="26" fill="#F3DED4"/>
+<rect x="60" y="1045" width="74" height="26" stroke="#B63D30" stroke-width="2"/>
+<text id="Member identifier_2" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="75.4141" y="1061.5">ORDERS</tspan></text>
+</g>
+<g id="Tool node">
+<rect x="157" y="995" width="56" height="26" fill="#E3EBCF"/>
+<rect x="157" y="995" width="56" height="26" stroke="#376821" stroke-width="2"/>
+<text id="Member identifier_3" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="177.805" y="1011.5">FS</tspan></text>
+</g>
+<g id="Tool node_2">
+<rect x="63" y="995" width="56" height="26" fill="#E3EBCF"/>
+<rect x="63" y="995" width="56" height="26" stroke="#376821" stroke-width="2"/>
+<text id="Member identifier_4" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="80.207" y="1011.5">SQL</tspan></text>
+</g>
+<g id="Agent node">
+<rect x="113" y="947" width="50" height="26" fill="#E3EBCF"/>
+<rect x="113" y="947" width="50" height="26" stroke="#376821" stroke-width="2"/>
+<text id="Member identifier_5" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="134.402" y="963.5">A</tspan></text>
+</g>
+<line id="Dependency edge" x1="135" y1="1057" x2="141" y2="1057" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_2" x1="184.313" y1="1022.12" x2="181.673" y2="1044.12" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_3" x1="153.866" y1="1044.87" x2="115.146" y2="1022.87" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_4" x1="144.78" y1="973.614" x2="174.065" y2="1043.61" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_5" x1="170.577" y1="994.7" x2="150.994" y2="974.7" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_6" x1="121.146" y1="1043.13" x2="159.866" y2="1021.13" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_7" x1="93.6729" y1="1021.88" x2="96.3129" y2="1043.88" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_8" x1="125.006" y1="974.7" x2="105.423" y2="994.7" stroke="#376821" stroke-width="2"/>
+</g>
+</g>
+<text id="Label_21" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="15" font-weight="bold" letter-spacing="0em"><tspan x="60" y="920">&#x4fdd;&#x62a4;&#x7ec4; = &#x8fde;&#x901a;&#x5206;&#x91cf;</tspan></text>
+<rect id="Protection Pulse &#194;&#183; Mapped group" x="45" y="893" width="366" height="208" stroke="#B63D30" stroke-width="2" stroke-dasharray="7 5"/>
+</g>
+<text id="Label_22" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="21" font-weight="bold" letter-spacing="0em"><tspan x="44" y="870.72">03  PROTECTION GROUP</tspan></text>
+</g>
+<g id="Main sequence connector_3" clip-path="url(#clip7_3_3582)">
+<text id="Label_23" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="13" letter-spacing="0em"><tspan x="258" y="830.2">&#x7b97;&#x51fa;</tspan></text>
+<rect id="Flow Pixel_3" x="228" y="818" width="8" height="8" fill="#B63D30"/>
+<path id="Main vertical pipeline_3" d="M232 804V850M240 841.95L232 850L224 841.95" stroke="#B63D30" stroke-width="4"/>
+</g>
+<g id="02 AIDR core" filter="url(#filter0_d_3_3582)">
+<rect x="44" y="374" width="368" height="430" fill="#FCFBF3"/>
+<rect x="45.5" y="375.5" width="365" height="427" stroke="#376821" stroke-width="3"/>
+<g id="Observe branch">
+<rect x="57" y="734" width="342" height="56" fill="#E1EAF0"/>
+<rect x="57" y="734" width="342" height="56" stroke="#175F96" stroke-width="2"/>
+<text id="Label_24" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="295" y="779.1">&#x98ce;&#x9669;&#x5206;&#x7ea7;</tspan></text>
+<text id="Label_25" fill="#175F96" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="14" letter-spacing="0em"><tspan x="66" y="779.1">&#x8f68;&#x8ff9; &#x2192; &#x65f6;&#x5e8f;&#x6570;&#x636e;&#x5e93; &#x2192;</tspan></text>
+<text id="Label_26" fill="#175F96" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="12" letter-spacing="0em"><tspan x="217" y="752.8">&#x884c;&#x4e3a;&#x8f68;&#x8ff9; / OTel</tspan></text>
+<text id="Label_27" fill="#175F96" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="15" font-weight="bold" letter-spacing="0em"><tspan x="66" y="752.8">OBSERVE</tspan></text>
+</g>
+<text id="Label_28" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="14" letter-spacing="0em"><tspan x="60" y="713.1">Agent &#x51fa;&#x4e8b;&#x4f1a;&#x88ab;&#x6ce2;&#x53ca;&#x7684;&#x6570;&#x636e;&#x8303;&#x56f4;</tspan></text>
+<text id="Label_29" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="15" font-weight="bold" letter-spacing="0em"><tspan x="154" y="687.8">BLAST RADIUS</tspan></text>
+<text id="Label_30" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="15" font-weight="bold" letter-spacing="0em"><tspan x="60" y="687">&#x7206;&#x70b8;&#x534a;&#x5f84;</tspan></text>
+<g id="Live dependency network" clip-path="url(#clip8_3_3582)">
+<g id="Behavior-derived tool-call network">
+<text id="Label_31" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="10" letter-spacing="0em"><tspan x="247" y="655">&#x6570;&#x636e;&#x8303;&#x56f4;</tspan></text>
+<path id="Blast radius data bracket" d="M249 624V641H304V624" stroke="#B63D30" stroke-width="2"/>
+<text id="Label_32" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="10" letter-spacing="0em"><tspan x="338" y="636">&#x72ec;&#x7acb;&#x5206;&#x91cf;</tspan></text>
+<text id="Label_33" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="11" font-weight="bold" letter-spacing="0em"><tspan x="63" y="626.9">&#x4fdd;&#x62a4;&#x7ec4; = &#x8fde;&#x901a;&#x5206;&#x91cf;</tspan></text>
+<g id="Data node_3">
+<rect x="338" y="593" width="50" height="26" fill="#FCFBF3"/>
+<rect x="338" y="593" width="50" height="26" stroke="#526257" stroke-width="2"/>
+<text id="Member identifier_6" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="345.012" y="609.5">INDEX</tspan></text>
+</g>
+<g id="Data node_4">
+<rect x="338" y="524" width="50" height="26" fill="#FCFBF3"/>
+<rect x="338" y="524" width="50" height="26" stroke="#526257" stroke-width="2"/>
+<text id="Member identifier_7" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="359.402" y="540.5">B</tspan></text>
+</g>
+<g id="Data node_5">
+<rect x="251" y="593" width="50" height="26" fill="#F3DED4"/>
+<rect x="251" y="593" width="50" height="26" stroke="#B63D30" stroke-width="2"/>
+<text id="Member identifier_8" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="254.414" y="609.5">MEMORY</tspan></text>
+</g>
+<g id="Data node_6">
+<rect x="251" y="527" width="50" height="26" fill="#F3DED4"/>
+<rect x="251" y="527" width="50" height="26" stroke="#B63D30" stroke-width="2"/>
+<text id="Member identifier_9" fill="#B63D30" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="254.414" y="543.5">ORDERS</tspan></text>
+</g>
+<g id="Tool node_3">
+<rect x="161" y="582" width="50" height="26" fill="#E3EBCF"/>
+<rect x="161" y="582" width="50" height="26" stroke="#376821" stroke-width="2"/>
+<text id="Member identifier_10" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="178.805" y="598.5">FS</tspan></text>
+</g>
+<g id="Tool node_4">
+<rect x="161" y="510" width="50" height="26" fill="#E3EBCF"/>
+<rect x="161" y="510" width="50" height="26" stroke="#376821" stroke-width="2"/>
+<text id="Member identifier_11" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="175.207" y="526.5">SQL</tspan></text>
+</g>
+<g id="Agent node_2">
+<rect x="78" y="531" width="50" height="26" fill="#E3EBCF"/>
+<rect x="78" y="531" width="50" height="26" stroke="#376821" stroke-width="2"/>
+<text id="Member identifier_12" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="99.4023" y="547.5">A</tspan></text>
+</g>
+<rect id="Protection Pulse &#194;&#183; Connected component" x="55" y="497" width="255" height="136" stroke="#B63D30" stroke-width="2" stroke-dasharray="7 5"/>
+<line id="Dependency edge_9" x1="364" y1="550" x2="364" y2="591" stroke="#A5B0A0" stroke-width="2"/>
+<line id="Dependency edge_10" x1="277" y1="553" x2="277" y2="591" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_11" x1="212.121" y1="596.185" x2="250.121" y2="600.83" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_12" x1="260.141" y1="591.735" x2="200.503" y2="536.735" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_13" x1="129.337" y1="551.376" x2="250.337" y2="594.741" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_14" x1="162.692" y1="580.852" x2="125.261" y2="557.852" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_15" x1="253.612" y1="553.853" x2="209.431" y2="580.853" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_16" x1="212.186" y1="525.929" x2="250.186" y2="533.106" stroke="#376821" stroke-width="2"/>
+<line id="Dependency edge_17" x1="128.755" y1="535.452" x2="159.755" y2="527.609" stroke="#376821" stroke-width="2"/>
+</g>
+</g>
+<text id="Label_34" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="14" letter-spacing="0em"><tspan x="60" y="472.1">&#x4f9d;&#x8d56;&#x5173;&#x7cfb;&#x4ece;&#x771f;&#x5b9e;&#x884c;&#x4e3a;&#x81ea;&#x52a8;&#x63a8;&#x5bfc;</tspan></text>
+<text id="Label_35" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="170" y="446.12">TOOL-CALL GRAPH</tspan></text>
+<text id="Label_36" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="17" font-weight="bold" letter-spacing="0em"><tspan x="60" y="445.3">&#x5de5;&#x5177;&#x8c03;&#x7528;&#x56fe;</tspan></text>
+<text id="Label_37" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="22" font-weight="bold" letter-spacing="0em"><tspan x="60" y="408.04">02  AIDR CORE</tspan></text>
+</g>
+<g id="Main sequence connector_4" clip-path="url(#clip9_3_3582)">
+<text id="Label_38" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="13" letter-spacing="0em"><tspan x="258" y="354.2">&#x5de5;&#x5177;&#x8c03;&#x7528;</tspan></text>
+<rect id="Flow Pixel_4" x="228" y="342" width="8" height="8" fill="#376821"/>
+<path id="Main vertical pipeline_4" d="M232 328V374M240 365.95L232 374L224 365.95" stroke="#376821" stroke-width="4"/>
+</g>
+<g id="01 Agent" clip-path="url(#clip10_3_3582)">
+<g id="Running agent">
+<rect x="45" y="221" width="366" height="106" fill="#FCFBF3"/>
+<rect x="45" y="221" width="366" height="106" stroke="#376821" stroke-width="2"/>
+<text id="Label_39" fill="#175F96" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="11" letter-spacing="0em"><tspan x="342" y="315.625">OTel &#x2192;</tspan></text>
+<text id="Label_40" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="13" letter-spacing="0em"><tspan x="132" y="288.2">&#x5de5;&#x5177;&#x8c03;&#x7528;&#x8bb0;&#x5f55;&#xff1a;&#x8c01; / &#x5de5;&#x5177; / &#x6570;&#x636e;</tspan></text>
+<text id="Label_41" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="22" font-weight="bold" letter-spacing="0em"><tspan x="132" y="259.04">AGENT A</tspan></text>
+<g id="Agent identity">
+<rect x="61" y="244" width="50" height="50" fill="#E3EBCF"/>
+<rect x="61" y="244" width="50" height="50" stroke="#376821" stroke-width="2"/>
+<text id="Label_42" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="32" font-weight="bold" letter-spacing="0em"><tspan x="76.3594" y="278.74">A</tspan></text>
+</g>
+</g>
+<text id="Label_43" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="21" font-weight="bold" letter-spacing="0em"><tspan x="44" y="200.72">01  AGENT</tspan></text>
+</g>
+<path id="Agent telemetry output" d="M400 308H424V763.104H412M419 770L412 763.104L419 756.209" stroke="#175F96" stroke-width="2"/>
+<rect id="Flow Pixel &#194;&#183; Return to agent" x="12" y="1090" width="8" height="8" fill="#B63D30"/>
+<path id="Atomic return to agent" d="M44 1564H16V280.962H44M36 287.924L44 280.962L36 274" stroke="#B63D30" stroke-width="4"/>
+<g id="Platform introduction" clip-path="url(#clip11_3_3582)">
+<rect id="Header rule" x="28" y="167" width="384" height="2" fill="#A5B0A0"/>
+<text id="Label_44" fill="#1C2D24" style="white-space: pre" xml:space="preserve" font-family="Noto Sans SC" font-size="21" font-weight="bold" letter-spacing="0em"><tspan x="28" y="148.4">&#x4e00;&#x5f20;&#x56fe;&#xff0c;&#x4e32;&#x8d77;&#x89c2;&#x5bdf;&#x3001;&#x4fdd;&#x62a4;&#x3001;&#x6062;&#x590d;&#x3002;</tspan></text>
+<text id="Label_45" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="12" letter-spacing="0em"><tspan x="262" y="63.84">AI DATA&#10;</tspan><tspan x="262" y="79.84">RESILIENCE&#10;</tspan><tspan x="262" y="95.84">PLATFORM</tspan></text>
+<text id="Label_46" fill="#376821" style="white-space: pre" xml:space="preserve" font-family="Pixelify Sans" font-size="58" font-weight="bold" letter-spacing="0em"><tspan x="28" y="100.56">AIDR</tspan></text>
+<text id="Label_47" fill="#526257" style="white-space: pre" xml:space="preserve" font-family="IBM Plex Mono" font-size="11" letter-spacing="0em"><tspan x="28" y="33.625">SYSTEM FIELD GUIDE / 001</tspan></text>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_3_3582" x="44" y="374" width="372" height="434" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="4" dy="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0313726 0 0 0 0 0.054902 0 0 0 0 0.0392157 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_3582"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_3582" result="shape"/>
+</filter>
+<clipPath id="clip0_3_3582">
+<rect width="368" height="216" fill="white" transform="translate(44 1402)"/>
+</clipPath>
+<clipPath id="clip1_3_3582">
+<rect width="368" height="46" fill="white" transform="translate(44 1356)"/>
+</clipPath>
+<clipPath id="clip2_3_3582">
+<rect width="368" height="208" fill="white" transform="translate(44 1148)"/>
+</clipPath>
+<clipPath id="clip3_3_3582">
+<rect width="368" height="46" fill="white" transform="translate(44 1102)"/>
+</clipPath>
+<clipPath id="clip4_3_3582">
+<rect width="368" height="252" fill="white" transform="translate(44 850)"/>
+</clipPath>
+<clipPath id="clip5_3_3582">
+<rect width="368" height="210" fill="white" transform="translate(44 892)"/>
+</clipPath>
+<clipPath id="clip6_3_3582">
+<rect width="168" height="142" fill="white" transform="translate(54 941)"/>
+</clipPath>
+<clipPath id="clip7_3_3582">
+<rect width="368" height="46" fill="white" transform="translate(44 804)"/>
+</clipPath>
+<clipPath id="clip8_3_3582">
+<rect width="360" height="170" fill="white" transform="translate(48 490)"/>
+</clipPath>
+<clipPath id="clip9_3_3582">
+<rect width="368" height="46" fill="white" transform="translate(44 328)"/>
+</clipPath>
+<clipPath id="clip10_3_3582">
+<rect width="368" height="148" fill="white" transform="translate(44 180)"/>
+</clipPath>
+<clipPath id="clip11_3_3582">
+<rect width="384" height="146" fill="white" transform="translate(28 22)"/>
+</clipPath>
+</defs>
+</svg>
