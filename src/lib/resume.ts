@@ -3,7 +3,7 @@ import { FEATURED_PROJECTS } from "./siteProfile"
 export const RESUME_META = {
   name: "王略宇",
   role: "AI Agent Engineer",
-  roleNote: "基础设施与自动化 · 华为",
+  roleNote: "工程师A.基础平台PL · 华为",
   location: "底特律 → 中国",
   email: "lueyuw@umich.edu",
   site: "https://lueyu.github.io",
@@ -34,7 +34,7 @@ export const RESUME_EDUCATION = [
 export const RESUME_EXPERIENCE = [
   {
     company: "Huawei · 华为",
-    title: "基础设施与自动化",
+    title: "工程师A.基础平台PL",
     location: "",
     period: "2024 — 至今",
     current: true,
