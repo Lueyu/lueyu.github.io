@@ -1,0 +1,8 @@
+ .project-tilt { position: relative; isolation: isolate; transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; transform-style: preserve-3d; }
+.project-tilt::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; background: radial-gradient(circle at var(--shine-x, 50%) var(--shine-y, 50%), color-mix(in srgb, var(--red) 9%, transparent), transparent 65%); transition: opacity 180ms; }
+.project-tilt:focus-within { outline: 1px solid var(--red); outline-offset: 5px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-tilt:hover { transform: perspective(900px) translateY(-4px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); box-shadow: 0 14px 28px #00000018; }
+  .project-tilt:hover::after { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .project-tilt, .project-tilt::after { transition: none; transform: none; } }

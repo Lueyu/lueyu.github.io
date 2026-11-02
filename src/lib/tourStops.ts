@@ -22,8 +22,8 @@ export const TOUR_STOPS: TourStop[] = [
   },
   {
     id: "about",
-    route: "/",
-    anchor: "about",
+    route: "/resume",
+    anchor: "project-content",
     badge: "STOP 02 / BACKGROUND",
     title: "密歇根双学位 + AI Agent 方向",
     points: [

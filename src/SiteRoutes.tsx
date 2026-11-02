@@ -16,6 +16,10 @@ function RouteFrame() {
 
   useLayoutEffect(() => {
     clearChunkReloadFlag()
+    if (pathname === '/' && (hash === '#about' || hash === '#experience')) {
+      void routerNavigate('/blog', { replace: true })
+      return
+    }
     if (hash) {
       document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({
         behavior: 'instant' as ScrollBehavior,
@@ -23,7 +27,7 @@ function RouteFrame() {
     } else {
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
     }
-  }, [pathname, hash, key])
+  }, [pathname, hash, key, routerNavigate])
 
   useEffect(() => {
     const onStartTour = () => setShowTour(true)
@@ -57,6 +61,9 @@ const router = createBrowserRouter([
     errorElement: <RouteErrorBoundary />,
     children: [
       { path: '/', Component: App },
+      { path: '/blog', lazy: async () => ({ Component: (await import('./pages/BlogPage')).default }) },
+      { path: '/resume', lazy: async () => ({ Component: (await import('./pages/ResumePage')).default }) },
+      { path: '/projects', lazy: async () => ({ Component: (await import('./pages/ProjectsPage')).default }) },
       {
         path: '/projects/aidr',
         lazy: async () => ({

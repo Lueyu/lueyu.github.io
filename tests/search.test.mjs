@@ -56,7 +56,7 @@ test('all query terms must match, including terms spread across title and tags',
 test('search supports Chinese descriptions, full-width text and punctuation in tags', () => {
   assert.equal(find('智能体')[0].href, '/projects/aidr')
   assert.equal(find('ＡＩＤＲ')[0].href, '/projects/aidr')
-  assert.equal(find('C++')[0].href, '/#experience')
+  assert.equal(find('C++')[0].href, '/resume#engineering')
 })
 
 test('empty searches preserve source order without mutating the input', () => {
@@ -77,15 +77,16 @@ test('the index includes every existing project and experience with valid destin
   }
   for (const experience of profile.OTHER_EXPERIENCE) {
     const result = results.find((item) => item.title.includes(experience.company))
-    assert.equal(result?.href, '/#experience')
+    assert.equal(result?.href, '/resume#engineering')
   }
-  assert.ok(results.some((item) => item.href === '/#about'))
+  assert.ok(results.some((item) => item.href === '/blog'))
   assert.ok(results.some((item) => item.href === '/#contact'))
   assert.equal(new Set(results.map((item) => item.id)).size, results.length)
 })
 
 test('an unmatched query has no results and section names are searchable', () => {
   assert.equal(find('zzznothingmatcheszzz').length, 0)
-  assert.equal(find('关于')[0].href, '/#about')
+  assert.equal(find('博客')[0].href, '/blog')
+  assert.equal(find('简历')[0].href, '/resume')
   assert.equal(find('联系')[0].href, '/#contact')
 })

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react"
-import "../resume-dialog.css"
+import { OTHER_EXPERIENCE } from '../lib/siteProfile'
+import '../content-pages.css'
 import {
   RESUME_EDUCATION,
   RESUME_EXPERIENCE,
@@ -9,40 +9,11 @@ import {
   RESUME_SUMMARY,
 } from "../lib/resume"
 
-export default function ResumeModal({ onClose }: { onClose: () => void }) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
-
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (!dialog) return
-
-    const previousFocus = document.activeElement
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = "hidden"
-    dialog.showModal()
-
-    return () => {
-      dialog.close()
-      document.body.style.overflow = previousOverflow
-      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
-        previousFocus.focus({ preventScroll: true })
-      }
-    }
-  }, [])
-
+export default function ResumePage() {
   return (
-    <dialog
-      ref={dialogRef}
-      className="resume-overlay"
-      aria-label="简历预览"
-      onCancel={(event) => {
-        event.preventDefault()
-        onClose()
-      }}
-      onClick={(event) => {
-        if (event.target === event.currentTarget) onClose()
-      }}
-    >
+    <main id="project-content" tabIndex={-1} className="resume-page">
+      <p className="page-kicker">PLAYER PROFILE / RESUME</p>
+      <h1>简历</h1>
       <div className="resume-modal">
         <header className="resume-head">
           <div>
@@ -58,9 +29,7 @@ export default function ResumeModal({ onClose }: { onClose: () => void }) {
               <span>DOWNLOAD PDF</span>
               <b aria-hidden="true">↓</b>
             </a>
-            <button type="button" className="resume-close" onClick={onClose} aria-label="关闭简历预览" autoFocus>
-              ×
-            </button>
+
           </div>
         </header>
 
@@ -133,6 +102,14 @@ export default function ResumeModal({ onClose }: { onClose: () => void }) {
             ))}
           </section>
 
+          <section id="engineering" className="resume-section" aria-label="工程经历">
+            <h3>工程经历 / ENGINEERING</h3>
+            {OTHER_EXPERIENCE.map(item => <article className="resume-entry" key={item.company}>
+              <div className="resume-entry-head"><strong>{item.company}</strong><span>{item.title}</span><em>{item.period}</em></div>
+              <p>{item.description}</p><div className="resume-tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+            </article>)}
+          </section>
+
           <section className="resume-section" aria-label="技能">
             <h3>技能 / SKILLS</h3>
             <ul className="resume-skill-list">
@@ -143,6 +120,6 @@ export default function ResumeModal({ onClose }: { onClose: () => void }) {
           </section>
         </div>
       </div>
-    </dialog>
+    </main>
   )
 }
