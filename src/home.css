@@ -1,7 +1,7 @@
 /* Reading proportions inspired by h1994st's site; original pixel visual system. */
 .portfolio-home { --home-line: color-mix(in srgb, var(--ink) 15%, transparent); --home-soft: color-mix(in srgb, var(--ink) 3%, var(--paper)); overflow: clip; }
-.home-container { width: min(1088px, max(760px, 58vw), calc(100% - 48px)); margin-inline: auto; }
-.portfolio-home main { padding-top: 88px; }
+.home-container { width: var(--reading-width); margin-inline: auto; }
+.portfolio-home main { padding-top: var(--reading-top); }
 .site-shell.portfolio-home :is(h1, h2, h3) { font-family: var(--sans); letter-spacing: -.03em; text-shadow: none; }
 .portfolio-home a, .portfolio-home button { -webkit-tap-highlight-color: transparent; }
 .home-desktop-break { display: none; }

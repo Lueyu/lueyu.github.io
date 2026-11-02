@@ -1,0 +1,76 @@
+/* Shared reading proportions for every route. Keep mobile text and controls usable. */
+:root {
+  --reading-width: min(1088px, max(760px, 58vw), calc(100% - 48px));
+  --reading-top: 88px;
+  --reading-title: clamp(30px, 2.5vw, 48px);
+  --reading-gap: clamp(28px, 2.5vw, 48px);
+}
+
+.project-page > .project-nav {
+  width: var(--reading-width);
+  margin-inline: auto;
+  padding-inline: 0;
+  min-height: 116px;
+  padding-top: var(--reading-top);
+  padding-bottom: 16px;
+}
+.project-page :is(.project-hero, .project-overview, .project-system, .project-story, .project-stack, .next-project) {
+  width: var(--reading-width);
+  margin-inline: auto;
+  padding: 40px 0;
+}
+.project-page .project-hero { min-height: 340px; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--reading-gap); }
+.project-page .project-hero-meta { top: 24px; left: 0; flex-wrap: wrap; font-size: 10px; }
+.project-page .project-hero-title { padding-right: 0; }
+.project-page .project-hero-title h1 { font-size: var(--reading-title); line-height: 1.2; margin-bottom: 16px; overflow-wrap: anywhere; }
+.project-page .project-hero-title > span { font-size: 18px; margin-bottom: 12px; }
+.project-page .project-hero-title p { font-size: 18px; line-height: 1.7; }
+.project-page .blueprint-orbit { width: 150px; height: 150px; }
+.project-page .project-blueprint > p { margin-top: 36px; font-size: 10px; }
+.project-page :is(.project-overview, .story-section, .project-stack) { grid-template-columns: 140px minmax(0, 1fr); gap: 28px; }
+.project-page .project-overview-copy { font-size: 18px; line-height: 1.9; }
+.project-page .project-metrics > div { min-height: 100px; padding: 12px; }
+.project-page .project-metrics strong { font-size: 28px; margin-bottom: 16px; }
+.project-page :is(.project-section-heading h2, .project-stack h2, .story-copy h2) { font-size: 26px; line-height: 1.4; }
+.project-page .project-section-heading { margin-bottom: 28px; }
+.project-page .system-node { min-height: 120px; min-width: 0; padding: 16px 10px; }
+.project-page .system-node > b { right: 4px; width: 22px; height: 22px; }
+.project-page .system-node p { font-size: 13px; overflow-wrap: anywhere; }
+.project-page .story-section { padding-block: 32px; }
+.project-page .story-copy :is(p, li) { font-size: 14px; line-height: 1.9; }
+.project-page .story-index > span { font-size: 24px; }
+.project-page .project-note { margin: 0; }
+.project-page .next-project { min-height: 160px; gap: 24px; }
+.project-page .next-project > strong { font-size: 32px; line-height: 1.2; }
+.project-page .next-project > b { width: 48px; height: 48px; font-size: 24px; }
+.not-found-page { width: var(--reading-width); margin-inline: auto; padding: 140px 0 72px; }
+.not-found-page h1 { font-size: var(--reading-title); line-height: 1.3; }
+
+/* Scale the pixel character independently of its readable chat panel. */
+.floating-agent { right: 20px; bottom: 20px; }
+.floating-agent .agent-trigger { scale: .75; transform-origin: bottom right; }
+.floating-agent .agent-hint { position: absolute; right: 70px; bottom: 44px; margin: 0; padding: 6px 8px; border-width: 1px; font-size: 9px; white-space: nowrap; }
+.floating-agent .agent-panel { bottom: 90px; width: min(330px, calc(100vw - 40px)); max-height: calc(100svh - 132px); display: flex; flex-direction: column; }
+.floating-agent .agent-panel-head { padding: 10px; gap: 8px; flex: 0 0 auto; }
+.floating-agent .agent-thread { height: min(280px, 38svh); min-height: 0; padding: 12px; flex: 1 1 auto; }
+.floating-agent .agent-compose { flex: 0 0 auto; }
+body .lens-button { right: 94px; bottom: 20px; width: 36px; height: 36px; border-width: 2px; }
+body .lens-button svg { width: 18px; height: 18px; }
+
+@media (max-width: 720px) {
+  :root { --reading-width: calc(100% - 40px); --reading-top: 112px; --reading-title: clamp(30px, 7vw, 42px); --reading-gap: 24px; }
+  .project-page > .project-nav { padding-top: 96px; }
+  .project-page :is(.project-hero, .project-overview, .story-section, .project-stack) { grid-template-columns: minmax(0, 1fr); }
+  .project-page .project-hero { padding-top: 80px; gap: 48px; }
+  .project-page .project-hero::before { display: none; }
+  .project-page .project-blueprint { margin-left: 0; padding: 32px 0; }
+  .project-page :is(.project-metrics, .project-note) { grid-column: 1; }
+  .project-page .project-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-page .project-section-heading { align-items: flex-start; flex-direction: column; }
+  .project-page .next-project { grid-template-columns: 1fr auto; }
+  .project-page .next-project > span { grid-column: 1 / -1; }
+  .floating-agent { right: 16px; bottom: 16px; }
+  .floating-agent .agent-trigger { scale: .8; }
+  .floating-agent .agent-hint { display: none; }
+  body .lens-button { right: 86px; bottom: 16px; width: 44px; height: 44px; }
+}

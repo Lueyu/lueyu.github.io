@@ -4,6 +4,7 @@ import SiteRoutes from './SiteRoutes'
 import { initTheme } from './lib/theme'
 import './index.css'
 import './work.css'
+import './site-layout.css'
 
 initTheme()
 
