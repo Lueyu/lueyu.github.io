@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
 import AidrPixelMap from '../components/AidrPixelMap'
-import ThemeToggle from '../components/ThemeToggle'
 import Lightbox from '../components/Lightbox'
 import '../aidr.css'
+import '../project-reading.css'
 
 const foundations = [
   ['Blast radius', 'TOOL-CALL GRAPH → 影响面'],
@@ -78,10 +78,9 @@ export default function AidrPage() {
         <Link to="/">← BACK TO HOME</Link>
         <span>PROJECT FILE / 01</span>
         <span>2026</span>
-        <ThemeToggle />
       </header>
 
-      <main>
+      <main id="project-content" tabIndex={-1}>
         <section className="ad-intro">
           <div className="ad-container">
             <div className="ad-hero">

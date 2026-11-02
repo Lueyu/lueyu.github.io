@@ -1,0 +1,24 @@
+dialog.resume-overlay {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  overscroll-behavior: contain;
+}
+
+dialog.resume-overlay:not([open]) {
+  display: none;
+}
+
+dialog.resume-overlay::backdrop {
+  background: rgba(13, 21, 30, 0.82);
+}
+
+dialog.resume-overlay .resume-head {
+  background: var(--paper-deep);
+  color: var(--ink);
+}

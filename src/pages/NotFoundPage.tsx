@@ -2,7 +2,7 @@ import { Link } from "react-router"
 
 export default function NotFoundPage() {
   return (
-    <main className="not-found-page">
+    <main id="project-content" tabIndex={-1} className="not-found-page">
       <p>ERROR 404</p>
       <h1>
         SECRET LEVEL

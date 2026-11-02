@@ -57,7 +57,7 @@ async function waitForElement(selector: () => HTMLElement | null, timeoutMs: num
 
 function readPage(): ToolResult {
   const onHome = window.location.pathname === "/";
-  const theme = document.querySelector(".site-shell")?.classList.contains("night") ? "night" : "day";
+  const theme = document.documentElement.classList.contains("night") ? "night" : "day";
   const section = onHome ? visibleHomeSection() : null;
   const view = onHome
     ? `home · viewing #${section ?? "unknown"}`
@@ -131,9 +131,7 @@ async function setTheme(mode: unknown): Promise<ToolResult> {
   if (mode !== "day" && mode !== "night") return { ok: false, summary: "mode 只能是 day 或 night" };
   window.dispatchEvent(new CustomEvent("lueyu-agent:set-theme", { detail: mode }));
   await sleep(250);
-  const shell = document.querySelector(".site-shell");
-  if (!shell) return { ok: false, summary: "主题切换只在首页生效" };
-  const applied = shell.classList.contains("night") ? "night" : "day";
+  const applied = document.documentElement.classList.contains("night") ? "night" : "day";
   return applied === mode
     ? { ok: true, summary: `theme → ${mode}` }
     : { ok: false, summary: "主题切换没有生效" };

@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
+import "../resume-dialog.css"
 import {
   RESUME_EDUCATION,
   RESUME_EXPERIENCE,
@@ -9,20 +10,35 @@ import {
 } from "../lib/resume"
 
 export default function ResumeModal({ onClose }: { onClose: () => void }) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose()
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    const previousFocus = document.activeElement
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    dialog.showModal()
+
+    return () => {
+      dialog.close()
+      document.body.style.overflow = previousOverflow
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+        previousFocus.focus({ preventScroll: true })
+      }
     }
-    document.addEventListener("keydown", onKey)
-    return () => document.removeEventListener("keydown", onKey)
-  }, [onClose])
+  }, [])
 
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       className="resume-overlay"
-      role="dialog"
-      aria-modal="true"
       aria-label="简历预览"
+      onCancel={(event) => {
+        event.preventDefault()
+        onClose()
+      }}
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose()
       }}
@@ -42,7 +58,7 @@ export default function ResumeModal({ onClose }: { onClose: () => void }) {
               <span>DOWNLOAD PDF</span>
               <b aria-hidden="true">↓</b>
             </a>
-            <button type="button" className="resume-close" onClick={onClose} aria-label="关闭简历预览">
+            <button type="button" className="resume-close" onClick={onClose} aria-label="关闭简历预览" autoFocus>
               ×
             </button>
           </div>
@@ -127,6 +143,6 @@ export default function ResumeModal({ onClose }: { onClose: () => void }) {
           </section>
         </div>
       </div>
-    </div>
+    </dialog>
   )
 }

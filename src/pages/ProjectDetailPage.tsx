@@ -218,7 +218,7 @@ export default function ProjectDetailPage() {
         <p>{project.year}</p>
       </header>
 
-      <main>
+      <main id="project-content" tabIndex={-1}>
         <section className="project-hero">
           <div className="project-hero-meta">
             <p>{project.eyebrow}</p>

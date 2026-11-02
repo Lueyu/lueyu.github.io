@@ -1,0 +1,24 @@
+.reading-header { position: fixed; z-index: 50; top: 22px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 24px); }
+.reading-nav { display: flex; align-items: center; gap: 5px; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 5px; background: color-mix(in srgb, var(--paper) 94%, transparent); box-shadow: 4px 4px 0 color-mix(in srgb, var(--ink) 9%, transparent); backdrop-filter: blur(16px); white-space: nowrap; }
+.reading-nav > a, .reading-nav > button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 6px 12px; border: 0; border-radius: 2px; background: transparent; color: var(--muted); font: 14px/1.5 var(--sans); cursor: pointer; text-decoration: none; }
+.reading-nav > :is(a, button):hover, .reading-nav > [aria-current] { background: color-mix(in srgb, var(--ink) 7%, transparent); color: var(--ink); }
+.reading-nav .reading-brand { margin-right: 8px; padding-left: 2px; color: var(--ink); font: 700 18px/1 var(--pixel); letter-spacing: .04em; }
+.reading-brand > span { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid #24241f; background: var(--red); color: #17212c; box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink) 45%, transparent); }
+.reading-nav-divider { height: 20px; border-left: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); margin: 0 3px; }
+.reading-search svg { width: 18px; height: 18px; }
+.reading-search kbd { font: 12px monospace; opacity: .65; }
+.reading-nav .mode-button { gap: 6px; font: 13px var(--pixel); color: var(--ink); }
+.site-skip-link { position: fixed; z-index: 180; top: -100px; left: 16px; padding: 12px 20px; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); }
+.site-skip-link:focus { top: 12px; }
+.ad-page > .ad-nav, .dp-page > .dp-nav, .project-page > .project-nav { height: auto; min-height: 150px; padding-top: 100px; padding-bottom: 20px; border-bottom-width: 1px; font-size: 14px; }
+html { scroll-padding-top: 100px; }
+@media (max-width: 600px) {
+  .reading-header { top: 12px; }
+  .reading-nav { gap: 0; padding: 5px 7px; }
+  .reading-nav > a, .reading-nav > button { padding-inline: 9px; min-height: 40px; font-size: 13px; }
+  .reading-nav .reading-brand { margin-right: 3px; font-size: 16px; }
+  .reading-nav .mode-button > span, .reading-search kbd { display: none; }
+  .reading-nav-divider { margin-inline: 1px; }
+}
+@media (max-width: 360px) { .reading-brand b { display: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

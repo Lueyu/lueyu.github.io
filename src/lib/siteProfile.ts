@@ -93,6 +93,7 @@ export const HOME_SECTIONS = [
   { id: "home", title: "HERO" },
   { id: "about", title: "ABOUT" },
   { id: "work", title: "WORK" },
+  { id: "experience", title: "EXPERIENCE" },
   { id: "contact", title: "CONTACT" },
 ] as const;
 

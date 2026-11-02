@@ -5,10 +5,12 @@ import AgentPanel from './components/AgentPanel'
 import PageLens from './components/PageLens'
 import RouteErrorBoundary, { clearChunkReloadFlag } from './components/RouteErrorBoundary'
 import InterviewTour from './components/InterviewTour'
+import SiteHeader from './components/SiteHeader'
+import SiteSearch from './components/SiteSearch'
 import { registerRouter } from './lib/agentTools'
 
 function RouteFrame() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, key } = useLocation()
   const [showTour, setShowTour] = useState(false)
   const routerNavigate = useNavigate()
 
@@ -21,7 +23,7 @@ function RouteFrame() {
     } else {
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
     }
-  }, [pathname, hash])
+  }, [pathname, hash, key])
 
   useEffect(() => {
     const onStartTour = () => setShowTour(true)
@@ -31,7 +33,9 @@ function RouteFrame() {
 
   return (
     <>
+      <SiteHeader />
       <Outlet />
+      <SiteSearch />
       <AgentPanel />
       <PageLens />
       {showTour && (

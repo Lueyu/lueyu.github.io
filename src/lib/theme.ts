@@ -2,7 +2,7 @@ const STORAGE_KEY = "lueyu:theme"
 
 export type Theme = "day" | "night"
 
-let current: Theme = "day"
+let current: Theme = "night"
 const listeners = new Set<() => void>()
 
 function readInitial(): Theme {
@@ -10,14 +10,19 @@ function readInitial(): Theme {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored === "day" || stored === "night") return stored
   } catch {
-    return "day"
+    // Storage can be unavailable in private or restricted contexts.
   }
-  const hour = new Date().getHours()
-  return hour >= 18 || hour < 6 ? "night" : "day"
+  return "night"
 }
 
 function apply(theme: Theme): void {
-  document.documentElement.classList.toggle("night", theme === "night")
+  // Keep these browser colors aligned with the first-paint script in index.html.
+  const night = theme === "night"
+  const background = night ? "#17212c" : "#f4f0e6"
+  document.documentElement.classList.toggle("night", night)
+  document.documentElement.style.colorScheme = night ? "dark" : "light"
+  document.documentElement.style.backgroundColor = background
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", background)
 }
 
 export function initTheme(): void {
@@ -44,7 +49,7 @@ function persistAndNotify(): void {
   try {
     localStorage.setItem(STORAGE_KEY, current)
   } catch {
-    return
+    // The selection still applies for this visit when it cannot be persisted.
   }
   apply(current)
   for (const listener of listeners) listener()

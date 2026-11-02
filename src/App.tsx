@@ -1,380 +1,67 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router"
-import AgentPanel from "./components/AgentPanel"
-import ThemeToggle, { useNight } from "./components/ThemeToggle"
-import ResumeModal from "./components/ResumeModal"
-import { setTheme } from "./lib/theme"
-import { FEATURED_PROJECTS, OTHER_EXPERIENCE } from "./lib/siteProfile"
+import { Link } from 'react-router'
+import { useNight } from './components/ThemeToggle'
+import PixelWorld from './components/PixelWorld'
+import TypedIntro from './components/TypedIntro'
+import { FEATURED_PROJECTS, OTHER_EXPERIENCE } from './lib/siteProfile'
+import './home.css'
 
-const featuredProjects = FEATURED_PROJECTS
-
-const otherProjects = OTHER_EXPERIENCE
-
-function PixelCloud({ className = "" }: { className?: string }) {
-  return (
-    <div className={`pixel-cloud ${className}`} aria-hidden="true">
-      <i />
-      <i />
-      <i />
-      <i />
-    </div>
-  )
-}
-
-function App() {
+export default function App() {
   const isNight = useNight()
-  useEffect(() => {
-    document.documentElement.classList.add("js-anim")
-    const elements = document.querySelectorAll("[data-reveal]")
-    if (!("IntersectionObserver" in window)) {
-      elements.forEach((element) => element.classList.add("is-revealed"))
-      return
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed")
-            observer.unobserve(entry.target)
-          }
-        }
-      },
-      { threshold: 0.12 },
-    )
-    elements.forEach((element) => observer.observe(element))
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const onSetTheme = (event: Event) => {
-      const mode = (event as CustomEvent<string>).detail
-      setTheme(mode === "night" ? "night" : "day")
-    }
-    window.addEventListener("lueyu-agent:set-theme", onSetTheme)
-    return () => window.removeEventListener("lueyu-agent:set-theme", onSetTheme)
-  }, [])
-
-  const [showMoreWork, setShowMoreWork] = useState(false)
-  const [showResume, setShowResume] = useState(false)
-
+  const projects = FEATURED_PROJECTS.filter((project) => project.slug !== 'next-quest')
+  const nextQuest = FEATURED_PROJECTS.find((project) => project.slug === 'next-quest')
   return (
-    <div className={`site-shell ${isNight ? "night" : ""}`}>
-      <header className="topbar">
-        <a className="wordmark" href="#home" aria-label="回到首页">
-          <span className="mark-block" aria-hidden="true">
-            L
-          </span>
-          <span>LUEYU</span>
-        </a>
-
-        <nav className="nav" aria-label="主要导航">
-          <a href="#about">ABOUT</a>
-          <a href="#work">WORK</a>
-          <a href="#contact">CONTACT</a>
-        </nav>
-
-        <div className="topbar-actions">
-          <button
-            type="button"
-            className="topbar-resume-button"
-            onClick={() => setShowResume(true)}
-            aria-label="打开简历预览"
-          >
-            <span>RESUME</span>
-            <b aria-hidden="true">↗</b>
-          </button>
-
-          <ThemeToggle />
-        </div>
-      </header>
-
-      {showResume && <ResumeModal onClose={() => setShowResume(false)} />}
-
-      <main>
-        <section className="hero" id="home">
-          <div className="hero-sky" aria-hidden="true">
-            <PixelCloud className="cloud-one" />
-            <PixelCloud className="cloud-two" />
-            <PixelCloud className="cloud-three" />
-            <PixelCloud className="cloud-four" />
-            <div className="sun" />
+    <div className={`site-shell portfolio-home ${isNight ? 'night' : ''}`}>
+      <main id="main-content" tabIndex={-1} className="home-container">
+        <section className="home-hero" id="home" aria-labelledby="home-title">
+          <div className="home-identity">
+            <p className="home-kicker"><i aria-hidden="true" /> AI AGENT DEVELOPER · LUEYU</p>
+            <h1 id="home-title">你好，我是 <span>Lueyu</span><span className="home-period">.</span></h1>
+            <TypedIntro />
+            <p className="home-lead">一名专注 AI Agent 的程序员。<br />喜欢构建清晰、可靠的系统，<br className="home-desktop-break" />让模型在真实任务中行动。</p>
+            <p className="home-background">研发经历 · Huawei / Subaru R&amp;D</p>
+            <div className="home-actions">
+              <a className="home-button home-button-primary" href="#work">查看项目 <span aria-hidden="true">↗</span></a>
+              <button className="home-button" onClick={() => window.dispatchEvent(new CustomEvent('lueyu:open-resume'))}>查看简历 <span aria-hidden="true">↓</span></button>
+            </div>
+            <div className="home-socials"><a href="https://github.com/Lueyu" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="mailto:lueyuwang@gmail.com">Email <span aria-hidden="true">↗</span></a><span className="home-location">CHINA / EARTH</span></div>
           </div>
-          <div className="tiny-stars" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </div>
-
-          <div className="hero-copy">
-            <p className="eyebrow" data-reveal>
-              <span>WORLD 1–1</span>
-              <span>HELLO, WORLD!</span>
-            </p>
-            <h1 data-reveal>
-              I BUILD
-              <br />
-              <span>AI AGENTS</span>
-              <br />
-              THAT ACT.
-            </h1>
-            <p className="intro" data-reveal>
-              你好，我是 Lueyu。
-              <br />
-              一名专注 AI Agent 的程序员，曾就职于 Huawei 与 Subaru R&amp;D。
-            </p>
-            <a className="pixel-button primary-button" href="#work" data-reveal>
-              <span>VIEW MY WORK</span>
-              <b aria-hidden="true">→</b>
-            </a>
-          </div>
-
-          <div className="hero-scene" aria-hidden="true">
-            <div className="pixel-tree tree-back">
-              <i />
-              <b />
-            </div>
-            <div className="question-block">?</div>
-            <div className="brick-row">
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="pixel-person">
-              <div className="person-head">
-                <i />
-              </div>
-              <div className="person-body" />
-              <div className="person-leg left" />
-              <div className="person-leg right" />
-            </div>
-            <div className="pixel-tree tree-front">
-              <i />
-              <b />
-            </div>
-            <div className="flag">
-              <i />
-              <b>HI</b>
-            </div>
-            <div className="ground">
-              {Array.from({ length: 18 }, (_, index) => (
-                <i key={index} />
-              ))}
-            </div>
-          </div>
-
-          <a className="scroll-cue" href="#about">
-            <span>SCROLL TO START</span>
-            <i aria-hidden="true">↓</i>
-          </a>
+          <PixelWorld />
         </section>
-
-        <section className="about section-grid" id="about">
-          <div className="section-label" data-reveal>
-            <span>01</span>
-            <p>ABOUT ME</p>
-          </div>
-
-          <div className="about-copy" data-reveal>
-            <p className="large-copy">
-              我喜欢做<span>清晰、可靠的系统，</span>
-              也对新的交互方式保持好奇。
-            </p>
-            <div className="about-details">
-              <p>
-                在 Huawei 从事软件研发。现在主要关注 AI
-                Agent，以及大模型在实际任务中的应用。
-              </p>
-              <dl>
-                <div>
-                  <dt>BASED IN</dt>
-                  <dd>CHINA / EARTH</dd>
-                </div>
-                <div>
-                  <dt>CURRENTLY</dt>
-                  <dd>BUILDING AI AGENTS</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
-          <div className="about-object" aria-hidden="true" data-reveal>
-            <div className="pixel-flower">
-              <i className="petal p1" />
-              <i className="petal p2" />
-              <i className="petal p3" />
-              <i className="petal p4" />
-              <i className="flower-core" />
-              <b />
-            </div>
-            <div className="pixel-flower flower-two">
-              <i className="petal p1" />
-              <i className="petal p2" />
-              <i className="petal p3" />
-              <i className="petal p4" />
-              <i className="flower-core" />
-              <b />
-            </div>
-            <div className="pixel-bush">
-              <i />
-              <i />
-            </div>
-            <div className="pixel-bee" />
-            <span>KEEP GROWING</span>
-          </div>
-
-          <a className="scroll-cue section-next" href="#work">
-            <span>NEXT PAGE</span>
-            <i aria-hidden="true">↓</i>
-          </a>
-        </section>
-
-        <section className="work" id="work">
-          <div className="work-heading section-grid">
-            <div className="section-label light" data-reveal>
-              <span>02</span>
-              <p>SELECTED WORK</p>
-            </div>
-            <div data-reveal>
-              <p className="kicker">FEATURED WORK</p>
-              <h2>SELECTED QUESTS</h2>
-            </div>
-          </div>
-
-          <div className="project-grid">
-            {featuredProjects.map((project) => (
-              <article
-                className={`project-card ${project.color}`}
-                key={project.number}
-                data-reveal
-                data-project-slug={project.slug}
-              >
-                <div className="project-top">
-                  <span>{project.number}</span>
-                  <span>{project.role}</span>
-                </div>
-                <div className="project-art" aria-hidden="true">
-                  <i />
-                  <i />
-                  <b>{project.number}</b>
-                </div>
-                <p className="project-eyebrow">{project.eyebrow}</p>
-                <h3>{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <ul className="project-highlights">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-                {project.details && (
-                  <details className="project-details">
-                    <summary>
-                      CASE NOTES <span>＋</span>
-                    </summary>
-                    <p>{project.details}</p>
-                  </details>
-                )}
-                <div className="project-footer">
-                  <div>
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                  <Link
-                    className="project-link"
-                    to={`/projects/${project.slug}`}
-                    aria-label={`打开 ${project.title} 项目详情`}
-                  >
-                    OPEN <b aria-hidden="true">↗</b>
-                  </Link>
-                </div>
+        <div className="home-below">
+          <section id="work" className="home-projects" aria-labelledby="projects-title">
+            <div className="home-section-heading"><h2 id="projects-title">精选项目 <span>Projects</span></h2><span className="home-section-number">01 / BUILD</span></div>
+            <div className="home-project-list">{projects.map((project) => (
+              <article className={`home-project home-project-${project.color}`} key={project.slug} data-project-slug={project.slug}>
+                <div className="home-project-meta"><span>{project.eyebrow}</span><span>{project.number}</span></div>
+                <Link className="home-project-title" to={`/projects/${project.slug}`}><h3>{project.title}</h3><span aria-hidden="true">↗</span></Link>
+                <p className="home-project-description">{project.description}</p>
+                <ul className="home-highlights">{project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
+                <div className="home-project-foot"><span className="home-role">{project.role}</span><div className="home-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+                <details className="home-case-notes"><summary>项目笔记 <span aria-hidden="true">+</span></summary><p>{project.details}</p><Link to={`/projects/${project.slug}`}>阅读完整项目 →</Link></details>
               </article>
-            ))}
-          </div>
-
-          <div className="more-work">
-            <div className="more-work-heading">
-              <div>
-                <p className="kicker">MORE FROM THE JOURNEY</p>
-                <h3>OTHER PROJECTS &amp; EXPERIENCE</h3>
-              </div>
-              <button
-                type="button"
-                className="more-work-button"
-                onClick={() => setShowMoreWork((value) => !value)}
-                aria-expanded={showMoreWork}
-                aria-controls="other-projects"
-              >
-                <span>{showMoreWork ? "HIDE ARCHIVE" : "OPEN ARCHIVE"}</span>
-                <b aria-hidden="true">{showMoreWork ? "−" : "+"}</b>
-              </button>
-            </div>
-
-            <div
-              className={`other-projects ${showMoreWork ? "is-visible" : ""}`}
-              id="other-projects"
-            >
-              {otherProjects.map((project, index) => (
-                <article className="other-project" key={project.company}>
-                  <div className="other-project-index">
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <i aria-hidden="true" />
-                  </div>
-                  <p className="other-project-period">{project.period}</p>
-                  <div className="other-project-copy">
-                    <p>{project.company}</p>
-                    <h4>{project.title}</h4>
-                    <p>{project.description}</p>
-                  </div>
-                  <div className="other-project-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-          <a className="scroll-cue section-next" href="#contact">
-            <span>NEXT PAGE</span>
-            <i aria-hidden="true">↓</i>
-          </a>
+            ))}</div>
+            {nextQuest && <Link to={`/projects/${nextQuest.slug}`} className="home-next-quest" data-project-slug={nextQuest.slug}><span className="home-quest-icon" aria-hidden="true">?</span><span><strong>{nextQuest.title} <small>NEXT QUEST</small></strong><span>{nextQuest.description}</span><em>{nextQuest.highlights.join(' · ')}</em></span><b aria-hidden="true">→</b></Link>}
+          </section>
+          <section id="experience" className="home-experience" aria-labelledby="experience-title">
+            <div className="home-section-heading"><h2 id="experience-title">沿途经历 <span>Experience</span></h2><span className="home-section-number">02 / JOURNEY</span></div>
+            <div className="home-experience-list">{OTHER_EXPERIENCE.map((item) => <article className="home-job" key={item.company}><p className="home-job-date">{item.period}</p><h3>{item.company}</h3><p className="home-job-title">{item.title}</p><p className="home-job-description">{item.description}</p><div className="home-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></article>)}</div>
+            <button className="home-text-link" onClick={() => window.dispatchEvent(new CustomEvent('lueyu:open-resume'))}>查看完整简历 <span aria-hidden="true">→</span></button>
+            <div className="home-growing"><span aria-hidden="true">✳</span><p>KEEP GROWING<small>保持好奇，继续探索。</small></p></div>
+          </section>
+        </div>
+        <section className="home-about" id="about" aria-labelledby="about-title">
+          <p className="home-kicker">03 / THE PLAYER BEHIND THE PIXELS</p><h2 id="about-title">关于我 <span>Who am I?</span></h2>
+          <p className="home-about-lead">我喜欢做<span>清晰、可靠的系统，</span><br />也对新的交互方式保持好奇。</p>
+          <p>我有 Huawei 与 Subaru R&amp;D 的研发经历，现在主要关注 AI Agent，以及大模型在实际任务中的应用。从基础设施与自动化，到全栈应用与工具调用，我在意的是一个系统如何真正运转，以及在出错之后如何恢复。</p>
+          <div className="home-focus"><span>CURRENTLY EXPLORING</span><ul><li>Agent 规划、工具调用与多智能体协作</li><li>可观测、可验证、可恢复的软件系统</li><li>模型能力、人机协作与新的开发体验</li></ul></div>
+          <a className="home-text-link" href="#work">看看我正在做的项目 →</a>
         </section>
-
-        <section className="contact" id="contact">
-          <div className="contact-art" aria-hidden="true">
-            <PixelCloud />
-            <div className="pipe">
-              <i />
-            </div>
-          </div>
-          <p className="eyebrow" data-reveal>NEXT LEVEL</p>
-          <h2 data-reveal>
-            LET’S BUILD
-            <br />
-            THE NEXT AGENT.
-          </h2>
-          <p data-reveal>欢迎交流 AI Agent、软件工程，以及正在做的有趣项目。</p>
-          <a
-            className="pixel-button contact-button"
-            href="mailto:lueyuwang@gmail.com"
-            data-reveal
-          >
-            <span>SAY HELLO</span>
-            <b aria-hidden="true">→</b>
-          </a>
-          <a className="scroll-cue section-next" href="#home">
-            <span>BACK TO START</span>
-            <i aria-hidden="true">↑</i>
-          </a>
+        <section className="home-contact" id="contact" aria-labelledby="contact-title">
+          <div><p className="home-kicker">NEXT LEVEL</p><h2 id="contact-title">一起构建下一个 Agent<span>.</span></h2><p>欢迎交流 AI Agent、软件工程，以及正在做的有趣项目。</p></div>
+          <a className="home-contact-link" href="mailto:lueyuwang@gmail.com">lueyuwang@gmail.com <span aria-hidden="true">↗</span></a>
         </section>
       </main>
-
-      <footer>
-        <p>© {new Date().getFullYear()} LUEYU. BUILT WITH CARE.</p>
-        <p>THANKS FOR PLAYING</p>
-      </footer>
+      <footer className="home-footer home-container"><div><a href="#home">LUEYU</a><span>© {new Date().getFullYear()} · BUILT WITH CARE</span></div><a href="#home">THANKS FOR PLAYING <span aria-hidden="true">↑</span></a></footer>
     </div>
   )
 }
-
-export default App

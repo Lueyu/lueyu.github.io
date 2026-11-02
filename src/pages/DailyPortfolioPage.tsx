@@ -1,9 +1,9 @@
 import { Link } from 'react-router'
 import DailyPortfolioShowcase from './DailyPortfolioShowcase'
 import DailyPortfolioSystemMap from './DailyPortfolioSystemMap'
-import ThemeToggle from '../components/ThemeToggle'
 import '../daily-portfolio.css'
 import '../daily-portfolio-updates.css'
+import '../project-reading.css'
 
 const engineeringPractices = [
   ['ISOLATE', '使用容器隔离 Agent 的代码执行环境。'],
@@ -41,10 +41,9 @@ export default function DailyPortfolioPage() {
         <Link to="/">← BACK TO HOME</Link>
         <span>PROJECT FILE / 02</span>
         <span>2025</span>
-        <ThemeToggle />
       </header>
 
-      <main>
+      <main id="project-content" tabIndex={-1}>
         <section className="dp-intro">
           <div className="dp-container">
             <div className="dp-hero">
