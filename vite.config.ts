@@ -12,8 +12,8 @@ export default defineConfig({
         const output = join(process.cwd(), 'dist')
         const entry = join(output, 'index.html')
 
-        for (const slug of ['aidr', 'daily-portfolio', 'next-quest']) {
-          const route = join(output, 'projects', slug)
+        for (const path of ['projects', 'blog', 'resume', 'projects/aidr', 'projects/daily-portfolio', 'projects/next-quest']) {
+          const route = join(output, path)
           mkdirSync(route, { recursive: true })
           copyFileSync(entry, join(route, 'index.html'))
         }
