@@ -1,8 +1,8 @@
 /* Shared reading proportions for every route. Keep mobile text and controls usable. */
 :root {
-  --reading-width: min(1088px, max(760px, 58vw), calc(100% - 48px));
-  --reading-top: 88px;
-  --reading-title: clamp(30px, 2.5vw, 48px);
+  --reading-width: min(1160px, max(900px, 66vw), calc(100% - 48px));
+  --reading-top: 104px;
+  --reading-title: clamp(36px, 3vw, 48px);
   --reading-gap: clamp(28px, 2.5vw, 48px);
 }
 
@@ -37,7 +37,7 @@
 .project-page .system-node > b { right: 4px; width: 22px; height: 22px; }
 .project-page .system-node p { font-size: 13px; overflow-wrap: anywhere; }
 .project-page .story-section { padding-block: 32px; }
-.project-page .story-copy :is(p, li) { font-size: 14px; line-height: 1.9; }
+.project-page .story-copy :is(p, li) { font-size: 16px; line-height: 1.9; }
 .project-page .story-index > span { font-size: 24px; }
 .project-page .project-note { margin: 0; }
 .project-page .next-project { min-height: 160px; gap: 24px; }
@@ -45,6 +45,15 @@
 .project-page .next-project > b { width: 48px; height: 48px; font-size: 24px; }
 .not-found-page { width: var(--reading-width); margin-inline: auto; padding: 140px 0 72px; }
 .not-found-page h1 { font-size: var(--reading-title); line-height: 1.3; }
+
+/* Reading text uses the sans face; pixel lettering stays on decorative labels. */
+.content-page :is(h1, h2, h3), .resume-page :is(h1, h2, h3) { text-shadow: none; }
+.resume-page .resume-section > p, .resume-page .resume-entry li { font-size: 16px; line-height: 1.85; }
+.resume-page .resume-entry { padding: 16px; }
+.resume-page .resume-entry-head strong { font-size: 18px; }
+.resume-page .resume-head span { font-size: 14px; }
+.resume-page .resume-contact-line { overflow-wrap: anywhere; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
 
 /* Scale the pixel character independently of its readable chat panel. */
 .floating-agent { right: 20px; bottom: 20px; }

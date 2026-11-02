@@ -3,11 +3,11 @@
 .ad-page > .ad-nav, .dp-page > .dp-nav { min-height: 116px; padding-top: var(--reading-top); padding-bottom: 16px; font-size: 12px; }
 .ad-page .ad-hero, .dp-page .dp-hero { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--reading-gap); padding-block: 32px; align-items: center; }
 .ad-page .ad-identity, .dp-page .dp-identity { min-width: 0; }
-.ad-page .ad-identity h1, .dp-page .dp-identity h1 { margin: 20px 0 16px; font-size: var(--reading-title); line-height: 1.15; }
+.ad-page .ad-identity h1, .dp-page .dp-identity h1 { margin: 20px 0 16px; font-family: var(--sans); font-weight: 700; text-shadow: none; font-size: var(--reading-title); line-height: 1.15; }
 .ad-page .ad-classification, .dp-page .dp-classification { flex-wrap: wrap; gap: 8px; font-size: 12px; white-space: normal; }
 .ad-page .ad-classification small, .dp-page .dp-classification small { font-size: 11px; }
-.ad-page .ad-subtitle, .dp-page .dp-subtitle { font-size: 20px; line-height: 1.65; }
-.ad-page .ad-hero-links, .dp-page .dp-hero-links { flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; font-size: 12px; line-height: 1.7; }
+.ad-page .ad-subtitle, .dp-page .dp-subtitle { font-size: 22px; line-height: 1.65; }
+.ad-page .ad-hero-links, .dp-page .dp-hero-links { flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; font-size: 14px; line-height: 1.7; }
 .ad-page .ad-cover, .dp-page .dp-cover { width: 100%; height: auto; aspect-ratio: 1.4; min-height: 200px; border-width: 2px; box-shadow: 5px 5px 0 var(--muted); }
 .ad-page :is(.ad-cover-top, .ad-cover-bottom), .dp-page :is(.dp-cover-top, .dp-cover-bottom) { font-size: 10px; }
 .ad-page .ad-cover strong, .dp-page .dp-cover strong { font-size: 64px; }
@@ -15,16 +15,16 @@
 .dp-page .dp-cover-diamonds { width: 78%; height: auto; margin: 0; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .ad-page .ad-overview, .dp-page .dp-overview { grid-template-columns: 140px minmax(0, 1fr); gap: var(--reading-gap); min-height: 0; padding-block: 24px; border-width: 1px; }
 .ad-page .ad-overview > span, .dp-page .dp-overview > span { font-size: 13px; }
-.ad-page .ad-overview p, .dp-page .dp-overview p { font-size: 14px; line-height: 1.9; }
+.ad-page .ad-overview p, .dp-page .dp-overview p { font-size: 16px; line-height: 1.9; }
 .ad-page .ad-foundations, .dp-page .dp-foundations { min-height: 0; padding-bottom: 32px; gap: 12px; }
 .ad-page .ad-foundations strong, .dp-page .dp-foundations strong { font-size: 21px; }
 .ad-page .ad-foundations span, .dp-page .dp-foundations span { font-size: 10px; overflow-wrap: anywhere; }
 .ad-page :is(.ad-shots, .ad-story-section, .ad-map, .ad-toolbox), .dp-page :is(.dp-showcase, .dp-story-section, .dp-map, .dp-toolbox) { padding-block: 40px; min-height: 0; }
 .ad-page :is(.ad-story-grid, .ad-toolbox-grid), .dp-page :is(.dp-story-grid, .dp-toolbox-grid) { grid-template-columns: 140px minmax(0, 1fr); gap: var(--reading-gap); }
 .ad-page .ad-story-number, .dp-page .dp-story-number { font-size: 40px; }
-.ad-page .ad-story-content > p, .dp-page .dp-story-content > p { max-width: 680px; margin-top: 18px; font-size: 14px; line-height: 1.9; }
+.ad-page .ad-story-content > p, .dp-page .dp-story-content > p { max-width: 680px; margin-top: 18px; font-size: 16px; line-height: 1.9; }
 .ad-page :is(.ad-story-content h2, .ad-shots-heading h2, .ad-map-heading h2, .ad-toolbox-heading h2), .dp-page :is(.dp-story-content h2, .dp-showcase-heading h2, .dp-map-heading h2, .dp-toolbox-heading h2) { font-size: 26px; line-height: 1.4; }
-.ad-page .ad-shots-heading > p:last-child, .dp-page .dp-showcase-heading > div > p:last-child, .dp-page .dp-map-heading > div:first-child > p:last-child { font-size: 14px; line-height: 1.9; }
+.ad-page .ad-shots-heading > p:last-child, .dp-page .dp-showcase-heading > div > p:last-child, .dp-page .dp-map-heading > div:first-child > p:last-child { font-size: 16px; line-height: 1.9; }
 .ad-page .ad-shot-grid, .dp-page .dp-showcase-grid { gap: 24px; }
 .dp-page .dp-showcase-image, .dp-page .dp-showcase-card:nth-child(n + 3) .dp-showcase-image { height: auto; aspect-ratio: 1.7; }
 .dp-page .dp-showcase-heading { margin-bottom: 28px; }

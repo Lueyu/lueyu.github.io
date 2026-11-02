@@ -42,6 +42,7 @@ export default function App() {
                 <details className="home-case-notes"><summary>项目笔记 <span aria-hidden="true">+</span></summary><p>{project.details}</p><Link to={`/projects/${project.slug}`}>阅读完整项目 →</Link></details>
               </TiltCard>
             ))}</div>
+            <Link className="home-text-link" to="/projects">查看项目 →</Link>
             {nextQuest && <Link to={`/projects/${nextQuest.slug}`} className="home-next-quest" data-project-slug={nextQuest.slug}><span className="home-quest-icon" aria-hidden="true">?</span><span><strong>{nextQuest.title} <small>NEXT QUEST</small></strong><span>{nextQuest.description}</span><em>{nextQuest.highlights.join(' · ')}</em></span><b aria-hidden="true">→</b></Link>}
           </section>
           <section id="blog" className="home-blog" aria-labelledby="blog-title">

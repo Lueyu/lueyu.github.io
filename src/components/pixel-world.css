@@ -1,0 +1,40 @@
+.pixel-world { min-width: 0; margin: 0; border: 1px solid var(--home-line); background: var(--home-soft); border-radius: 5px; box-shadow: 5px 5px 0 color-mix(in srgb, var(--ink) 4%, transparent); overflow: hidden; }
+.pixel-world-top, .pixel-world figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; color: var(--muted); font: 12px/1.2 var(--pixel); letter-spacing: .06em; }
+.pixel-world-top { border-bottom: 1px solid var(--home-line); }
+.pixel-world-top > span { display: flex; align-items: center; gap: 8px; }
+.pixel-world-top i, .pixel-world figcaption i { width: 6px; height: 6px; display: inline-block; background: var(--green); }
+.pixel-world figcaption { font-size: 11px; }
+.pixel-world figcaption span:first-child { color: var(--green); }
+.pixel-world figcaption i { margin-right: 6px; }
+.world-motion-toggle { display: inline-flex; align-items: center; gap: 6px; margin: -6px 0; min-height: 32px; padding: 4px 6px; border: 0; border-radius: 2px; color: var(--muted); background: transparent; font: 12px var(--sans); cursor: pointer; }
+.world-motion-toggle:hover { background: var(--home-line); color: var(--ink); }
+.pixel-world-screen { position: relative; }
+.pixel-world-screen::after { content: ''; pointer-events: none; position: absolute; inset: 0; background: repeating-linear-gradient(transparent 0 3px, #00000006 3px 4px); }
+.pixel-world svg { display: block; width: 100%; height: auto; }
+.world-sky { fill: #e9e3d5; }
+.night .world-sky { fill: #14232d; }
+.world-clouds { fill: #fffaf0; color: #b0a991; }
+.night .world-clouds { fill: #607587; color: #1a2d3a; opacity: .5; }
+.world-stars, .world-moon { display: none; }
+.night .world-stars, .night .world-moon { display: block; }
+.night .world-sun { display: none; }
+.world-welcome { font: 700 32px var(--pixel); letter-spacing: 3px; fill: #fff0c7; }
+.world-player { animation: world-jump 6.4s linear infinite; }
+.world-question { animation: world-bump 6.4s linear infinite; }
+.world-reward { animation: world-welcome 6.4s linear infinite; }
+.world-twinkle { animation: world-twinkle 3.2s steps(2) infinite; }
+.pixel-world.is-paused :is(.world-player, .world-question, .world-reward, .world-twinkle) { animation-play-state: paused; }
+@keyframes world-jump { 0%, 14%, 38%, 100% { transform: translateY(0); } 20% { transform: translateY(-28px); } 25%, 26% { transform: translateY(-42px); } 32% { transform: translateY(-26px); } }
+@keyframes world-bump { 0%, 24%, 35%, 100% { transform: translateY(0); } 27%, 29% { transform: translateY(-7px); } }
+@keyframes world-welcome { 0%, 25% { opacity: 0; transform: translateY(26px); } 34%, 78% { opacity: 1; transform: translateY(0); } 88%, 100% { opacity: 0; transform: translateY(-6px); } }
+@keyframes world-twinkle { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
+@media (max-width: 720px) {
+  .world-motion-toggle { min-height: 44px; margin-block: -10px; }
+  .pixel-world-top, .pixel-world figcaption { padding-inline: 12px; }
+  .pixel-world figcaption { font-size: 10px; letter-spacing: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pixel-world :is(.world-player, .world-question, .world-reward, .world-twinkle) { animation: none; }
+  .world-reward { opacity: 1; transform: none; }
+  .world-motion-toggle { display: none; }
+}
