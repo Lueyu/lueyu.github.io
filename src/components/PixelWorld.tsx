@@ -37,7 +37,8 @@ export default function PixelWorld() {
           <path d="M244 184h36M262 166v18m-10 0v18M320 184h36M338 166v18m-10 0v18" strokeWidth="2"/>
         </g>
         <g className="world-reward">
-          <path d="M197 89h206v40H197z" fill="#0d191f" opacity=".8"/>
+          <path className="world-reward-shadow" d="M205 89h190v4h8v32h-8v4H205v-4h-8V93h8Z" transform="translate(3 4)"/>
+          <path className="world-reward-panel" d="M205 89h190v4h8v32h-8v4H205v-4h-8V93h8Z"/>
           <text x="300" y="118" textAnchor="middle" className="world-welcome">WELCOME</text>
           <path d="M185 101h4v12h-4zM181 105h12v4h-12zM413 97h4v12h-4zM409 101h12v4h-12z" fill="#e9c86b"/>
         </g>

@@ -77,7 +77,7 @@ export const TOUR_STOPS: TourStop[] = [
     title: "一句话总结",
     points: [
       "密歇根硕士 + 斯巴鲁 ADAS + 四个静默失败修复 + Agent 全栈工作台。",
-      "简历可从右上角 RESUME 按钮预览和下载 PDF。",
+      "简历可从顶部导航进入，页面支持打印或另存为 PDF。",
       "想聊细节？跟右下角的 Agent 对话，它能翻他的仓库、读他的简历、带你逛项目。",
       "联系方式：lueyuwang@gmail.com · lueyuw@umich.edu",
     ],

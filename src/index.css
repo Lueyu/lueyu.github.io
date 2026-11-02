@@ -2212,7 +2212,7 @@ footer p {
 }
 
 html {
-  scrollbar-color: var(--green) var(--paper-deep);
+  scrollbar-color: var(--red) var(--paper-deep);
 }
 
 ::-webkit-scrollbar {
@@ -2226,7 +2226,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--green);
+  background: var(--red);
   border: 3px solid var(--ink);
 }
 

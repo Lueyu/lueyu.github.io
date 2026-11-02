@@ -1,6 +1,6 @@
 import { callServerTool, type ToolResult } from "./agent";
 import { getProfile, HOME_SECTIONS, PROJECT_SLUGS, type HomeSectionId } from "./siteProfile";
-import { RESUME_EXPERIENCE, RESUME_META, RESUME_PROJECTS, RESUME_SKILLS, RESUME_SUMMARY } from "./resume";
+import { RESUME_EXPERIENCE, RESUME_HONORS, RESUME_META, RESUME_PROJECTS, RESUME_SKILLS, RESUME_SUMMARY } from "./resume";
 
 const HOME_SECTION_IDS: readonly string[] = HOME_SECTIONS.map((section) => section.id);
 
@@ -144,6 +144,7 @@ function readResume(section: unknown): ToolResult {
     experience: RESUME_EXPERIENCE,
     projects: RESUME_PROJECTS,
     skills: RESUME_SKILLS,
+    honors: RESUME_HONORS,
   };
   const field = typeof section === "string" ? section : "all";
   const key = field as keyof typeof all;

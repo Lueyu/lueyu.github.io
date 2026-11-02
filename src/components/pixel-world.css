@@ -18,7 +18,12 @@
 .world-stars, .world-moon { display: none; }
 .night .world-stars, .night .world-moon { display: block; }
 .night .world-sun { display: none; }
-.world-welcome { font: 700 32px var(--pixel); letter-spacing: 3px; fill: #fff0c7; }
+.world-reward-shadow { fill: #b88c48; opacity: .28; }
+.world-reward-panel { fill: #fff1ce; stroke: #c2924b; stroke-width: 2px; }
+.world-welcome { font: 700 32px var(--pixel); letter-spacing: 3px; fill: #9d452b; }
+.night .world-reward-shadow { fill: #071219; opacity: .5; }
+.night .world-reward-panel { fill: #182e37; stroke: #52665c; }
+.night .world-welcome { fill: #fff0c7; }
 .world-player { animation: world-jump 6.4s linear infinite; }
 .world-question { animation: world-bump 6.4s linear infinite; }
 .world-reward { animation: world-welcome 6.4s linear infinite; }
