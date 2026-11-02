@@ -1,31 +1,32 @@
 /* Reading proportions inspired by h1994st's site; original pixel visual system. */
 .portfolio-home { --home-line: color-mix(in srgb, var(--ink) 15%, transparent); --home-soft: color-mix(in srgb, var(--ink) 3%, var(--paper)); overflow: clip; }
-.home-container { width: min(1088px, calc(100% - 48px)); margin-inline: auto; }
-.portfolio-home main { padding-top: 136px; }
+.home-container { width: min(1088px, max(760px, 58vw), calc(100% - 48px)); margin-inline: auto; }
+.portfolio-home main { padding-top: 88px; }
 .site-shell.portfolio-home :is(h1, h2, h3) { font-family: var(--sans); letter-spacing: -.03em; text-shadow: none; }
 .portfolio-home a, .portfolio-home button { -webkit-tap-highlight-color: transparent; }
-.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: center; }
-.home-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; color: var(--muted); font: 13px/1.5 var(--pixel); letter-spacing: .07em; }
+.home-desktop-break { display: none; }
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(28px, 2.5vw, 48px); align-items: center; }
+.home-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 12px; color: var(--muted); font: 11px/1.5 var(--pixel); letter-spacing: .07em; }
 .home-kicker > i, .pixel-world-top i { width: 6px; height: 6px; display: inline-block; background: var(--green); box-shadow: 0 0 12px color-mix(in srgb, var(--green) 25%, transparent); }
-.portfolio-home h1 { margin: 0 0 16px; font-size: clamp(34px, 3.5vw, 48px); font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.portfolio-home h1 { margin: 0 0 12px; font-size: clamp(30px, 2.5vw, 48px); font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .portfolio-home h1 > span { color: var(--ink); }
 .portfolio-home h1 .home-period { color: var(--red); }
-.home-terminal { min-height: 24px; margin: 0 0 21px; color: var(--red); font: 17px/1.4 var(--pixel); letter-spacing: .025em; }
+.home-terminal { min-height: 24px; margin: 0 0 20px; color: var(--red); font: 14px/1.4 var(--pixel); letter-spacing: .025em; }
 .home-terminal b { color: var(--muted); font-weight: 400; }
 .home-terminal i { display: inline-block; width: 7px; height: 14px; margin-left: 4px; background: var(--red); vertical-align: -1px; animation: home-cursor 1.2s steps(1) infinite; }
-.home-lead { margin: 0 0 15px; font-size: 17px; line-height: 1.85; color: var(--muted); }
-.home-background { margin-bottom: 24px; font-size: 13px; color: var(--muted); }
-.home-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
-.home-button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 44px; padding: 10px 17px; border: 1px solid var(--home-line); border-radius: 2px; background: transparent; font-size: 14px; cursor: pointer; color: var(--ink); transition: background .15s, transform .15s; }
+.home-lead { margin: 0 0 12px; font-size: 14px; line-height: 1.8; color: var(--muted); }
+.home-background { margin-bottom: 18px; font-size: 12px; color: var(--muted); }
+.home-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.home-button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 36px; padding: 7px 13px; border: 1px solid var(--home-line); border-radius: 2px; background: transparent; font-size: 13px; cursor: pointer; color: var(--ink); transition: background .15s, transform .15s; }
 .home-button:hover { background: var(--home-soft); transform: translateY(-2px); }
 .home-button.home-button-primary { border-color: var(--red); background: var(--red); color: #17212c; box-shadow: 3px 3px 0 color-mix(in srgb, var(--red) 25%, transparent); font-weight: 700; }
 .home-button-primary:hover { filter: brightness(1.08); }
-.home-socials { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; font: 13px/1.5 var(--sans); color: var(--muted); }
+.home-socials { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font: 12px/1.5 var(--sans); color: var(--muted); }
 .home-socials a:hover { color: var(--red); }
 .home-socials a > span { opacity: .65; }
-.home-location { margin-left: auto; font: 11px var(--pixel); letter-spacing: .04em; }
+.home-location { margin-left: auto; font: 9px var(--pixel); letter-spacing: .04em; }
 .pixel-world { min-width: 0; margin: 0; border: 1px solid var(--home-line); background: var(--home-soft); border-radius: 4px; box-shadow: 6px 6px 0 color-mix(in srgb, var(--ink) 4%, transparent); overflow: hidden; }
-.pixel-world-top, .pixel-world figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 15px 18px; color: var(--muted); font: 11px/1 var(--pixel); letter-spacing: .08em; }
+.pixel-world-top, .pixel-world figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; color: var(--muted); font: 10px/1 var(--pixel); letter-spacing: .08em; }
 .pixel-world-top { border-bottom: 1px solid var(--home-line); }
 .pixel-world-top span:first-child { display: flex; align-items: center; gap: 8px; }
 .pixel-world-screen { position: relative; }
@@ -39,20 +40,20 @@
 .night .world-moon { display: block; }
 .night .world-sun { display: none; }
 .world-question { animation: home-block 3s steps(4) infinite; }
-.pixel-world figcaption { font-size: 10px; padding-block: 13px; }
+.pixel-world figcaption { font-size: 9px; padding-block: 9px; }
 .pixel-world figcaption span:first-child { color: var(--green); }
 .pixel-world figcaption i { display: inline-block; width: 5px; height: 5px; margin-right: 5px; background: var(--green); }
-.home-below { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; margin-top: 68px; }
-.home-section-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-bottom: 18px; border-bottom: 1px solid var(--home-line); }
-.portfolio-home h2 { margin: 0; font-size: 21px; line-height: 1.5; font-weight: 700; }
-.portfolio-home h2 > span { margin-left: 8px; color: var(--muted); font: 16px var(--pixel); letter-spacing: 0; }
+.home-below { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(28px, 2.5vw, 48px); margin-top: 48px; }
+.home-section-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--home-line); }
+.portfolio-home h2 { margin: 0; font-size: 20px; line-height: 1.5; font-weight: 700; }
+.portfolio-home h2 > span { margin-left: 8px; color: var(--muted); font: 14px var(--pixel); letter-spacing: 0; }
 .home-section-number { color: var(--muted); font: 10px var(--pixel); letter-spacing: .06em; }
-.home-project { padding: 24px 0 20px; border-bottom: 1px solid var(--home-line); }
+.home-project { padding: 18px 0; border-bottom: 1px solid var(--home-line); }
 .home-project-meta { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 6px; color: var(--muted); font: 11px/1.5 var(--pixel); letter-spacing: .08em; }
 .home-project-meta > span:first-child::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--red); margin-right: 8px; }
 .home-project-green .home-project-meta > span:first-child::before { background: var(--green); }
 .home-project-title { display: flex; align-items: center; justify-content: space-between; gap: 15px; width: 100%; padding-block: 3px 9px; }
-.home-project-title h3 { margin: 0; font-size: 24px; line-height: 1.4; letter-spacing: -.02em; }
+.home-project-title h3 { margin: 0; font-size: 21px; line-height: 1.4; letter-spacing: -.02em; }
 .home-project-title > span { font: 24px var(--pixel); color: var(--muted); transition: transform .15s; }
 .home-project-title:hover { color: var(--red); }
 .home-project-title:hover > span { color: var(--red); transform: translate(2px, -2px); }
@@ -129,6 +130,8 @@
   .home-kicker { font-size: 11px; margin-bottom: 16px; }
   .home-lead { font-size: 16px; }
   .home-desktop-break { display: none; }
+  .home-button { min-height: 44px; }
+  .home-terminal { font-size: 16px; }
   .home-background { font-size: 12px; }
   .home-location { display: inline; }
   .pixel-world { max-width: 540px; width: 100%; }
