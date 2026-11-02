@@ -33,7 +33,7 @@ export default function AidrPixelMap() {
   const isNight = useNight()
 
   return (
-    <section className="ad-architecture" id="ad-system" aria-label="AIDR 原理架构图">
+    <section className="ad-architecture" id="ad-system" tabIndex={0} aria-label="AIDR 原理架构图">
       <div className="ad-architecture-figure" role="img" aria-label={description}>
         {/* Inline the trusted Figma SVGs so their text uses this site's Pixelify and Noto fonts. */}
         <div className="ad-architecture-desktop" aria-hidden="true" dangerouslySetInnerHTML={{ __html: isNight ? desktopDark : desktopLight }} />

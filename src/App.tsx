@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { useNight } from './components/ThemeToggle'
 import PixelWorld from './components/PixelWorld'
 import TypedIntro from './components/TypedIntro'
+import SocialLinks from './components/SocialLinks'
 import { FEATURED_PROJECTS } from './lib/siteProfile'
 import './home.css'
 import BlogPreview from './components/BlogPreview'
@@ -25,7 +26,7 @@ export default function App() {
               <a className="home-button home-button-primary" href="#work">查看项目 <span aria-hidden="true">↗</span></a>
               <Link className="home-button" to="/resume">查看简历 <span aria-hidden="true">↗</span></Link>
             </div>
-            <div className="home-socials"><a href="https://github.com/Lueyu" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="mailto:lueyuwang@gmail.com">Email <span aria-hidden="true">↗</span></a><span className="home-location">CHINA / EARTH</span></div>
+            <SocialLinks />
           </div>
           <PixelWorld />
         </section>

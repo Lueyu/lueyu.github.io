@@ -4,15 +4,15 @@ import { RESUME_EDUCATION, RESUME_EXPERIENCE, RESUME_HONORS, RESUME_META, RESUME
 import '../resume-page.css'
 
 const sections = [
+  { id: 'education', label: 'Education' },
   { id: 'summary', label: 'Summary' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
-  { id: 'education', label: 'Education' },
   { id: 'honors', label: 'Honors' },
 ]
 
 export default function ResumePage() {
-  const [active, setActive] = useState('summary')
+  const [active, setActive] = useState('education')
   const pageRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function ResumePage() {
         return element && element.getBoundingClientRect().top <= 165
       })
       const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4
-      setActive(atBottom ? 'honors' : visible.at(-1)?.id ?? 'summary')
+      setActive(atBottom ? 'honors' : visible.at(-1)?.id ?? 'education')
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(update) }
     update()
@@ -56,6 +56,15 @@ export default function ResumePage() {
         {sections.map(section => <a key={section.id} href={`#${section.id}`} aria-current={active === section.id ? 'location' : undefined}>{section.label}</a>)}
       </nav>
       <div className="cv-content">
+        <section id="education" aria-labelledby="cv-education-title">
+          <h2 id="cv-education-title">Education</h2>
+          <ol className="cv-timeline">
+            {RESUME_EDUCATION.map(edu => <li key={edu.degree}>
+              <div className="cv-entry-head"><h3>{edu.degree} <span>· {edu.school}</span></h3><span className="cv-date">{edu.period}</span></div>
+              <p className="cv-location">Ann Arbor, Michigan · GPA {edu.gpa}</p>
+            </li>)}
+          </ol>
+        </section>
         <section id="summary" aria-labelledby="cv-summary-title">
           <h2 id="cv-summary-title">Summary</h2>
           <p className="cv-summary">{RESUME_SUMMARY}</p>
@@ -85,19 +94,10 @@ export default function ResumePage() {
             </li>)}
           </ol>
         </section>
-        <section id="education" aria-labelledby="cv-education-title">
-          <h2 id="cv-education-title">Education</h2>
-          <ol className="cv-timeline">
-            {RESUME_EDUCATION.map(edu => <li key={edu.degree}>
-              <div className="cv-entry-head"><h3>{edu.degree} <span>· {edu.school}</span></h3><span className="cv-date">{edu.period}</span></div>
-              <p className="cv-location">Ann Arbor, Michigan · GPA {edu.gpa}</p>
-            </li>)}
-          </ol>
-        </section>
         <section id="honors" aria-labelledby="cv-honors-title">
           <h2 id="cv-honors-title">Honors &amp; Awards</h2>
           <ul className="cv-honors">{RESUME_HONORS.map(honor => <li key={honor.name}>
-            <span>{honor.name}{honor.name === 'Ingersoll Prize' && <small> · {honor.organization}</small>}</span>
+            <span>{honor.name}</span>
             <span className="cv-date">{honor.year}</span>
           </li>)}</ul>
         </section>

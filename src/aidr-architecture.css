@@ -3,7 +3,8 @@
   --arch-red: #b63d30;
   --arch-blue: #175f96;
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-color: var(--red) var(--paper-deep);
   background: #f3f1e5;
 }
 
@@ -16,7 +17,7 @@
 
 .ad-architecture-figure {
   position: relative;
-  width: min(100%, 1600px);
+  width: max(900px, var(--reading-width));
   margin-inline: auto;
 }
 
@@ -39,7 +40,9 @@
 
 .ad-architecture-motion:last-child { display: none; }
 
-@media (max-width: 1099px) {
+/* Browser zoom changes viewport width, not the available input devices.
+   Only small touch-only devices use the portrait diagram. */
+@media (max-width: 1099px) and (pointer: coarse) and (any-hover: none) {
   .ad-architecture-figure { width: min(100%, 520px); }
   .ad-architecture-desktop { display: none; }
   .ad-architecture-mobile { display: block; }

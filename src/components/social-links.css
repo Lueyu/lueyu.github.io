@@ -1,0 +1,15 @@
+.home-socials.social-links { position: relative; gap: 8px; }
+.social-links .social-icon-link { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 10px; border: 0; border-radius: 4px; color: var(--muted); background: transparent; cursor: pointer; transition: color .15s, background .15s, transform .15s; }
+.social-icon-link svg { width: 24px; height: 24px; }
+.social-links .social-icon-link:hover, .social-links .social-icon-link[aria-expanded="true"] { color: var(--red); background: color-mix(in srgb, var(--red) 8%, transparent); transform: translateY(-2px); }
+.social-links .home-location { padding-left: 8px; }
+.wechat-contact { position: absolute; z-index: 25; top: calc(100% + 10px); left: 0; width: min(300px, 100%); padding: 16px; border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent); border-radius: 4px; background: var(--paper); box-shadow: 4px 4px 0 color-mix(in srgb, var(--ink) 12%, transparent); color: var(--ink); }
+.wechat-contact p { margin: 0 0 12px; font: 700 14px/1.5 var(--sans); }
+.wechat-contact p span { margin-left: 6px; color: var(--muted); font: 12px var(--pixel); }
+.wechat-copy-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.wechat-copy-row code { user-select: all; font: 14px/1.6 ui-monospace, monospace; }
+.wechat-copy-row button { min-height: 36px; padding: 6px 9px; border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); background: transparent; color: var(--red); border-radius: 2px; font: 12px/1.5 var(--sans); cursor: pointer; }
+.wechat-copy-row button:hover { border-color: var(--red); }
+.wechat-copy-status { display: block; margin-top: 10px; color: var(--muted); font: 12px/1.6 var(--sans); }
+@media (max-width: 720px) { .wechat-copy-row button { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .social-links .social-icon-link { transition: none; } .social-links .social-icon-link:hover { transform: none; } }

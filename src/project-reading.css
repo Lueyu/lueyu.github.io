@@ -31,7 +31,6 @@
 .dp-page .dp-live-link { padding: 10px 14px; font-size: 12px; }
 .dp-page .dp-showcase-caption-heading { flex-wrap: wrap; gap: 8px; }
 .dp-page .dp-showcase-caption-heading h3 { white-space: normal; }
-.ad-page .ad-architecture-figure { width: var(--reading-width); }
 .dp-page .dp-map-row { grid-template-columns: 120px repeat(3, minmax(0, 1fr)); gap: 12px; padding: 16px; }
 .dp-page .dp-map-two-cards { grid-template-columns: 120px repeat(2, minmax(0, 1fr)); }
 .dp-page .dp-map-identity > span { white-space: normal; overflow-wrap: anywhere; }
@@ -45,18 +44,12 @@
 
 @media (max-width: 1600px) {
   .ad-page .ad-tech-grid, .dp-page .dp-tech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .ad-page .ad-architecture-figure { max-width: 520px; }
-  .ad-page .ad-architecture-desktop { display: none; }
-  .ad-page .ad-architecture-mobile { display: block; }
-  .ad-page .ad-architecture-motion:nth-last-child(2) { display: none; }
-  .ad-page .ad-architecture-motion:last-child { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ad-page .ad-architecture .ad-architecture-motion { display: none; }
 }
 
-/* These diagrams need the stacked layout when the reading column is narrow,
-   even on a large display. Keep the SVG readable instead of clipping it. */
+/* Reflow the Daily Portfolio cards within the reading column. */
 @media (min-width: 721px) and (max-width: 1600px) {
   .dp-page .dp-map-row, .dp-page .dp-map-two-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dp-page .dp-map-identity { grid-column: 1 / -1; }
@@ -71,6 +64,5 @@
   .ad-page .ad-foundations, .dp-page .dp-foundations { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .ad-page .ad-story-content > p, .dp-page .dp-story-content > p { font-size: 16px; }
   .ad-page .ad-shot-grid, .dp-page .dp-showcase-grid, .dp-page .dp-map-row, .dp-page .dp-map-two-cards { grid-template-columns: minmax(0, 1fr); }
-  .ad-page .ad-architecture-figure { max-width: 520px; }
   .ad-page :is(.ad-next-project strong, .ad-next-project b), .dp-page :is(.dp-next-project strong, .dp-next-project b) { font-size: 28px; }
 }
