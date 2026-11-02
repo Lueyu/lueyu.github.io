@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN" class="night" style="color-scheme: dark; background-color: #17212c">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17212c" />
+    <script>
+      (() => {
+        // Match src/lib/theme.ts before the application and styles load.
+        let night = true
+        try { night = localStorage.getItem("lueyu:theme") !== "day" } catch {}
+        const root = document.documentElement
+        const background = night ? "#17212c" : "#f4f0e6"
+        root.classList.toggle("night", night)
+        root.style.colorScheme = night ? "dark" : "light"
+        root.style.backgroundColor = background
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", background)
+      })()
+    </script>
+    <meta name="description" content="Lueyu 的个人主页：AI Agent、软件工程与技术实验。" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://lueyu-agent-zjbznowktm.cn-beijing.fcapp.run" />
+    <link rel="preload" href="/fonts/pixelify-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-sc-400.woff2" as="font" type="font/woff2" crossorigin />
+    <title>Lueyu | AI Agent Developer</title>
+    <script type="module" crossorigin src="/assets/index-B7ra2zx8.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BaC-p2WJ.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
