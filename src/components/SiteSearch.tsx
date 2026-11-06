@@ -7,6 +7,7 @@ const KIND_LABELS: Record<SiteSearchResult['kind'], string> = {
   project: 'PROJECT',
   experience: 'EXPERIENCE',
   page: 'PAGE',
+  blog: 'BLOG',
 }
 
 function isEditable(target: EventTarget | null): boolean {

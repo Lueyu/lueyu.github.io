@@ -58,15 +58,15 @@ export const TOUR_STOPS: TourStop[] = [
     ],
   },
   {
-    id: "daily-portfolio",
-    route: "/projects/daily-portfolio",
+    id: "squabble",
+    route: "/projects/squabble",
     anchor: "dp-system",
-    badge: "STOP 05 / DAILY PORTFOLIO",
-    title: "生成 ≠ 验证：Agent 工程闭环",
+    badge: "STOP 05 / SQUABBLE",
+    title: "让 AI 替你吵，你来定",
     points: [
-      "独立开发的全栈工作台：投资组合 + 多角色 AI 投研 + Coding Agent，一条产品线跑通 Agent 工程。",
-      "核心设计原则：模型可以提出改动，确定性工具负责证明它。测试证据与源码版本强绑定。",
-      "有在线 Demo 可以直接体验（页面顶部 TRY IT LIVE）。",
+      "独立开发的开源投资研究工作台：多头、空头与批评者围绕持仓辩论，风控规则作为硬门，输出正反论点完整保留的 14 节研报。",
+      "研究记忆版本化：论点、依据、反证、失效条件都可追溯；模拟盘只执行你确认过的策略，可接入本地 CLI Agent 与 MCP 助手。",
+      "源码开源于 GitHub（Lueyu/squabble），桌面版内置数据库，开箱即用。",
     ],
   },
   {

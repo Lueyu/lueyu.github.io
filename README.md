@@ -64,7 +64,7 @@ access stay server-side.
     `lueyu-deliverables/`; `lueyu-notes.md` is the agent's navigation guide).
     Gitignored third-party code; `scripts/pack-fc.ps1` packs it into
     `fc-code.zip` locally.
-  - `daily-portfolio` — live GitHub API. Add more via
+  - `squabble` — live GitHub API. Add more via
     `GITHUB_REPOS="slug=owner/name,..."`; set `GITHUB_TOKEN` to raise the
     API rate limit. Files are capped at 64 KB / 3500 chars and binary files
     are refused; the file tree is cached 10 minutes per instance.

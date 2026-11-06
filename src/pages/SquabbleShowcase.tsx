@@ -4,39 +4,39 @@ import Lightbox from '../components/Lightbox'
 const screenshots = [
   {
     number: '01',
-    route: 'portfolio.app/dashboard',
-    image: '/images/daily-portfolio/dashboard.png',
-    title: '投资仪表盘',
-    tags: ['实时数据感知', '多币种', '净值曲线'],
-    description: '账户总览、AI 分析状态、多空信号与净值盈亏，一屏掌握全局。',
+    route: 'squabble.app/dashboard',
+    image: '/images/squabble/dashboard.png',
+    title: '持仓总览',
+    tags: ['美/港/A 股', '多币种', '净值曲线'],
+    description: '持仓、现金、盈亏与净值曲线一屏掌握，内置 USD/HKD/CNY 折算。',
   },
   {
     number: '02',
-    route: 'portfolio.app/analysis',
-    image: '/images/daily-portfolio/analysis.png',
-    title: 'Multi-Agent 每日分析',
-    tags: ['多角色辩论', 'PM决策'],
-    description: '多空辩论→审查→风控→PM 评级，组合复盘与个股结论。',
+    route: 'squabble.app/today',
+    image: '/images/squabble/daily-analysis.png',
+    title: '今日研究与讨论',
+    tags: ['多空辩论', '研究记忆'],
+    description: '研究团队每日讨论：公开步骤与工具结果可展开，报告按日期与来源留存。',
   },
   {
     number: '03',
-    route: 'portfolio.app/analysis/deep-report',
-    image: '/images/daily-portfolio/deep-report.png',
-    title: '14 板块深度报告',
-    tags: ['三情景定价', '证据分级', '14 板块'],
-    description: '三情景目标价与概率、多空质询、估值与催化剂。',
+    route: 'squabble.app/reports',
+    image: '/images/squabble/deep-report.png',
+    title: '14 节深度研报',
+    tags: ['多空辩论', '证据分级', '输者存档'],
+    description: '多空辩论、批评者审视与风控硬门沉淀为 14 节报告，输掉的论点原文保留。',
   },
   {
     number: '04',
-    route: 'portfolio.app/dev',
-    image: '/images/daily-portfolio/coding-agent.png',
-    title: 'Coding Agent',
-    tags: ['MCP', 'ReAct', 'Checkpoint'],
-    description: 'ReAct 推理-行动，调用终端/浏览器/预览，验证后提交补丁待审批。',
+    route: 'squabble.app/paper',
+    image: '/images/squabble/paper-trading.png',
+    title: 'AI 模拟盘',
+    tags: ['硬性风控', 'MCP 代理', '通知推送'],
+    description: '策略确认后自动模拟成交，支持 MCP 代理下单与多渠道通知。',
   },
 ] as const
 
-export default function DailyPortfolioShowcase() {
+export default function SquabbleShowcase() {
   const [zoom, setZoom] = useState<{ src: string; caption: string } | null>(null)
 
   return (
@@ -45,16 +45,16 @@ export default function DailyPortfolioShowcase() {
         <header className="dp-showcase-heading">
           <div>
             <p className="dp-showcase-kicker"><i aria-hidden="true" />PRODUCT SHOWCASE / 产品截图</p>
-            <h2 id="dp-showcase-heading">Inside the Terminal.</h2>
-            <p>真实工作台截图，展示投研与开发全流程。</p>
+            <h2 id="dp-showcase-heading">Inside the Workbench.</h2>
+            <p>真实工作台截图：投研、记忆与模拟交易全流程。</p>
           </div>
           <a
             className="dp-live-link"
-            href="https://4m3ksb6knp0wc.doubaoapps.com/app/app_17en1wnqecc"
+            href="https://github.com/Lueyu/squabble"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span>TRY IT LIVE</span>
+            <span>VIEW SOURCE</span>
             <b aria-hidden="true">↗</b>
           </a>
         </header>
@@ -63,10 +63,10 @@ export default function DailyPortfolioShowcase() {
             <article className="dp-showcase-card" key={screen.number}>
               <div className="dp-showcase-chrome">
                 <span>{screen.route}</span>
-                <img src="/images/daily-portfolio/chrome-dots.svg" width="31" height="7" alt="" />
+                <img src="/images/squabble/chrome-dots.svg" width="31" height="7" alt="" />
               </div>
               <button type="button" className="dp-showcase-image" onClick={() => setZoom({ src: screen.image, caption: screen.title })} aria-label={`放大查看 ${screen.title} 截图`} title="点击放大">
-                <img src={screen.image} width="1505" height="1216" alt={`${screen.title}工作台截图`} loading="lazy" />
+                <img src={screen.image} width="1440" height="900" alt={`${screen.title}工作台截图`} loading="lazy" />
               </button>
               <div className="dp-showcase-caption">
                 <div className="dp-showcase-caption-heading">

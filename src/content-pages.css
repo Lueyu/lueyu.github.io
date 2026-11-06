@@ -8,8 +8,12 @@
 .blog-example { position: relative; padding: 24px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent); }
 .blog-example-meta { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font: 11px/1.6 var(--pixel); }
 .blog-example h3 { margin: 10px 0; font: 700 20px/1.6 var(--sans); }
+.blog-example h3 a:hover { color: var(--red); }
 .blog-example p { color: var(--muted); font: 16px/1.85 var(--sans); margin: 0 0 12px; }
-.blog-coming { display: inline-block; padding: 2px 8px; border: 1px dashed color-mix(in srgb, var(--ink) 25%, transparent); color: var(--muted); font-size: 11px; }
+.blog-coming { display: inline-block; padding: 2px 8px; border: 1px solid color-mix(in srgb, var(--green) 45%, transparent); background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--ink); font-size: 11px; }
+.blog-post-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.blog-post-open { color: var(--red); font-size: 14px; }
+.blog-post-open:hover { text-decoration: underline; }
 .home-blog > .home-text-link { margin-top: 24px; }
 .resume-page .resume-modal { width: 100%; max-height: none; border: 0; background: transparent; box-shadow: none; }
 .resume-page .resume-head { padding: 24px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); background: transparent; color: var(--ink); }

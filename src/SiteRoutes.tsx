@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider, useLocation, useNavigate } from 'react-router'
+import { createBrowserRouter, Navigate, Outlet, RouterProvider, useLocation, useNavigate } from 'react-router'
 import App from './App'
 import AgentPanel from './components/AgentPanel'
 import PageLens from './components/PageLens'
@@ -62,6 +62,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', Component: App },
       { path: '/blog', lazy: async () => ({ Component: (await import('./pages/BlogPage')).default }) },
+      { path: '/blog/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostPage')).default }) },
       { path: '/resume', lazy: async () => ({ Component: (await import('./pages/ResumePage')).default }) },
       { path: '/projects', lazy: async () => ({ Component: (await import('./pages/ProjectsPage')).default }) },
       {
@@ -71,10 +72,14 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: '/projects/daily-portfolio',
+        path: '/projects/squabble',
         lazy: async () => ({
-          Component: (await import('./pages/DailyPortfolioPage')).default,
+          Component: (await import('./pages/SquabblePage')).default,
         }),
+      },
+      {
+        path: '/projects/daily-portfolio',
+        element: <Navigate to="/projects/squabble" replace />,
       },
       {
         path: '/projects/:projectId',

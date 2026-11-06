@@ -208,7 +208,7 @@ export default function AidrPage() {
         </section>
 
         <footer className="ad-footer ad-container">
-          <Link className="ad-next-project" to="/projects/daily-portfolio"><span>NEXT PROJECT</span><strong>Daily Portfolio</strong><b aria-hidden="true">→</b></Link>
+          <Link className="ad-next-project" to="/projects/squabble"><span>NEXT PROJECT</span><strong>Squabble</strong><b aria-hidden="true">→</b></Link>
           <div className="ad-footer-meta"><span>AIDR / PROJECT FILE 01</span><span>DATA + CONTEXT, OR NOTHING.</span></div>
         </footer>
         {zoom && <Lightbox src={zoom.src} alt={zoom.caption} caption={zoom.caption} onClose={() => setZoom(null)} />}

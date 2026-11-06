@@ -36,16 +36,16 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
   },
   {
     number: "02",
-    slug: "daily-portfolio",
-    eyebrow: "FULL-STACK AGENT APP",
-    title: "Daily Portfolio",
+    slug: "squabble",
+    eyebrow: "OPEN-SOURCE AGENT WORKBENCH",
+    title: "Squabble",
     role: "INDEPENDENT PROJECT",
     description:
-      "集投资组合管理、AI 投研与 Coding Agent 于一体的全栈工作台，覆盖持仓、交易、研究记录与组合分析。",
-    highlights: ["隔离执行、代码检查点与失败恢复", "测试证据与源码版本强绑定"],
+      "自托管的开源投资研究工作台：多头、空头与批评者围绕持仓辩论，风控规则作为硬门，产出正反论点完整保留的 14 节研报与版本化研究记忆，模拟盘只执行你确认过的策略。",
+    highlights: ["多空辩论、批评者与风控硬门沉淀为 14 节研报", "研究记忆版本化：论点、依据、反证、失效条件"],
     details:
-      "多角色模型生成投研分析，再由确定性规则与人工审核进入业务流程。Coding Agent 在容器内修改代码，候选变更经过冲突检查、审阅与独立复验后应用。",
-    tags: ["REACT", "NESTJS", "PYTHON", "POSTGRES"],
+      "美股、港股与 A 股持仓管理，内置多币种折算；可接入本地 CLI 研究 Agent（Codex、Claude Code 等）与外部 MCP 助手；桌面版内置 PostgreSQL，Docker 一键自托管，零埋点。",
+    tags: ["REACT", "NESTJS", "POSTGRES", "ELECTRON"],
     color: "green",
   },
   {

@@ -1,9 +1,25 @@
+import { Link } from 'react-router'
+import { BLOG_POSTS } from '../lib/blogPosts'
 import '../content-pages.css'
-export const BLOG_EXAMPLES = [
-  { title: '从工具调用到真正完成任务', topic: 'AI AGENT', description: '这里将记录 Agent 规划、工具调用与工程实践。' },
-  { title: '让系统可靠，也让过程可见', topic: 'ENGINEERING', description: '这里将分享可观测性、测试与失败恢复的思考。' },
-  { title: '一些小实验，一些新想法', topic: 'FIELD NOTES', description: '这里将存放开发过程中的实验、笔记与灵感。' },
-]
+
 export default function BlogPreview() {
-  return <div className="blog-preview"><p className="blog-placeholder-note">写作空间正在准备中。以下为示例占位，尚未发布。</p>{BLOG_EXAMPLES.map((post, index) => <article className="blog-example" key={post.title}><div className="blog-example-meta"><span>{post.topic}</span><span>示例 {String(index + 1).padStart(2, '0')}</span></div><h3>{post.title}</h3><p>{post.description}</p><span className="blog-coming">待发布</span></article>)}</div>
+  if (BLOG_POSTS.length === 0) {
+    return (
+      <div className="blog-preview">
+        <p className="blog-placeholder-note">写作空间正在准备中，第一篇文章很快会在这里出现。</p>
+      </div>
+    )
+  }
+  return (
+    <div className="blog-preview">
+      {BLOG_POSTS.map((post) => (
+        <article className="blog-example" key={post.slug}>
+          <div className="blog-example-meta"><span>{post.topic}</span><span>{post.dateLabel}</span></div>
+          <h3><Link to={`/blog/${post.slug}`}>{post.title}</Link></h3>
+          <p>{post.description}</p>
+          <div className="blog-post-foot"><span className="blog-coming">已发布</span><Link className="blog-post-open" to={`/blog/${post.slug}`}>阅读全文 <span aria-hidden="true">→</span></Link></div>
+        </article>
+      ))}
+    </div>
+  )
 }

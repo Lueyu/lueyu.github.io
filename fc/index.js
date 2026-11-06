@@ -142,7 +142,7 @@ const DEEPSEEK_BASE = (process.env.DEEPSEEK_BASE_URL ?? "https://api.deepseek.co
 const GITHUB_API_BASE = (process.env.GITHUB_API_BASE ?? "https://api.github.com").replace(/\/+$/, "");
 const SNAPSHOT_ROOT = path.join(__dirname, "snapshot");
 
-const PROJECT_SLUGS = ["aidr", "daily-portfolio", "next-quest"];
+const PROJECT_SLUGS = ["aidr", "squabble", "next-quest"];
 
 function parseGithubReposEnv(raw) {
   const map = {};
@@ -158,7 +158,7 @@ function parseGithubReposEnv(raw) {
 // 仓库注册表：aidr 走本地快照（fc/snapshot/aidr/），其余走 GitHub API（GITHUB_REPOS 环境变量）
 const REPO_SOURCES = {
   aidr: { type: "snapshot", slug: "aidr", dir: path.join(SNAPSHOT_ROOT, "aidr") },
-  ...parseGithubReposEnv(process.env.GITHUB_REPOS ?? "daily-portfolio=Lueyu/daily-portfolio-analysis"),
+  ...parseGithubReposEnv(process.env.GITHUB_REPOS ?? "squabble=Lueyu/squabble"),
 };
 const REPO_SLUGS = Object.keys(REPO_SOURCES);
 

@@ -49,7 +49,7 @@
   .ad-page .ad-architecture .ad-architecture-motion { display: none; }
 }
 
-/* Reflow the Daily Portfolio cards within the reading column. */
+/* Reflow the Squabble project cards within the reading column. */
 @media (min-width: 721px) and (max-width: 1600px) {
   .dp-page .dp-map-row, .dp-page .dp-map-two-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dp-page .dp-map-identity { grid-column: 1 / -1; }

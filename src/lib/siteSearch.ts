@@ -1,11 +1,12 @@
 import { FEATURED_PROJECTS, OTHER_EXPERIENCE } from './siteProfile'
+import { BLOG_POSTS } from './blogPosts'
 
 export interface SiteSearchResult {
   id: string
   title: string
   description: string
   tags: string[]
-  kind: 'project' | 'experience' | 'page'
+  kind: 'project' | 'experience' | 'page' | 'blog'
   href: string
 }
 
@@ -29,11 +30,19 @@ export const SITE_SEARCH_INDEX: SiteSearchResult[] = [
   {
     id: 'blog',
     title: 'Blog · 博客',
-    description: 'AI Agent、软件工程与技术实验的写作空间，目前为示例占位。',
-    tags: ['WRITING', '博客', '示例'],
+    description: 'AI Agent、软件工程与技术实验的写作空间。',
+    tags: ['WRITING', '博客'],
     kind: 'page',
     href: '/blog',
   },
+  ...BLOG_POSTS.map((post) => ({
+    id: `blog-${post.slug}`,
+    title: post.title,
+    description: `${post.topic} · ${post.description}`,
+    tags: post.tags,
+    kind: 'blog' as const,
+    href: `/blog/${post.slug}`,
+  })),
   { id: 'resume', title: 'Resume · 简历', description: '个人背景、教育、工作经历与技能。', tags: ['PROFILE', '个人介绍'], kind: 'page', href: '/resume' },
   {
     id: 'contact',

@@ -19,7 +19,7 @@ export default function SiteHeader() {
     <header className="reading-header"><nav aria-label="主要导航" className="reading-nav">
       <Link className="reading-brand" to="/#home" aria-label="Lueyu 首页"><span aria-hidden="true">L</span><b>LUEYU</b></Link>
       <Link to="/projects" aria-current={location.pathname.startsWith('/projects') ? 'location' : undefined}>项目</Link>
-      <Link to="/blog" aria-current={location.pathname === '/blog' ? 'page' : undefined}>博客</Link>
+      <Link to="/blog" aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}>博客</Link>
       <Link to="/resume" aria-current={location.pathname === '/resume' ? 'page' : undefined}>简历</Link>
       <span className="reading-nav-divider" aria-hidden="true" />
       <button type="button" className="reading-search" aria-label="搜索网站" title="搜索网站 (/ 或 Ctrl+K)" onClick={() => window.dispatchEvent(new CustomEvent('lueyu:open-search'))}><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M3 3h9v9H3zM12 12l5 5" /></svg><kbd>/</kbd></button>
