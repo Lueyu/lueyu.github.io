@@ -42,6 +42,19 @@ export function BpCode({ label, children }: { label?: string; children: string }
   )
 }
 
+export function BpFlow({ label, steps }: { label: string; steps: string[] }) {
+  return (
+    <div className="bp-flow">
+      <span className="bp-flow-label">{label}</span>
+      <div className="bp-flow-steps">
+        {steps.map((step, index) => (
+          <span className="bp-flow-step" key={step}>{index > 0 && <b aria-hidden="true">→</b>}{step}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function BpFigure({ src, caption, alt, narrow = false }: { src: string; caption: string; alt: string; narrow?: boolean }) {
   const [zoom, setZoom] = useState(false)
   return (

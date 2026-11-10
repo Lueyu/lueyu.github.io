@@ -1,17 +1,4 @@
-import { BpTable, BpSection, BpQuote, BpCode } from './bp'
-
-function BpFlow({ label, steps }: { label: string; steps: string[] }) {
-  return (
-    <div className="bp-flow">
-      <span className="bp-flow-label">{label}</span>
-      <div className="bp-flow-steps">
-        {steps.map((step, index) => (
-          <span className="bp-flow-step" key={step}>{index > 0 && <b aria-hidden="true">→</b>}{step}</span>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { BpTable, BpSection, BpQuote, BpCode, BpFlow } from './bp'
 
 export default function SquabbleDebateToSilence() {
   return (
