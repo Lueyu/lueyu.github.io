@@ -66,6 +66,14 @@
 .bp-footer-tags span { border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); padding: 4px 7px; font: 11px var(--pixel); color: var(--muted); }
 .bp-footer p { color: var(--muted); font-size: 13.5px; line-height: 1.8; }
 
+.bp-figure { margin: 26px 0; }
+.bp-figure-image { display: block; width: 100%; padding: 0; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); background: color-mix(in srgb, var(--ink) 4%, var(--paper)); cursor: zoom-in; }
+.bp-figure-image img { display: block; width: 100%; height: auto; }
+.bp-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.bp-figure-narrow { max-width: 380px; }
+.bp-article a { color: var(--red); text-underline-offset: 3px; }
+.bp-article a:hover { text-decoration: underline; }
+
 @media (max-width: 720px) {
   .blog-post-page .bp-page-subtitle { font-size: 18px; }
   .bp-section h2 { flex-direction: column; gap: 6px; font-size: 21px; }

@@ -1,43 +1,4 @@
-export function BpTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
-  return (
-    <div className="bp-table-wrap">
-      <table className="bp-table">
-        <thead>
-          <tr>{headers.map((header) => <th key={header} scope="col">{header}</th>)}</tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row[0]}>
-              {row.map((cell, index) => index === 0 ? <th key={cell} scope="row">{cell}</th> : <td key={cell}>{cell}</td>)}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-function BpSection({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
-  return (
-    <section className="bp-section">
-      <h2><span className="bp-no">{number}</span>{title}</h2>
-      {children}
-    </section>
-  )
-}
-
-function BpQuote({ tone = 'ok', children }: { tone?: 'ok' | 'bad'; children: React.ReactNode }) {
-  return <blockquote className={`bp-quote${tone === 'bad' ? ' bp-quote-bad' : ''}`}>{children}</blockquote>
-}
-
-function BpCode({ label, children }: { label?: string; children: string }) {
-  return (
-    <figure className="bp-code">
-      {label && <figcaption>{label}</figcaption>}
-      <pre><code>{children}</code></pre>
-    </figure>
-  )
-}
+import { BpTable, BpSection, BpQuote, BpCode } from './bp'
 
 function BpFlow({ label, steps }: { label: string; steps: string[] }) {
   return (
