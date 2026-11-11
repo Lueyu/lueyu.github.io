@@ -15,6 +15,21 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'zero-backdoors-aidr-on-kubernetes',
+    title: '零后门：我把整套 AI 平台搬进了 Kubernetes',
+    subtitle: '能回答“系统真的跑在这里吗”的测试只有一个：把集群之外的一切全部停掉，看还剩什么活着',
+    topic: 'AIDR · KUBERNETES',
+    date: '2026-11-11',
+    dateLabel: '2026.11.11',
+    readingTime: '约 12 分钟',
+    description:
+      '16 容器 14 Pod 全部迁入单节点 kind 集群，拆除观测数据的无 selector Service 后门；三个上线以来从未真正工作过的缺陷被全新集群一次挖出；vLLM-Ascend 昇腾推理闭环，357 个 E2E 用例在 compose 完全停止的状态下通过。',
+    tags: ['KUBERNETES', 'AIDR', '基础设施', '可观测性'],
+    repo: 'https://github.com/rainbow0432-dev/aidr-server',
+    projectSlug: 'aidr',
+    footerNote: 'PR #51 与 #55 开放评审；部署基座面向单节点 kind，代价与继承妥协见正文「代价清单」。',
+  },
+  {
     slug: 'rebuilding-squabble-for-daily-use',
     title: '把 Squabble 改成一个我愿意每天打开的 AI 投研工具',
     subtitle: '按真实使用动线的架构重构：估值语义、版本化研究技能与来源可追溯的数据中心',
