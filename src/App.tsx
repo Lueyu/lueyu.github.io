@@ -10,8 +10,7 @@ import TiltCard from './components/TiltCard'
 
 export default function App() {
   const isNight = useNight()
-  const projects = FEATURED_PROJECTS.filter((project) => project.slug !== 'next-quest')
-  const nextQuest = FEATURED_PROJECTS.find((project) => project.slug === 'next-quest')
+  const projects = FEATURED_PROJECTS
   return (
     <div className={`site-shell portfolio-home ${isNight ? 'night' : ''}`}>
       <main id="main-content" tabIndex={-1} className="home-container">
@@ -44,7 +43,6 @@ export default function App() {
               </TiltCard>
             ))}</div>
             <Link className="home-text-link" to="/projects">查看项目 →</Link>
-            {nextQuest && <Link to={`/projects/${nextQuest.slug}`} className="home-next-quest" data-project-slug={nextQuest.slug}><span className="home-quest-icon" aria-hidden="true">?</span><span><strong>{nextQuest.title} <small>NEXT QUEST</small></strong><span>{nextQuest.description}</span><em>{nextQuest.highlights.join(' · ')}</em></span><b aria-hidden="true">→</b></Link>}
           </section>
           <section id="blog" className="home-blog" aria-labelledby="blog-title">
             <div className="home-section-heading"><h2 id="blog-title">博客 <span>Writing</span></h2><span className="home-section-number">02 / NOTES</span></div>

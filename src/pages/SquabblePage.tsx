@@ -138,7 +138,7 @@ export default function SquabblePage() {
 
         <footer className="dp-footer dp-container">
           <p className="dp-disclaimer"><i aria-hidden="true" />开源项目（Lueyu/squabble · MIT）。研究输出不构成投资建议；模拟盘结果不代表真实收益。页面展示的是系统边界与工程方法。</p>
-          <Link className="dp-next-project" to="/projects/next-quest"><span>NEXT PROJECT</span><strong>To Be Built</strong><b aria-hidden="true">→</b></Link>
+          <Link className="dp-next-project" to="/projects/agent-interview"><span>NEXT PROJECT</span><strong>Agent Interview</strong><b aria-hidden="true">→</b></Link>
           <div className="dp-footer-meta"><span>SQUABBLE / PROJECT FILE 02</span><span>LET AI ARGUE. YOU DECIDE.</span></div>
         </footer>
       </main>

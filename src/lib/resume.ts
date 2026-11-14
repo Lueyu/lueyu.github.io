@@ -105,7 +105,7 @@ interface ResumeProject {
 }
 
 export const RESUME_PROJECTS: ResumeProject[] = [
-  ...FEATURED_PROJECTS.filter(project => project.slug !== 'next-quest').map(project => ({
+  ...FEATURED_PROJECTS.map(project => ({
     name: project.title,
     role: project.slug === 'aidr' ? '深度参与' : '独立项目',
     period: '进行中',

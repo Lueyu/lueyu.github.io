@@ -50,14 +50,16 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
   },
   {
     number: "03",
-    slug: "next-quest",
-    eyebrow: "NEXT QUEST",
-    title: "To Be Built",
-    role: "RESERVED SLOT",
-    description: "第三个主要项目正在整理中。这里会留给一个值得完整讲述的问题、过程和结果。",
-    highlights: ["问题要真实", "过程可复现"],
-    details: "",
-    tags: ["SOON", "EXPERIMENT"],
+    slug: "agent-interview",
+    eyebrow: "AI AGENT INTERVIEW PREP",
+    title: "Agent Interview",
+    role: "OPEN QUESTION BANK",
+    description:
+      "开源 AI Agent 面试题库：8 大主题、161 道真实考点，每题五模块题卡（30 秒电梯稿 / 通俗类比 / 详细拆解 / 面试官追问 / 术语卡 + 自测），由 Agent 管道自动选题、写卡、构建校验，零错误才入库发布。",
+    highlights: ["8 大主题 161 题，每题五模块题卡", "Agent 管道自动采集、生成、构建校验，双闸门发布"],
+    details:
+      "题库覆盖 RAG、工具调用（MCP）、上下文工程、评测、系统设计、算法、业务与推理八条线；每天从真实面经管道挑选新题按规格生成，构建与泄漏扫描双闸门把关后自动发布到 agent-interview.icu，掌握度随 22:00 自测与失分记录自动演进。",
+    tags: ["RAG", "MCP", "EVAL", "AUTOMATION"],
     color: "blue",
   },
 ];
