@@ -28,7 +28,7 @@ export const TOUR_STOPS: TourStop[] = [
     title: "密歇根双学位 + AI Agent 方向",
     points: [
       "密歇根大学安娜堡：电子与计算机工程硕士（GPA 4.0）+ 计算机科学本科（GPA 3.73）。",
-      "现于斯巴鲁研究院做 ADAS 计算机视觉，此前在 Irdeto 做端到端自动化测试。",
+      "现于华为做基础设施与自动化，此前在斯巴鲁研究院做驾驶研究平台，更早在 Irdelta 做端到端自动化测试。",
       "技术栈覆盖 Python/TypeScript/Java/Go，前端到后端到基础设施。",
     ],
   },
@@ -76,7 +76,7 @@ export const TOUR_STOPS: TourStop[] = [
     badge: "STOP 06 / RESUME",
     title: "一句话总结",
     points: [
-      "密歇根硕士 + 斯巴鲁 ADAS + 四个静默失败修复 + Agent 全栈工作台。",
+      "密歇根硕士 + 斯巴鲁驾驶研究平台 + 四个静默失败修复 + Agent 全栈工作台。",
       "简历可从顶部导航进入，页面支持打印或另存为 PDF。",
       "想聊细节？跟右下角的 Agent 对话，它能翻他的仓库、读他的简历、带你逛项目。",
       "联系方式：lueyuwang@gmail.com · lueyuw@umich.edu",

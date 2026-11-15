@@ -62,8 +62,10 @@ access stay server-side.
     the local AIDR working tree: services/deploy/shared source, architecture
     docs, and Lueyu's own notes in `lueyu-work/`, `lueyu-research/`,
     `lueyu-deliverables/`; `lueyu-notes.md` is the agent's navigation guide).
-    Gitignored third-party code; `scripts/pack-fc.ps1` packs it into
-    `fc-code.zip` locally.
+    Gitignored third-party code; deliberately NOT packed into `fc-code.zip`
+    (private material must not ship to the public cloud function). The
+    deployed agent degrades gracefully for `aidr` until a sanitized public
+    subset is explicitly added to `scripts/pack-fc.ps1`.
   - `squabble` — live GitHub API. Add more via
     `GITHUB_REPOS="slug=owner/name,..."`; set `GITHUB_TOKEN` to raise the
     API rate limit. Files are capped at 64 KB / 3500 chars and binary files
@@ -99,7 +101,9 @@ powershell -ExecutionPolicy Bypass -File scripts\pack-fc.ps1
 ```
 
 Then in the FC console upload the generated `fc-code.zip` to the `lueyu-agent`
-function. The zip includes `fc/snapshot/` (AIDR project material) when present.
+function. The zip contains only `index.js`: `fc/snapshot/` is deliberately
+excluded (private third-party material), so the deployed agent degrades
+gracefully for `aidr` until sanitized material is packed.
 Required environment variables: `DEEPSEEK_API_KEY`, `ADMIN_TOKEN`,
 `OSS_BUCKET`, `OSS_REGION`, `OSS_ACCESS_KEY_ID`, `OSS_ACCESS_KEY_SECRET`.
 Optional: `GITHUB_TOKEN`, `GITHUB_REPOS`, `CHAT_DAILY_LIMIT`,
