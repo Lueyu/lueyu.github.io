@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
 $zip = Join-Path $root "fc-code.zip"
 if (Test-Path $zip) { Remove-Item -Force $zip }
