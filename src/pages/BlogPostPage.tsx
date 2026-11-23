@@ -3,10 +3,12 @@ import { getBlogPost } from '../lib/blogPosts'
 import SquabbleDebateToSilence from '../components/blog/SquabbleDebateToSilence'
 import RebuildingSquabbleDaily from '../components/blog/RebuildingSquabbleDaily'
 import ZeroBackdoorsAidrK8s from '../components/blog/ZeroBackdoorsAidrK8s'
+import CareerPilotStreamingPolish from '../components/blog/CareerPilotStreamingPolish'
 import '../content-pages.css'
 import '../blog-post.css'
 
 const POST_BODIES: Record<string, React.ComponentType> = {
+  'careerpilot-streaming-polish': CareerPilotStreamingPolish,
   'squabble-from-debate-to-silence': SquabbleDebateToSilence,
   'rebuilding-squabble-for-daily-use': RebuildingSquabbleDaily,
   'zero-backdoors-aidr-on-kubernetes': ZeroBackdoorsAidrK8s,

@@ -15,6 +15,21 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'careerpilot-streaming-polish',
+    title: '流式体验不是“字在动”：把学习助手的 60 秒空白修到 0.7 秒首字',
+    subtitle: '三把尺子定位延迟，两个设计取舍修好“假流式”——推理模型的 thinking 是信号不是噪音',
+    topic: 'CAREERPILOT · 流式与推理模型',
+    date: '2026-11-24',
+    dateLabel: '2026.11.24',
+    readingTime: '约 9 分钟',
+    description:
+      'AI 面试教练的聊天回复从“等 30–60 秒空白、然后一块块跳”修到“0.7 秒内思考面板亮起、正文 60ms 级流出”。根因是推理模型的 reasoning_content 被流式解析器当噪音丢弃、思考 token 吃满输出预算导致截断重试、0.5 秒数据库轮询加整段 markdown 重渲染造成卡顿。',
+    tags: ['STREAMING', 'REASONING MODEL', 'SSE', 'UX', 'CAREERPILOT'],
+    repo: 'https://github.com/Lueyu/agent-interview',
+    projectSlug: 'agent-interview',
+    footerNote: 'CareerPilot 本地个人实例；未发布为公开服务，文中数据来自本机真实模型链路验证。',
+  },
+  {
     slug: 'zero-backdoors-aidr-on-kubernetes',
     title: '零后门：我把整套 AI 平台搬进了 Kubernetes',
     subtitle: '能回答“系统真的跑在这里吗”的测试只有一个：把集群之外的一切全部停掉，看还剩什么活着',
