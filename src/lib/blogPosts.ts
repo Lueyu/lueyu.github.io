@@ -15,6 +15,18 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'careerpilot-auto-routing',
+    title: '24 道盲测题，CareerPilot 的 Auto 多选对了 7 道',
+    subtitle: '一次等了 42 秒的项目问答，让我重新量了选档准确率、资料召回和首段正文延迟。',
+    topic: 'CAREERPILOT · 模型路由',
+    date: '2026-11-24',
+    dateLabel: '2026.11.24',
+    readingTime: '约 9 分钟',
+    description: '跨岗位盲测从 12/24 到 19/24，项目代码行的 Recall@8 从 54.5% 到 78.0%。两轮真实模型对照的延迟走向相反，还有一道门店调拨题，路由依然判错了。',
+    tags: ['模型路由', '资料检索', 'TTFT', '故障恢复', 'CAREERPILOT'],
+    footerNote: '2026 年 11 月的本机工程记录。评测题、项目和账户为合成样例。延迟对照使用真实模型服务。',
+  },
+  {
     slug: 'squabble-financial-rag',
     title: '前 20 条平均召回率达到 95.83%，财报问答还漏了一题',
     subtitle: '我怎样设计 Squabble 资料库，并用公开财报追查入库、检索、重排和引用',
@@ -31,14 +43,14 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'careerpilot-streaming-polish',
-    title: '流式体验不是“字在动”：把学习助手的 60 秒空白修到 0.7 秒首字',
+    title: '流式体验不是“字在动”：把学习助手的 60 秒空白修成“思考先可见”',
     subtitle: '三把尺子定位延迟，两个设计取舍修好“假流式”——推理模型的 thinking 是信号不是噪音',
     topic: 'CAREERPILOT · 流式与推理模型',
     date: '2026-11-24',
     dateLabel: '2026.11.24',
     readingTime: '约 9 分钟',
     description:
-      'AI 面试教练的聊天回复从“等 30–60 秒空白、然后一块块跳”修到“0.7 秒内思考面板亮起、正文 60ms 级流出”。根因是推理模型的 reasoning_content 被流式解析器当噪音丢弃、思考 token 吃满输出预算导致截断重试、0.5 秒数据库轮询加整段 markdown 重渲染造成卡顿。',
+      'AI 面试教练的聊天回复从“等 30–60 秒空白、然后一块块跳”修成“思考面板先亮起、正文 60ms 级流出”；首段正文 p50 仍约 10.9–12.8 秒（真实模型配对测量）。根因是推理模型的 reasoning_content 被流式解析器当噪音丢弃、思考 token 吃满输出预算导致截断重试、0.5 秒数据库轮询加整段 markdown 重渲染造成卡顿。',
     tags: ['STREAMING', 'REASONING MODEL', 'SSE', 'UX', 'CAREERPILOT'],
     repo: 'https://github.com/Lueyu/agent-interview',
     projectSlug: 'agent-interview',

@@ -3,6 +3,7 @@ const paperSteps = ['每日策略', '监控行情', '快速复核', '账本校�
 const skills = [
   '多空辩论', '批评者审视', '风控硬门', '研究记忆', '失效条件',
   '模拟盘策略', 'MCP 代理下单', '本地 CLI Agent', '多币种折算', '零埋点',
+  '投委会审批', '财报资料库 RAG',
 ]
 
 function LayerIdentity({ code, title, note, subdued = false }: { code: string; title: string; note?: string; subdued?: boolean }) {

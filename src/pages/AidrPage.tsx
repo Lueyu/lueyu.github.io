@@ -53,7 +53,8 @@ const technologies = [
   ['OpenTelemetry', 'TRACES'],
   ['restic', 'BACKUP ENGINE'],
   ['Docker', '15 CONTAINERS'],
-  ['Kubernetes', 'KIND MIGRATION'],
+  ['Kubernetes', 'KIND · 14 PODS'],
+  ['vLLM · Ascend', 'IN-CLUSTER LLM'],
   ['Playwright', 'E2E'],
   ['JWT RS256', 'AUTH'],
 ]
@@ -170,7 +171,7 @@ export default function AidrPage() {
             <StoryIndex number="03" label="OBSERVABILITY" />
             <div className="ad-story-content">
               <h2>Agent 的每一步都留下痕迹</h2>
-              <p>OpenTelemetry 贯穿全链路：Agent 的运行时把每笔工具调用导出为 OTLP 轨迹，经观测栈解析进 ClickHouse。分析服务持续跑漂移检测——可插拔规则链把工具调用实时映射成 LOW / MEDIUM / HIGH 风险等级写回轨迹；轨迹归属用三级 fallback，任何平台的 Agent 都不会落进「无名氏」桶。</p>
+              <p>OpenTelemetry 贯穿全链路：Agent 的运行时把每笔工具调用导出为 OTLP 轨迹，经观测栈解析进 ClickHouse。分析服务持续跑漂移检测——可插拔规则链把工具调用实时映射成 LOW / MEDIUM / HIGH 风险等级写回轨迹；轨迹归属用三级 fallback，任何平台的 Agent 都不会落进「无名氏」桶。按需检测走异步作业（提交即 202 + jobId，前端轮询 detection-jobs 取结果），漂移判定依据真实轨迹归属，风险评分链路修复后第一次真正建成。</p>
               <div className="ad-risk-flow">
                 <div><span>TOOL CALL</span><p>观察 span（工具名 / 参数 / 输出）</p></div>
                 <div><span>RULE CHAIN</span><p>破坏性效果 · 高频 · 错误率 · 数据量异常</p></div>

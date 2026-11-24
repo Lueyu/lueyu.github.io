@@ -9,7 +9,7 @@ export default function CareerPilotStreamingPolish() {
       <div className="bp-summary">
         <strong>成果速览</strong>
         <ul>
-          <li><strong>首字延迟（TTFT）从 30–60 秒的“空白等待”降到 0.7 秒</strong>——此前用户点发送后屏幕上没有任何文字反馈，观感上就是“假流式/卡死了”</li>
+          <li><strong>首个可见反馈从 30–60 秒的“空白等待”变成“思考面板先亮起”</strong>——此前用户点发送后屏幕上没有任何文字反馈，观感上就是“假流式/卡死了”；首段正文 p50 仍约 10.9–12.8 秒（真实模型配对测量）</li>
           <li><strong>把模型的思考过程实时推给用户</strong>：一个“思考中…（N 字 · Xs）”面板，边想边显示，正文出现后自动折叠</li>
           <li><strong>吐字从“0.5 秒一大块”变成 30–60ms 的细粒度流式</strong>，配合前端 rAF 批处理、纯文本轻渲染与打字机光标，消除一卡一卡的感觉</li>
           <li>顺带修掉了三个真实故障：思考型模型把输出预算吃满导致“未返回完整内容”高频失败、笔记整理点击后零反馈、引文校验逐字匹配误判</li>
@@ -88,10 +88,10 @@ if reasoning:
         <h3>预算与截断：给思考留出空间</h3>
         <p>把输出预算从写死的 <code>2300/4500</code> 改成配置项：<code>study_flash_output_tokens=6000</code>、<code>study_strong_output_tokens=12000</code>，让思考过程和正文都有足够的 token；同时把项目证据检索的钳位从 15 秒放宽到 120 秒，避免“检索没结束就被掐断”的假超时。</p>
         <p>这三个改动合起来的效果：</p>
-        <BpCode label="SSE 帧时间线（修复后）">{`frame #1   t=0.70s  status=generating  content_len=159  reasoning_len=226
-...         content 60ms 级递增
-frame #20  t=3.72s  status=completed   content_len=768`}</BpCode>
-        <BpQuote>首字延迟从 30–60 秒的空白等待，变成 0.7 秒内“思考面板先亮起来，正文随后细粒度流出”。</BpQuote>
+        <BpCode label="SSE 帧时间线（修复后，示意）">{`frame #1   t≈1s     status=generating  reasoning 先到，思考面板亮起
+...         正文 60ms 级递增
+（首段正文 p50 ≈ 11s，配对样本见 Auto 路由笔记）`}</BpCode>
+        <BpQuote>等待从 30–60 秒的空白，变成“思考面板先亮起来，正文随后细粒度流出”；首段正文 p50 约 11 秒。</BpQuote>
       </BpSection>
 
       <BpSection number="05" title="渲染：把“卡顿”拆掉">

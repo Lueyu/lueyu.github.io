@@ -30,7 +30,7 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
       "面向 AI 智能体时代的数据保护平台：从真实的工具调用行为推导每个 Agent 的爆炸半径，把 Agent 与它的数据世界绑成一个保护组，原子恢复。",
     highlights: ["保护单位从存储对象升级为 Agent 的数据世界", "依赖自动推导，观测与保护共享同一张图"],
     details:
-      "传统备份看得见数据库与卷，看不见 Agent 的数据世界。AIDR 把工具调用图当作依赖关系的唯一真相源，观测（OpenTelemetry / Langfuse）与保护共享同一张图，备份引擎可插拔——企业存储与开源 restic 走同一套四端点契约。",
+      "传统备份看得见数据库与卷，看不见 Agent 的数据世界。AIDR 把工具调用图当作依赖关系的唯一真相源，观测（OpenTelemetry / Langfuse）与保护共享同一张图，备份引擎可插拔——企业存储与开源 restic 走同一套四端点契约；整套栈（含 vLLM · 昇腾 Ascend910B 的集群内推理）单命令部署进 Kubernetes，14 个 Pod 全栈自包含。",
     tags: ["OTEL", "LANGFUSE", "RESTIC", "K8S"],
     color: "red",
   },
@@ -42,9 +42,9 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     role: "INDEPENDENT PROJECT",
     description:
       "自托管的开源投资研究工作台：多头、空头与批评者围绕持仓辩论，风控规则作为硬门，产出正反论点完整保留的 14 节研报与版本化研究记忆，模拟盘只执行你确认过的策略。",
-    highlights: ["多空辩论、批评者与风控硬门沉淀为 14 节研报", "研究记忆版本化：论点、依据、反证、失效条件"],
+    highlights: ["多空辩论、批评者与风控硬门沉淀为 14 节研报", "研究记忆版本化：论点、依据、反证、失效条件", "投委会（Council）审批候选策略，财报资料库提供双语证据检索"],
     details:
-      "美股、港股与 A 股持仓管理，内置多币种折算；可接入本地 CLI 研究 Agent（Codex、Claude Code 等）与外部 MCP 助手；桌面版内置 PostgreSQL，Docker 一键自托管，零埋点。",
+      "美股、港股与 A 股持仓管理，内置多币种折算；投资理事会（Council）7 种成员模板、2–6 人辩论，结论经投委会审批后进模拟盘；财报资料库用双语证据段落排序回答引用问题，缺项自动回退 SEC EDGAR；可接入本地 CLI 研究 Agent（Codex、Claude Code 等）与外部 MCP 助手；桌面版内置 PostgreSQL，Docker 一键自托管，零埋点。",
     tags: ["REACT", "NESTJS", "POSTGRES", "ELECTRON"],
     color: "green",
   },
@@ -56,7 +56,7 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     role: "OPEN QUESTION BANK",
     description:
       "开源 AI Agent 面试题库：8 大主题、161 道真实考点，每题五模块题卡（30 秒电梯稿 / 通俗类比 / 详细拆解 / 面试官追问 / 术语卡 + 自测），由 Agent 管道自动选题、写卡、构建校验，零错误才入库发布。",
-    highlights: ["8 大主题 161 题，每题五模块题卡", "Agent 管道自动采集、生成、构建校验，双闸门发布"],
+    highlights: ["8 大主题 161 题，每题五模块题卡", "Agent 管道自动采集、生成、构建校验，双闸门发布", "学习助手双档 Auto 路由：跨岗位盲测 19/24，项目代码行 Recall@8 78%"],
     details:
       "题库覆盖 RAG、工具调用（MCP）、上下文工程、评测、系统设计、算法、业务与推理八条线；每天从真实面经管道挑选新题按规格生成，构建与泄漏扫描双闸门把关后自动发布到 agent-interview.icu，掌握度随 22:00 自测与失分记录自动演进。",
     tags: ["RAG", "MCP", "EVAL", "AUTOMATION"],

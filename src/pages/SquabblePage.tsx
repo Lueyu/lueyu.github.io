@@ -21,6 +21,8 @@ const technologies = [
   ['Electron', 'DESKTOP'],
   ['Docker', 'SELF-HOSTING'],
   ['MCP', 'AGENT API'],
+  ['RAG', 'EVIDENCE LIBRARY'],
+  ['Council', 'MULTI-AGENT'],
 ]
 
 function StoryIndex({ number, label, note }: { number: string; label: string; note?: string }) {
@@ -70,13 +72,15 @@ export default function SquabblePage() {
 
             <div className="dp-overview">
               <span>OVERVIEW</span>
-              <p>多头、空头和批评者审视你的想法，风控规则作为硬门把关，输出正反论点完整保留的 14 节研报；研究记忆按版本沉淀论点、依据与失效条件；模拟盘只执行你确认过的策略。美股 · 港股 · A 股，中英双语，自托管，零埋点。</p>
+              <p>多头、空头和批评者审视你的想法，风控规则作为硬门把关，输出正反论点完整保留的 14 节研报；研究记忆按版本沉淀论点、依据与失效条件；研究结论先由投资理事会（Council）审批，财报资料库用双语证据段落排序回答引用问题；模拟盘只执行你确认过的策略。美股 · 港股 · A 股，中英双语，自托管，零埋点。</p>
             </div>
             <div className="dp-foundations">
               <div><strong>Bull × Bear</strong><span>多空辩论 + 批评者</span></div>
               <div><strong>Research Memory</strong><span>版本化论点与失效条件</span></div>
               <div><strong>Paper Trading</strong><span>硬风控 + 自动模拟成交</span></div>
               <div><strong>Self-hosted</strong><span>桌面版 · Docker · 零埋点</span></div>
+              <div><strong>Council</strong><span>投委会审批 · 版本化研报</span></div>
+              <div><strong>Data Library</strong><span>财报资料库 · 双语证据 RAG</span></div>
             </div>
           </div>
         </section>
@@ -88,7 +92,7 @@ export default function SquabblePage() {
             <StoryIndex number="01" label="THE PRODUCT" />
             <div className="dp-story-content">
               <h2>让 AI 替你吵，你来定</h2>
-              <p>持仓管理、AI 研报、研究记忆与模拟炒股共用一条流水线：行情和持仓进入多空辩论，批评者移除站不住脚的论点，确定性风控规则作为硬门，最终报告交给你拍板。</p>
+              <p>持仓管理、AI 研报、研究记忆与模拟炒股共用一条流水线：行情和持仓进入多空辩论，批评者移除站不住脚的论点，确定性风控规则作为硬门，最终报告交给你拍板。候选策略再由投资理事会（Council）审批——审批匹配修订号与价格区间，被否决的结果可缓存复用。</p>
               <div className="dp-ledger">
                 <div><span>DEBATE</span><strong>多空与批评者</strong><p>输掉的论点原文保留</p></div>
                 <div><span>VERIFY</span><strong>风控与证据</strong><p>缺数据就写缺数据</p></div>
