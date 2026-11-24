@@ -15,6 +15,21 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'squabble-financial-rag',
+    title: '前 20 条平均召回率达到 95.83%，财报问答还漏了一题',
+    subtitle: '我怎样设计 Squabble 资料库，并用公开财报追查入库、检索、重排和引用',
+    topic: 'SQUABBLE · 资料库与 RAG 评测',
+    date: '2026-11-24',
+    dateLabel: '2026.11.24',
+    readingTime: '约 10 分钟',
+    description:
+      '从 Apple 财报的真实上传和页码定位，到 Meta 分部亏损的证据回放。用公开财报拆测检索和作答，最终盲重排把答案正确性从 83.90% 提到 90.55%，达到 15 项门槛中的 13 项。',
+    tags: ['SQUABBLE', 'RAG', '财报', '离线评测', '证据追溯'],
+    repo: 'https://github.com/Lueyu/squabble',
+    projectSlug: 'squabble',
+    footerNote: '结果来自公开财报、隔离资料库和 Codex 离线实验。15 项门槛为本实验预先设定的技术目标。',
+  },
+  {
     slug: 'careerpilot-streaming-polish',
     title: '流式体验不是“字在动”：把学习助手的 60 秒空白修到 0.7 秒首字',
     subtitle: '三把尺子定位延迟，两个设计取舍修好“假流式”——推理模型的 thinking 是信号不是噪音',
