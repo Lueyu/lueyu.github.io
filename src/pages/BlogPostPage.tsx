@@ -5,11 +5,13 @@ import RebuildingSquabbleDaily from '../components/blog/RebuildingSquabbleDaily'
 import ZeroBackdoorsAidrK8s from '../components/blog/ZeroBackdoorsAidrK8s'
 import CareerPilotStreamingPolish from '../components/blog/CareerPilotStreamingPolish'
 import CareerPilotAutoRouting from '../components/blog/CareerPilotAutoRouting'
+import CareerPilotAgentWorkspace from '../components/blog/CareerPilotAgentWorkspace'
 import SquabbleFinancialRag from '../components/blog/SquabbleFinancialRag'
 import '../content-pages.css'
 import '../blog-post.css'
 
 const POST_BODIES: Record<string, React.ComponentType> = {
+  'careerpilot-agent-workspace': CareerPilotAgentWorkspace,
   'careerpilot-auto-routing': CareerPilotAutoRouting,
   'squabble-financial-rag': SquabbleFinancialRag,
   'careerpilot-streaming-polish': CareerPilotStreamingPolish,

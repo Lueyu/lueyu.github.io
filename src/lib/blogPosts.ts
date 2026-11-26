@@ -15,6 +15,19 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'careerpilot-agent-workspace',
+    title: '把面试系统收进聊天框，先修掉那个“完成”按钮',
+    subtitle: '从题库的 30 条与 12 条，到一份只读取已接受答案的复盘报告。',
+    topic: 'CAREERPILOT · AGENT 与学习流程',
+    date: '2026-11-27',
+    dateLabel: '2026.11.27',
+    readingTime: '约 9 分钟',
+    description: '把学习和模拟面试围绕 Agent 重新组织后，题库列表改为直接返回记录，练习推进要等待真实作答与保存完成的点评。34 条界面操作文案的回归，又找出了会被当成答案的按钮文字。',
+    tags: ['CAREERPILOT', 'AI AGENTS', '模拟面试', '作答证据', '交互设计'],
+    repo: 'https://github.com/Lueyu/CareerPilot',
+    footerNote: '本地面试练习系统的工程记录。配图中的隔离验收使用测试数据；完整流程使用受控本地响应，未验证真实模型点评质量、长期学习效果或求职结果。',
+  },
+  {
     slug: 'careerpilot-auto-routing',
     title: '24 道盲测题，CareerPilot 的 Auto 多选对了 7 道',
     subtitle: '一次等了 42 秒的项目问答，让我重新量了选档准确率、资料召回和首段正文延迟。',
