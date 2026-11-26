@@ -12,7 +12,7 @@ export default defineConfig({
         const output = join(process.cwd(), 'dist')
         const entry = join(output, 'index.html')
 
-        for (const path of ['projects', 'blog', 'resume', 'projects/aidr', 'projects/squabble', 'projects/daily-portfolio', 'projects/next-quest', 'blog/squabble-from-debate-to-silence', 'blog/rebuilding-squabble-for-daily-use', 'blog/zero-backdoors-aidr-on-kubernetes', 'blog/careerpilot-streaming-polish', 'blog/squabble-financial-rag', 'blog/careerpilot-auto-routing']) {
+        for (const path of ['projects', 'blog', 'resume', 'projects/aidr', 'projects/squabble', 'projects/daily-portfolio', 'projects/next-quest', 'blog/squabble-from-debate-to-silence', 'blog/rebuilding-squabble-for-daily-use', 'blog/zero-backdoors-aidr-on-kubernetes', 'blog/careerpilot-streaming-polish', 'blog/squabble-financial-rag', 'blog/careerpilot-auto-routing', 'blog/careerpilot-agent-workspace']) {
           const route = join(output, path)
           mkdirSync(route, { recursive: true })
           copyFileSync(entry, join(route, 'index.html'))
