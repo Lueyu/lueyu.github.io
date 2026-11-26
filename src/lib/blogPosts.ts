@@ -15,6 +15,19 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'careerpilot-product-redesign',
+    title: '我为什么放弃了 CareerPilot 的旧设计',
+    subtitle: '功能已经不少，准备工作仍要自己组织。我怎样重新安排聊天、资料和练习的关系。',
+    topic: 'CAREERPILOT · 产品设计',
+    date: '2026-11-27',
+    dateLabel: '2026.11.27',
+    readingTime: '约 10 分钟',
+    description: '一次围绕产品逻辑的改版记录：为什么以 Agent 工作台连接面试准备，为什么保留资料库和能力对标，以及聊天里的角色、技能、图形界面与文字解释各自解决什么问题。',
+    tags: ['CAREERPILOT', '产品设计', 'AI AGENTS', '交互设计'],
+    repo: 'https://github.com/Lueyu/CareerPilot',
+    footerNote: '本文记录 2026 年 11 月的产品设计取舍。新旧界面对比来自实机截图，Figma 配图为设计稿并含示意数据，不代表全部能力已上线或学习效果已验证。',
+  },
+  {
     slug: 'careerpilot-agent-workspace',
     title: '把面试系统收进聊天框，先修掉那个“完成”按钮',
     subtitle: '从题库的 30 条与 12 条，到一份只读取已接受答案的复盘报告。',
